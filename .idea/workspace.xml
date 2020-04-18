@@ -5,13 +5,207 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="012b7290-9e56-454d-b3b0-2f339f25def4" name="Default Changelist" comment="" />
+    <list default="true" id="012b7290-9e56-454d-b3b0-2f339f25def4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/IDisposable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_instrumentation_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_3_0_alpha04_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_3_0_alpha04_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_3_0_alpha04_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_3_0_alpha04_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_alexvasilkov_gesture_views_2_5_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_alexvasilkov_gesture_views_2_5_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_installreferrer_installreferrer_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_installreferrer_installreferrer_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_audience_network_sdk_5_7_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_audience_network_sdk_5_7_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_applinks_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_applinks_5_15_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_common_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_common_5_15_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_5_15_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_5_15_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_share_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_share_5_15_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_gauravk_bubblenavigation_bubblenavigation_1_0_7_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_gauravk_bubblenavigation_bubblenavigation_1_0_7_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_GrenderG_Toasty_1_4_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_GrenderG_Toasty_1_4_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_duanhong169_checkerboarddrawable_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_duanhong169_checkerboarddrawable_1_0_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_jkwiecien_EasyImage_1_3_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_jkwiecien_EasyImage_1_3_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_joielechong_countrycodepicker_2_4_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_joielechong_countrycodepicker_2_4_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_vivchar_ViewPagerIndicator_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_vivchar_ViewPagerIndicator_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_ads_consent_consent_library_1_0_8_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_ads_consent_consent_library_1_0_8_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_18_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_18_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_20_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_20_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_timber_timber_4_7_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_timber_timber_4_7_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_miguelcatalan_materialsearchview_1_4_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_miguelcatalan_materialsearchview_1_4_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sangcomz_FishBun_0_8_7_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sangcomz_FishBun_0_8_7_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__devlight_io_navigationtabbar_1_2_5_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__devlight_io_navigationtabbar_1_2_5_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewStickers.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/virmana/stickers_app/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/icaali/sticker_new/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/Manager/PrefManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Manager/PrefManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/Sticker.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Sticker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/StickerPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/StickerPack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/CategoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/CategoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/CategorySelectAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/CategorySelectAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/FollowAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/FollowAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/IntroAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/IntroAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/SelectableCategoryViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/SelectableCategoryViewHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/SlideAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/SlideAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/StickerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/StickerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/StickerDetailsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/StickerDetailsAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/TagAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/TagAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/UserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/UserAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/api/ProgressRequestBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/ProgressRequestBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/api/apiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/apiClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/api/apiRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/apiRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/BaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/EditImageActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/EditImageActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/ModuleConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/ModuleConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/adapter/ColorListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/ColorListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/adapter/StickerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/StickerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/adapter/StickerTypeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/StickerTypeAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/AddTextFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/AddTextFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/BaseEditFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/BaseEditFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/CropFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/CropFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/MainMenuFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/MainMenuFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/PaintFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/PaintFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/RotateFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/RotateFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/StickerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/StickerFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/model/RatioItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/model/RatioItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/model/StickerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/model/StickerBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/task/StickerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/task/StickerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/ui/ColorPicker.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/ui/ColorPicker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/BitmapUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/BitmapUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/DensityUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/DensityUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/ListUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/ListUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/Matrix3.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/Matrix3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/PaintUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/PaintUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/RectUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/RectUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/CropImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CropImageView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/CustomPaintView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CustomPaintView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/CustomViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CustomViewPager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/PaintModeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/PaintModeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/RotateImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/RotateImageView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/StickerItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/StickerItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/StickerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/StickerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/TextStickerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/TextStickerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/ImageViewTouch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/ImageViewTouch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/ImageViewTouchBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/ImageViewTouchBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Back.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Back.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Bounce.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Bounce.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Circ.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Circ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Cubic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Cubic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Easing.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Easing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Elastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Elastic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Expo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Expo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Linear.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Linear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Quad.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Quart.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Quint.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Sine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Sine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/graphic/FastBitmapDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/graphic/FastBitmapDrawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/graphic/IBitmapDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/graphic/IBitmapDrawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/utils/ExifUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/ExifUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/utils/IDisposable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/utils/IOUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/IOUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/widget/EditCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/widget/EditCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/widget/RedoUndoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/widget/RedoUndoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/BucketItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/BucketItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/BucketsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/BucketsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/GalleryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/GalleryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/GridItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/GridItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/ImagesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/ImagesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/SelectPictureActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/SelectPictureActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/SquareImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/SquareImageView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/ApiValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/ApiValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/CategoryApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/CategoryApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/PackApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/PackApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/SlideApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/SlideApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/StickerApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/StickerApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/TagApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/TagApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/UserApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/UserApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/model/StickerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/model/StickerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/provider/StickerContentProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/provider/StickerContentProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/services/NotifFirebaseMessagingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/services/NotifFirebaseMessagingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/task/GetStickers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/task/GetStickers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/BitmapUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/BitmapUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/CategoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/CategoryActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/CutOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/CutOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/DrawView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/DrawView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/EditActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/EditActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/EditorActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/EditorActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/InfosActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/InfosActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/LoadActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoadActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/PolicyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/PolicyActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SaveDrawingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SaveDrawingTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SearchActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SettingsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SlideActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SlideActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SplashActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/StickerDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/StickerDetailsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SupportActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SupportActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/UploadActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/UploadActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/UserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/UserActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/CategoriesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/CategoriesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/FavoritesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/FavoritesFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/FollowFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/FollowFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/PopularFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/PopularFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/UserFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/UserFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/views/BottomNavigationViewBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/BottomNavigationViewBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/views/ClickableViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/ClickableViewPager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/views/OtpEditText.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/OtpEditText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/views/ScrollHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/ScrollHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_image_edit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_image_edit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_slide.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_slide.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_paint.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_paint.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/imageitem.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/imageitem.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_slide.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_slide.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/virmana/stickers_app/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/icaali/sticker_new/ExampleUnitTest.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +215,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_27" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="643bcc62" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -34,109 +228,13 @@
       </state>
     </system>
   </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1195">
-              <caret line="47" column="18" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/HomeFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="38" column="59" lean-forward="true" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/StickerAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="177" column="71" selection-start-line="177" selection-start-column="71" selection-end-line="177" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/StickerPack.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="203" column="34" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="34" />
-              <folding>
-                <element signature="e#6316#6317#0" expanded="true" />
-                <element signature="e#6347#6348#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_facebook_ads.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="4" column="40" lean-forward="true" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="25" column="37" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>toolbar</find>
-      <find>recyclerView</find>
-      <find>Facebook</find>
-      <find>banner</find>
-      <find>homefra</find>
-      <find>PackViewHolder</find>
-      <find>SlideHolder</find>
-      <find>onCreateViewHolder</find>
-      <find>adapter</find>
-      <find>viewType</find>
-      <find>s</find>
-      <find>homefragment</find>
-      <find>setViewType</find>
-      <find>setviewtype(</find>
-      <find>setviewtype(1)</find>
-    </findStrings>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/keystore_release.jks" />
+    <option name="KEY_ALIAS" value="keystore" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_pack.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/StickerAdapter.java" />
-      </list>
-    </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
@@ -145,90 +243,32 @@
   </component>
   <component name="ProjectId" id="1aDUIogPVeVlqrnh4zxBmBhrQsQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="virmana" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="virmana" type="462c0819:PsiDirectoryNode" />
-              <item name="stickers_app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="virmana" type="462c0819:PsiDirectoryNode" />
-              <item name="stickers_app" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="com" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="virmana" type="462c0819:PsiDirectoryNode" />
-              <item name="stickers_app" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="fragmenet" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="NewStickers" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
+    <property name="ApkExportedModule" value="app" />
+    <property name="BundleExportedModule" value="app" />
+    <property name="DEBUGGABLE_DEVICE" value="xiaomi-redmi_note_7-643bcc62" />
+    <property name="DEBUGGABLE_PROCESS" value="com.icaali.sticker_new" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/app" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV1" value="true" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Signing Configs" />
+    <option name="BUILD_VARIANTS_TAB" value="Flavors" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -269,8 +309,6 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Auto" />
@@ -299,7 +337,7 @@
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sampled (Java)" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -336,123 +374,64 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="830" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info id="Project" order="1" visible="true" weight="0.16380544" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Build Variants" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Designer" order="5" />
-      <window_info id="Resources Explorer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.3292683" />
-      <window_info anchor="bottom" id="Debug" />
-      <window_info anchor="bottom" id="Find" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="6" weight="0.3292683" />
-      <window_info anchor="right" id="Preview" weight="0.3297568" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-    </layout>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/appcompat-1.2.0-alpha02.aar/2aca90db25c0af1e45bda74a87336c33/res/values/values.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="2160" column="39" selection-start-line="2160" selection-start-column="39" selection-end-line="2160" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_pack.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="104" column="48" selection-start-line="104" selection-start-column="48" selection-end-line="104" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="38" column="59" lean-forward="true" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="25" column="37" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_facebook_ads.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="4" column="40" lean-forward="true" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_slide.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1195">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/StickerPack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="203" column="34" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="34" />
-          <folding>
-            <element signature="e#6316#6317#0" expanded="true" />
-            <element signature="e#6347#6348#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="96" column="5" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/StickerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="177" column="71" selection-start-line="177" selection-start-column="71" selection-end-line="177" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
+          <line>268</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
+          <line>276</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
+          <line>306</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
+          <line>380</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
+          <line>371</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
+          <line>374</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
+          <line>312</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Remote">
+        <watch expression="result.getStatus()" language="JAVA" />
+        <watch expression="result.getSignInAccount()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

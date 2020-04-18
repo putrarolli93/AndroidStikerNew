@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: devlight.io:navigationtabbar:1.2.5@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-navigationtabbar-1.2.5.aar/fc04d2c2c0c245934b196601672b8fa0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-navigationtabbar-1.2.5.aar/fc04d2c2c0c245934b196601672b8fa0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-navigationtabbar-1.2.5.aar/4bca0bf2024fecb1e70084328341cf40/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-navigationtabbar-1.2.5.aar/4bca0bf2024fecb1e70084328341cf40/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

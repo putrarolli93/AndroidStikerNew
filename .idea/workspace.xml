@@ -16,195 +16,167 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="012b7290-9e56-454d-b3b0-2f339f25def4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/IDisposable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_instrumentation_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_3_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_3_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_3_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_3_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_alexvasilkov_gesture_views_2_5_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_alexvasilkov_gesture_views_2_5_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_installreferrer_installreferrer_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_installreferrer_installreferrer_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_audience_network_sdk_5_7_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_audience_network_sdk_5_7_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_applinks_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_applinks_5_15_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_common_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_common_5_15_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_5_15_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_5_15_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_share_5_15_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_share_5_15_3_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_gauravk_bubblenavigation_bubblenavigation_1_0_7_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_gauravk_bubblenavigation_bubblenavigation_1_0_7_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_GrenderG_Toasty_1_4_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_GrenderG_Toasty_1_4_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_duanhong169_checkerboarddrawable_1_0_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_duanhong169_checkerboarddrawable_1_0_2_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_jkwiecien_EasyImage_1_3_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_jkwiecien_EasyImage_1_3_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_joielechong_countrycodepicker_2_4_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_joielechong_countrycodepicker_2_4_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_vivchar_ViewPagerIndicator_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_vivchar_ViewPagerIndicator_1_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_ads_consent_consent_library_1_0_8_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_ads_consent_consent_library_1_0_8_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_18_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_18_3_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_19_3_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_components_16_0_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_20_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_messaging_20_1_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_timber_timber_4_7_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_timber_timber_4_7_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_miguelcatalan_materialsearchview_1_4_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_miguelcatalan_materialsearchview_1_4_0_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sangcomz_FishBun_0_8_7_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sangcomz_FishBun_0_8_7_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__devlight_io_navigationtabbar_1_2_5_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__devlight_io_navigationtabbar_1_2_5_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewStickers.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/debug/output.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/virmana/stickers_app/ExampleInstrumentedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/icaali/sticker_new/ExampleInstrumentedTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/icaali/sticker_new/ExampleInstrumentedTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/Manager/PrefManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Manager/PrefManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/Sticker.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Sticker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/StickerPack.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/StickerPack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/CategoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/CategoryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/CategorySelectAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/CategorySelectAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/FollowAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/FollowAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/IntroAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/IntroAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/SelectableCategoryViewHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/SelectableCategoryViewHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/SlideAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/SlideAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/StickerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/StickerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/StickerDetailsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/StickerDetailsAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/TagAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/TagAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/adapter/UserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/UserAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/api/ProgressRequestBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/ProgressRequestBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/api/apiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/apiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/api/apiRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/apiRest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/BaseActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/FileUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/EditImageActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/EditImageActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/ModuleConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/ModuleConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/adapter/ColorListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/ColorListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/adapter/StickerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/StickerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/adapter/StickerTypeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/StickerTypeAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/AddTextFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/AddTextFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/BaseEditFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/BaseEditFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/CropFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/CropFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/MainMenuFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/MainMenuFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/PaintFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/PaintFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/RotateFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/RotateFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/fragment/StickerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/StickerFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/model/RatioItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/model/RatioItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/model/StickerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/model/StickerBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/task/StickerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/task/StickerTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/ui/ColorPicker.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/ui/ColorPicker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/BitmapUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/BitmapUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/DensityUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/DensityUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/ListUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/ListUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/Matrix3.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/Matrix3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/PaintUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/PaintUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/utils/RectUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/RectUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/CropImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CropImageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/CustomPaintView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CustomPaintView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/CustomViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CustomViewPager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/PaintModeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/PaintModeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/RotateImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/RotateImageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/StickerItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/StickerItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/StickerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/StickerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/TextStickerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/TextStickerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/ImageViewTouch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/ImageViewTouch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/ImageViewTouchBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/ImageViewTouchBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Back.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Back.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Bounce.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Bounce.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Circ.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Circ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Cubic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Cubic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Easing.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Easing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Elastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Elastic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Expo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Expo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Linear.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Linear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Quad.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Quart.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Quint.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/easing/Sine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Sine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/graphic/FastBitmapDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/graphic/FastBitmapDrawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/graphic/IBitmapDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/graphic/IBitmapDrawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/utils/ExifUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/ExifUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/utils/IDisposable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/view/imagezoom/utils/IOUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/IOUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/widget/EditCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/widget/EditCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/editimage/widget/RedoUndoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/widget/RedoUndoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/BucketItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/BucketItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/BucketsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/BucketsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/GalleryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/GalleryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/GridItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/GridItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/ImagesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/ImagesFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/SelectPictureActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/SelectPictureActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/editor/picchooser/SquareImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/SquareImageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/ApiValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/ApiValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/CategoryApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/CategoryApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/PackApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/PackApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/SlideApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/SlideApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/StickerApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/StickerApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/TagApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/TagApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/entity/UserApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/UserApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/model/StickerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/model/StickerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/provider/StickerContentProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/provider/StickerContentProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/services/NotifFirebaseMessagingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/services/NotifFirebaseMessagingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/task/GetStickers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/task/GetStickers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/BitmapUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/BitmapUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/CategoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/CategoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/CutOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/CutOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/DrawView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/DrawView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/EditActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/EditActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/EditorActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/EditorActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/HomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/InfosActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/InfosActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/LoadActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoadActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/PolicyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/PolicyActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SaveDrawingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SaveDrawingTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SearchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SearchActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SettingsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SlideActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SlideActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SplashActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/StickerDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/StickerDetailsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/SupportActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SupportActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/UploadActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/UploadActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/UserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/UserActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/CategoriesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/CategoriesFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/FavoritesFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/FavoritesFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/FollowFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/FollowFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/HomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/PopularFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/PopularFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/fragmenet/UserFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/UserFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/views/BottomNavigationViewBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/BottomNavigationViewBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/views/ClickableViewPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/ClickableViewPager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/views/OtpEditText.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/OtpEditText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/virmana/stickers_app/ui/views/ScrollHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/ScrollHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Manager/PrefManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/Sticker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/StickerPack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/CategoryAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/CategorySelectAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/FollowAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/IntroAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/SelectableCategoryViewHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/SlideAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/StickerAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/StickerDetailsAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/TagAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/adapter/UserAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/ProgressRequestBody.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/apiClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/api/apiRest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/config/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/BaseActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/FileUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/EditImageActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/ModuleConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/ColorListAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/StickerAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/adapter/StickerTypeAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/AddTextFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/BaseEditFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/CropFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/MainMenuFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/PaintFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/RotateFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/fragment/StickerFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/model/RatioItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/model/StickerBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/task/StickerTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/ui/ColorPicker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/BitmapUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/DensityUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/FileUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/ListUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/Matrix3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/PaintUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/utils/RectUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CropImageView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CustomPaintView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/CustomViewPager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/PaintModeView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/RotateImageView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/StickerItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/StickerView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/TextStickerView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/ImageViewTouch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/ImageViewTouchBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Back.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Bounce.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Circ.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Cubic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Easing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Elastic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Expo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Linear.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Quint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/easing/Sine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/graphic/FastBitmapDrawable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/graphic/IBitmapDrawable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/ExifUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/IDisposable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/view/imagezoom/utils/IOUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/widget/EditCache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/editimage/widget/RedoUndoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/BucketItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/BucketsFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/GalleryAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/GridItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/ImagesFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/Logger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/SelectPictureActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/editor/picchooser/SquareImageView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/ApiResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/ApiValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/CategoryApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/PackApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/SlideApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/StickerApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/TagApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/entity/UserApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/model/StickerModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/provider/StickerContentProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/services/NotifFirebaseMessagingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/task/GetStickers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/BitmapUtility.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/CategoryActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/CutOut.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/DrawView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/EditActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/EditorActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/HomeActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/InfosActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoadActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/PolicyActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SaveDrawingTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SearchActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SettingsActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SlideActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SplashActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/StickerDetailsActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/SupportActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/UploadActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/UserActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/CategoriesFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/FavoritesFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/FollowFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/HomeFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/PopularFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/fragmenet/UserFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/BottomNavigationViewBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/ClickableViewPager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/OtpEditText.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/views/ScrollHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_image_edit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_image_edit.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_slide.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_slide.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/app_bar_home.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_paint.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_paint.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/imageitem.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/imageitem.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_pack.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_pack.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_slide.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_slide.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/virmana/stickers_app/ExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/com/icaali/sticker_new/ExampleUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_home_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_home_drawer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/icaali/sticker_new/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -388,45 +360,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
-          <line>268</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
-          <line>276</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
-          <line>306</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
-          <line>380</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
-          <line>371</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
-          <line>374</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/icaali/sticker_new/ui/LoginActivity.java</url>
-          <line>312</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Remote">
         <watch expression="result.getStatus()" language="JAVA" />

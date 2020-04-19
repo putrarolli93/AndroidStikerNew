@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:505723746684:android:3b6373429a2c35e7068cf9",
+        "android_client_info": {
+          "package_name": "com.icaali.StickerIslami"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505723746684-n41bm1p7eckam0kb2bv6n72nutdq35nc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.icaali.StickerIslami",
+            "certificate_hash": "c1d9f047f62e88f5f48610df70ac689a41570a44"
+          }
+        },
+        {
+          "client_id": "505723746684-16tg6maq179jtl2jn66u9ijj94plfbuk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrSeoeOnMCdKIEsy4MqzV74QpbhJI2m4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505723746684-16tg6maq179jtl2jn66u9ijj94plfbuk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:505723746684:android:cd12f22b4a004131068cf9",
         "android_client_info": {
           "package_name": "com.icaali.sticker_new"
@@ -19,6 +56,43 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.icaali.sticker_new",
+            "certificate_hash": "c1d9f047f62e88f5f48610df70ac689a41570a44"
+          }
+        },
+        {
+          "client_id": "505723746684-16tg6maq179jtl2jn66u9ijj94plfbuk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrSeoeOnMCdKIEsy4MqzV74QpbhJI2m4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505723746684-16tg6maq179jtl2jn66u9ijj94plfbuk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505723746684:android:d00675e9fe38f633068cf9",
+        "android_client_info": {
+          "package_name": "com.icaalilabs.stickers_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505723746684-g16fntmvo5djcfcrlh75vk8dj8n3c8am.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.icaalilabs.stickers_app",
             "certificate_hash": "c1d9f047f62e88f5f48610df70ac689a41570a44"
           }
         },

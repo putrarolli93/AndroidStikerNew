@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">WAStickerApps - Stickers for Whatsapp</string>
+    <string name="app_name">Stickers Islami for Whatsapp</string>
 
     <string name="facebook_app_id">2169750233343295</string>
     <string name="fb_login_protocol_scheme">fb2169750233343295</string>
 
 
 
-    <string name="panel_url">stickers.virmana.com</string>
+    <string name="panel_url">icaali.com/adminstiker</string>
 
     <string-array name="fonts">
         <item>font_1.ttf</item>

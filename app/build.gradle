@@ -66,6 +66,7 @@ dependencies {
     implementation 'com.orhanobut:hawk:2.0.1'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.google.android.material:material:1.2.0-alpha04'
+    implementation 'com.google.android.gms:play-services-ads:18.2.0'
     implementation 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'

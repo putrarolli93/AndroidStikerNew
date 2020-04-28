@@ -135,13 +135,11 @@
 
             <LinearLayout
                 android:id="@+id/linear_layout_buttons_login_activity"
-                android:visibility="gone"
-                tools:visibility="visible"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <com.facebook.login.widget.LoginButton
-                    android:visibility="visible"
+                    android:visibility="gone"
                     facebook:com_facebook_login_text="Login with facebook"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -194,7 +192,6 @@
                 </RelativeLayout>
                 <RelativeLayout
                     android:visibility="gone"
-                    tools:visibility="visible"
                     android:elevation="2dp"
                     android:clickable="true"
                     android:background="?attr/selectableItemBackground"

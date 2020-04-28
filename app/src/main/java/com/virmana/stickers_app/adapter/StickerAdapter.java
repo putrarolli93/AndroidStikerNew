@@ -116,16 +116,16 @@ public class StickerAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolde
         RecyclerView.ViewHolder viewHolder = null;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         switch (viewType) {
-//            case 1: {
-//                View v1 = inflater.inflate(R.layout.item_pack, parent, false);
-//                viewHolder = new PackViewHolder(v1);
-//                break;
-//            }
-//            case 2: {
-//                View v2 = inflater.inflate(R.layout.item_slide, parent, false);
-//                viewHolder = new SlideHolder(v2);
-//                break;
-//            }
+            case 1: {
+                View v1 = inflater.inflate(R.layout.item_pack, parent, false);
+                viewHolder = new PackViewHolder(v1);
+                break;
+            }
+            case 2: {
+                View v2 = inflater.inflate(R.layout.item_slide, parent, false);
+                viewHolder = new SlideHolder(v2);
+                break;
+            }
             case 3: {
                 View v3 = inflater.inflate(R.layout.item_followings, parent, false);
                 viewHolder = new FollowHolder(v3);
@@ -157,331 +157,331 @@ public class StickerAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder_parent, final int position) {
 
         switch (StickerPack.get(position).getViewType()) {
-//            case 1: {
-//
-//                final PackViewHolder viewHolder = (PackViewHolder) holder_parent;
-//
-//
-//                viewHolder.item_pack_name.setText(StickerPack.get(position).name);
-//                viewHolder.item_pack_publisher.setText(StickerPack.get(position).publisher);
-//                viewHolder.item_pack_downloads.setText(StickerPack.get(position).downloads);
-//                viewHolder.item_pack_size.setText(StickerPack.get(position).size);
-//                viewHolder.item_pack_created.setText(StickerPack.get(position).created);
-//                viewHolder.item_pack_username.setText(StickerPack.get(position).username);
-//
-//                if (StickerPack.get(position).premium.equals("true")) {
-//                    viewHolder.item_pack_premium.setVisibility(View.VISIBLE);
-//                } else {
-//                    viewHolder.item_pack_premium.setVisibility(View.GONE);
-//                }
-//                if (StickerPack.get(position).review.equals("true")) {
-//                    viewHolder.item_pack_review.setVisibility(View.VISIBLE);
-//                    viewHolder.item_pack_delete.setVisibility(View.VISIBLE);
-//                } else {
-//                    viewHolder.item_pack_delete.setVisibility(View.GONE);
-//                }
-//
-//                Picasso.with(activity.getApplicationContext())
-//                        .load(StickerPack.get(position).userimage)
-//                        .into(viewHolder.pack_item_image_view_userimage);
-//
-//                Picasso.with(activity.getApplicationContext())
-//                        .load(StickerPack.get(position).trayImageUrl)
-//                        .into(viewHolder.pack_try_image);
-//                Picasso.with(activity.getApplicationContext())
-//                        .load(StickerPack.get(position).getStickers().get(0).imageFileUrlThum)
-//                        .into(viewHolder.imone);
-//
-//                Picasso.with(activity.getApplicationContext())
-//                        .load(StickerPack.get(position).getStickers().get(1).imageFileUrlThum)
-//                        .into(viewHolder.imtwo);
-//
-//                Picasso.with(activity.getApplicationContext())
-//                        .load(StickerPack.get(position).getStickers().get(2).imageFileUrlThum)
-//                        .into(viewHolder.imthree);
-//
-//                if (StickerPack.get(position).getStickers().size() > 3) {
-//                    Picasso.with(activity.getApplicationContext())
-//                            .load(StickerPack.get(position).getStickers().get(3).imageFileUrlThum)
-//                            .into(viewHolder.imfour);
-//                } else {
-//                    viewHolder.imfour.setVisibility(View.INVISIBLE);
-//                }
-//                if (StickerPack.get(position).getStickers().size() > 4) {
-//                    Picasso.with(activity.getApplicationContext())
-//                            .load(StickerPack.get(position).getStickers().get(4).imageFileUrlThum)
-//                            .into(viewHolder.imfive);
-//                } else {
-//                    viewHolder.imfive.setVisibility(View.INVISIBLE);
-//                }
-//                Log.e("trayImageUrl", StickerPack.get(position).trayImageUrl);
-//                Log.e("trayImageUrl", StickerPack.get(position).trayImageFile);
-//
-//                viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent((activity), StickerDetailsActivity.class).putExtra(EXTRA_STICKERPACK, StickerPack.get(viewHolder.getAdapterPosition()));
-//
-//                        PrefManager prefManager= new PrefManager(activity);
-//
-//                        if(checkSUBSCRIBED()){
-//                            (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                        }else{
-//                            if( prefManager.getString("ADMIN_INTERSTITIAL_TYPE").equals("ADMOB")){
-//                                requestAdmobInterstitial();
-//
-//                                if(prefManager.getInt("ADMIN_INTERSTITIAL_CLICKS")<=prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")){
-//                                    if (admobInterstitialAd.isLoaded()) {
-//                                        prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",0);
-//                                        admobInterstitialAd.show();
-//                                        admobInterstitialAd.setAdListener(new AdListener() {
-//                                            @Override
-//                                            public void onAdClosed() {
-//                                                requestAdmobInterstitial();
-//                                                (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                            }
-//                                        });
-//                                    }else{
-//                                        (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                        requestAdmobInterstitial();
-//                                    }
-//                                }else{
-//                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                    prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")+1);
-//                                }
-//                            }else if(prefManager.getString("ADMIN_INTERSTITIAL_TYPE").equals("FACEBOOK")){
-//                                requestFacebookInterstitial();
-//                                if(prefManager.getInt("ADMIN_INTERSTITIAL_CLICKS")<=prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")){
-//                                    if (facebookInterstitialAd.isAdLoaded()) {
-//                                        prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",0);
-//                                        facebookInterstitialAd.show();
-//                                        facebookInterstitialAd.setAdListener(new InterstitialAdListener() {
-//                                            @Override
-//                                            public void onInterstitialDisplayed(Ad ad) {
-//                                                Log.d("MYADSNOW","onInterstitialDisplayed");
-//                                            }
-//
-//                                            @Override
-//                                            public void onInterstitialDismissed(Ad ad) {
-//                                                (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                            }
-//
-//                                            @Override
-//                                            public void onError(Ad ad, AdError adError) {
-//                                                Log.d("MYADSNOW","onError");
-//
-//                                            }
-//
-//                                            @Override
-//                                            public void onAdLoaded(Ad ad) {
-//                                                Log.d("MYADSNOW","onAdLoaded");
-//
-//                                            }
-//
-//                                            @Override
-//                                            public void onAdClicked(Ad ad) {
-//
-//                                                Log.d("MYADSNOW","onAdClicked");
-//                                            }
-//
-//                                            @Override
-//                                            public void onLoggingImpression(Ad ad) {
-//                                                Log.d("MYADSNOW","onLoggingImpression");
-//                                            }
-//                                        });
-//                                    }else{
-//                                        (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                        requestFacebookInterstitial();
-//                                    }
-//                                }else{
-//                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                    prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")+1);
-//                                }
-//                            }else if(prefManager.getString("ADMIN_INTERSTITIAL_TYPE").equals("BOTH")){
-//                                requestAdmobInterstitial();
-//                                requestFacebookInterstitial();
-//                                if(prefManager.getInt("ADMIN_INTERSTITIAL_CLICKS")<=prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")) {
-//                                    if (prefManager.getString("AD_INTERSTITIAL_SHOW_TYPE").equals("ADMOB")){
-//                                        if (admobInterstitialAd.isLoaded()) {
-//                                            prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",0);
-//                                            prefManager.setString("AD_INTERSTITIAL_SHOW_TYPE","FACEBOOK");
-//                                            admobInterstitialAd.show();
-//                                            admobInterstitialAd.setAdListener(new AdListener(){
-//                                                @Override
-//                                                public void onAdClosed() {
-//                                                    super.onAdClosed();
-//                                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                                    requestFacebookInterstitial();
-//                                                }
-//                                            });
-//                                        }else{
-//                                            (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                            requestFacebookInterstitial();
-//                                        }
-//                                    }else{
-//                                        if (facebookInterstitialAd.isAdLoaded()) {
-//                                            prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",0);
-//                                            prefManager.setString("AD_INTERSTITIAL_SHOW_TYPE","ADMOB");
-//                                            facebookInterstitialAd.show();
-//                                            facebookInterstitialAd.setAdListener(new InterstitialAdListener() {
-//                                                @Override
-//                                                public void onInterstitialDisplayed(Ad ad) {
-//
-//                                                }
-//
-//                                                @Override
-//                                                public void onInterstitialDismissed(Ad ad) {
-//                                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                                    activity.startActivity(intent);
-//                                                }
-//
-//                                                @Override
-//                                                public void onError(Ad ad, AdError adError) {
-//
-//                                                }
-//
-//                                                @Override
-//                                                public void onAdLoaded(Ad ad) {
-//
-//                                                }
-//
-//                                                @Override
-//                                                public void onAdClicked(Ad ad) {
-//
-//                                                }
-//
-//                                                @Override
-//                                                public void onLoggingImpression(Ad ad) {
-//
-//                                                }
-//                                            });
-//                                        }else{
-//                                            (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                            requestFacebookInterstitial();
-//                                        }
-//                                    }
-//                                }else{
-//                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                                    prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")+1);
-//                                }
-//                            }else{
-//                                (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-//                            }
-//                        }
-//                    }
-//                });
-//                List<PackApi> favorites_list =Hawk.get("favorite");
-//                Boolean exist = false;
-//                if (favorites_list == null) {
-//                    favorites_list = new ArrayList<>();
-//                }
-//
-//                for (int i = 0; i < favorites_list.size(); i++) {
-//                    if (favorites_list.get(i).getIdentifier().equals(StickerPack.get(position).packApi.getIdentifier())) {
-//                        exist = true;
-//                    }
-//                }
-//                if (exist){
-//                    viewHolder.image_view_item_pack_fav.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_black));
-//                }else{
-//                    viewHolder.image_view_item_pack_fav.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_border));
-//
-//                }
-//                viewHolder.image_view_item_pack_fav.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                        List<PackApi> favorites_list =Hawk.get("favorite");
-//                        Boolean exist = false;
-//                        if (favorites_list == null) {
-//                            favorites_list = new ArrayList<>();
-//                        }
-//                        int fav_position = -1;
-//                        for (int i = 0; i < favorites_list.size(); i++) {
-//                            if (favorites_list.get(i).getIdentifier().equals(StickerPack.get(position).packApi.getIdentifier())) {
-//                                exist = true;
-//                                fav_position = i;
-//                            }
-//                        }
-//                        if (exist == false) {
-//                            favorites_list.add(StickerPack.get(position).packApi);
-//                            Hawk.put("favorite",favorites_list);
-//                            viewHolder.image_view_item_pack_fav.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_black));
-//
-//                        }else{
-//                            favorites_list.remove(fav_position);
-//                            Hawk.put("favorite",favorites_list);
-//                            viewHolder.image_view_item_pack_fav.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_border));
-//                            if (favorite) {
-//                                StickerPack.remove(position);
-//                                notifyItemRemoved(position);
-//                                notifyDataSetChanged();
-//                            }
-//
-//                        }
-//
-//                    }
-//                });
-//                viewHolder.image_view_delete.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        dialog_progress= ProgressDialog.show(activity, null,activity.getResources().getString(R.string.operation_progress), true);
-//                        final PrefManager prf= new PrefManager(activity.getApplicationContext());
-//                        String user_id = prf.getString("ID_USER");
-//                        String user_key = prf.getString("TOKEN_USER");
-//                        Retrofit retrofit = apiClient.getClient();
-//                        apiRest service = retrofit.create(apiRest.class);
-//                        Call<ApiResponse> call = service.deletePack(Integer.parseInt(user_id),user_key,Integer.parseInt(StickerPack.get(position).identifier));
-//                        call.enqueue(new Callback<ApiResponse>() {
-//                            @Override
-//                            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-//                                if(response.isSuccessful()) {
-//                                    if (response.body().getCode() ==  200){
-//                                        Toasty.success(activity,response.body().getMessage(),Toast.LENGTH_LONG).show();
-//                                        Intent intent  =  new Intent(activity.getApplicationContext(), UserActivity.class);
-//                                        intent.putExtra("id", Integer.parseInt(prf.getString("ID_USER")));
-//                                        intent.putExtra("image",prf.getString("IMAGE_USER").toString());
-//                                        intent.putExtra("name",prf.getString("NAME_USER").toString());
-//                                        activity.startActivity(intent);
-//                                        activity.overridePendingTransition(R.anim.enter, R.anim.exit);
-//                                        activity.overridePendingTransition(R.anim.enter, R.anim.exit);
-//                                        activity.finish();
-//                                    }else{
-//                                        Toasty.error(activity,response.body().getMessage(),Toast.LENGTH_LONG).show();
-//                                    }
-//                                }else{
-//                                    Toasty.error(activity,activity.getResources().getString(R.string.error_server),Toast.LENGTH_LONG).show();
-//                                }
-//                                if (dialog_progress!=null){
-//                                    dialog_progress.dismiss();
-//                                }
-//                            }
-//                            @Override
-//                            public void onFailure(Call<ApiResponse> call, Throwable t) {
-//                                Toasty.error(activity,activity.getResources().getString(R.string.error_server),Toast.LENGTH_LONG).show();
-//                                if (dialog_progress!=null){
-//                                    dialog_progress.dismiss();
-//                                }
-//                            }
-//                        });
-//                    }
-//                });
-//            }
-//            break;
-//            case 2: {
-//                final SlideHolder holder = (SlideHolder) holder_parent;
-//
-//                slide_adapter = new SlideAdapter(activity, slideList);
-//                holder.view_pager_slide.setAdapter(slide_adapter);
-//                holder.view_pager_slide.setOffscreenPageLimit(1);
-//
-//                holder.view_pager_slide.setClipToPadding(false);
-//                holder.view_pager_slide.setPageMargin(0);
-//                holder.view_pager_indicator.setupWithViewPager(holder.view_pager_slide);
-//
-//                holder.view_pager_slide.setCurrentItem(slideList.size() / 2);
-//            }
-//            break;
+            case 1: {
+
+                final PackViewHolder viewHolder = (PackViewHolder) holder_parent;
+
+
+                viewHolder.item_pack_name.setText(StickerPack.get(position).name);
+                viewHolder.item_pack_publisher.setText(StickerPack.get(position).publisher);
+                viewHolder.item_pack_downloads.setText(StickerPack.get(position).downloads);
+                viewHolder.item_pack_size.setText(StickerPack.get(position).size);
+                viewHolder.item_pack_created.setText(StickerPack.get(position).created);
+                viewHolder.item_pack_username.setText(StickerPack.get(position).username);
+
+                if (StickerPack.get(position).premium.equals("true")) {
+                    viewHolder.item_pack_premium.setVisibility(View.VISIBLE);
+                } else {
+                    viewHolder.item_pack_premium.setVisibility(View.GONE);
+                }
+                if (StickerPack.get(position).review.equals("true")) {
+                    viewHolder.item_pack_review.setVisibility(View.VISIBLE);
+                    viewHolder.item_pack_delete.setVisibility(View.VISIBLE);
+                } else {
+                    viewHolder.item_pack_delete.setVisibility(View.GONE);
+                }
+
+                Picasso.with(activity.getApplicationContext())
+                        .load(StickerPack.get(position).userimage)
+                        .into(viewHolder.pack_item_image_view_userimage);
+
+                Picasso.with(activity.getApplicationContext())
+                        .load(StickerPack.get(position).trayImageUrl)
+                        .into(viewHolder.pack_try_image);
+                Picasso.with(activity.getApplicationContext())
+                        .load(StickerPack.get(position).getStickers().get(0).imageFileUrlThum)
+                        .into(viewHolder.imone);
+
+                Picasso.with(activity.getApplicationContext())
+                        .load(StickerPack.get(position).getStickers().get(1).imageFileUrlThum)
+                        .into(viewHolder.imtwo);
+
+                Picasso.with(activity.getApplicationContext())
+                        .load(StickerPack.get(position).getStickers().get(2).imageFileUrlThum)
+                        .into(viewHolder.imthree);
+
+                if (StickerPack.get(position).getStickers().size() > 3) {
+                    Picasso.with(activity.getApplicationContext())
+                            .load(StickerPack.get(position).getStickers().get(3).imageFileUrlThum)
+                            .into(viewHolder.imfour);
+                } else {
+                    viewHolder.imfour.setVisibility(View.INVISIBLE);
+                }
+                if (StickerPack.get(position).getStickers().size() > 4) {
+                    Picasso.with(activity.getApplicationContext())
+                            .load(StickerPack.get(position).getStickers().get(4).imageFileUrlThum)
+                            .into(viewHolder.imfive);
+                } else {
+                    viewHolder.imfive.setVisibility(View.INVISIBLE);
+                }
+                Log.e("trayImageUrl", StickerPack.get(position).trayImageUrl);
+                Log.e("trayImageUrl", StickerPack.get(position).trayImageFile);
+
+                viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent((activity), StickerDetailsActivity.class).putExtra(EXTRA_STICKERPACK, StickerPack.get(viewHolder.getAdapterPosition()));
+
+                        PrefManager prefManager= new PrefManager(activity);
+
+                        if(checkSUBSCRIBED()){
+                            (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                        }else{
+                            if( prefManager.getString("ADMIN_INTERSTITIAL_TYPE").equals("ADMOB")){
+                                requestAdmobInterstitial();
+
+                                if(prefManager.getInt("ADMIN_INTERSTITIAL_CLICKS")<=prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")){
+                                    if (admobInterstitialAd.isLoaded()) {
+                                        prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",0);
+                                        admobInterstitialAd.show();
+                                        admobInterstitialAd.setAdListener(new AdListener() {
+                                            @Override
+                                            public void onAdClosed() {
+                                                requestAdmobInterstitial();
+                                                (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                            }
+                                        });
+                                    }else{
+                                        (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                        requestAdmobInterstitial();
+                                    }
+                                }else{
+                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                    prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")+1);
+                                }
+                            }else if(prefManager.getString("ADMIN_INTERSTITIAL_TYPE").equals("FACEBOOK")){
+                                requestFacebookInterstitial();
+                                if(prefManager.getInt("ADMIN_INTERSTITIAL_CLICKS")<=prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")){
+                                    if (facebookInterstitialAd.isAdLoaded()) {
+                                        prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",0);
+                                        facebookInterstitialAd.show();
+                                        facebookInterstitialAd.setAdListener(new InterstitialAdListener() {
+                                            @Override
+                                            public void onInterstitialDisplayed(Ad ad) {
+                                                Log.d("MYADSNOW","onInterstitialDisplayed");
+                                            }
+
+                                            @Override
+                                            public void onInterstitialDismissed(Ad ad) {
+                                                (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                            }
+
+                                            @Override
+                                            public void onError(Ad ad, AdError adError) {
+                                                Log.d("MYADSNOW","onError");
+
+                                            }
+
+                                            @Override
+                                            public void onAdLoaded(Ad ad) {
+                                                Log.d("MYADSNOW","onAdLoaded");
+
+                                            }
+
+                                            @Override
+                                            public void onAdClicked(Ad ad) {
+
+                                                Log.d("MYADSNOW","onAdClicked");
+                                            }
+
+                                            @Override
+                                            public void onLoggingImpression(Ad ad) {
+                                                Log.d("MYADSNOW","onLoggingImpression");
+                                            }
+                                        });
+                                    }else{
+                                        (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                        requestFacebookInterstitial();
+                                    }
+                                }else{
+                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                    prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")+1);
+                                }
+                            }else if(prefManager.getString("ADMIN_INTERSTITIAL_TYPE").equals("BOTH")){
+                                requestAdmobInterstitial();
+                                requestFacebookInterstitial();
+                                if(prefManager.getInt("ADMIN_INTERSTITIAL_CLICKS")<=prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")) {
+                                    if (prefManager.getString("AD_INTERSTITIAL_SHOW_TYPE").equals("ADMOB")){
+                                        if (admobInterstitialAd.isLoaded()) {
+                                            prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",0);
+                                            prefManager.setString("AD_INTERSTITIAL_SHOW_TYPE","FACEBOOK");
+                                            admobInterstitialAd.show();
+                                            admobInterstitialAd.setAdListener(new AdListener(){
+                                                @Override
+                                                public void onAdClosed() {
+                                                    super.onAdClosed();
+                                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                                    requestFacebookInterstitial();
+                                                }
+                                            });
+                                        }else{
+                                            (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                            requestFacebookInterstitial();
+                                        }
+                                    }else{
+                                        if (facebookInterstitialAd.isAdLoaded()) {
+                                            prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",0);
+                                            prefManager.setString("AD_INTERSTITIAL_SHOW_TYPE","ADMOB");
+                                            facebookInterstitialAd.show();
+                                            facebookInterstitialAd.setAdListener(new InterstitialAdListener() {
+                                                @Override
+                                                public void onInterstitialDisplayed(Ad ad) {
+
+                                                }
+
+                                                @Override
+                                                public void onInterstitialDismissed(Ad ad) {
+                                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                                    activity.startActivity(intent);
+                                                }
+
+                                                @Override
+                                                public void onError(Ad ad, AdError adError) {
+
+                                                }
+
+                                                @Override
+                                                public void onAdLoaded(Ad ad) {
+
+                                                }
+
+                                                @Override
+                                                public void onAdClicked(Ad ad) {
+
+                                                }
+
+                                                @Override
+                                                public void onLoggingImpression(Ad ad) {
+
+                                                }
+                                            });
+                                        }else{
+                                            (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                            requestFacebookInterstitial();
+                                        }
+                                    }
+                                }else{
+                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                    prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS",prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")+1);
+                                }
+                            }else{
+                                (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                            }
+                        }
+                    }
+                });
+                List<PackApi> favorites_list =Hawk.get("favorite");
+                Boolean exist = false;
+                if (favorites_list == null) {
+                    favorites_list = new ArrayList<>();
+                }
+
+                for (int i = 0; i < favorites_list.size(); i++) {
+                    if (favorites_list.get(i).getIdentifier().equals(StickerPack.get(position).packApi.getIdentifier())) {
+                        exist = true;
+                    }
+                }
+                if (exist){
+                    viewHolder.image_view_item_pack_fav.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_black));
+                }else{
+                    viewHolder.image_view_item_pack_fav.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_border));
+
+                }
+                viewHolder.image_view_item_pack_fav.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        List<PackApi> favorites_list =Hawk.get("favorite");
+                        Boolean exist = false;
+                        if (favorites_list == null) {
+                            favorites_list = new ArrayList<>();
+                        }
+                        int fav_position = -1;
+                        for (int i = 0; i < favorites_list.size(); i++) {
+                            if (favorites_list.get(i).getIdentifier().equals(StickerPack.get(position).packApi.getIdentifier())) {
+                                exist = true;
+                                fav_position = i;
+                            }
+                        }
+                        if (exist == false) {
+                            favorites_list.add(StickerPack.get(position).packApi);
+                            Hawk.put("favorite",favorites_list);
+                            viewHolder.image_view_item_pack_fav.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_black));
+
+                        }else{
+                            favorites_list.remove(fav_position);
+                            Hawk.put("favorite",favorites_list);
+                            viewHolder.image_view_item_pack_fav.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_favorite_border));
+                            if (favorite) {
+                                StickerPack.remove(position);
+                                notifyItemRemoved(position);
+                                notifyDataSetChanged();
+                            }
+
+                        }
+
+                    }
+                });
+                viewHolder.image_view_delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog_progress= ProgressDialog.show(activity, null,activity.getResources().getString(R.string.operation_progress), true);
+                        final PrefManager prf= new PrefManager(activity.getApplicationContext());
+                        String user_id = prf.getString("ID_USER");
+                        String user_key = prf.getString("TOKEN_USER");
+                        Retrofit retrofit = apiClient.getClient();
+                        apiRest service = retrofit.create(apiRest.class);
+                        Call<ApiResponse> call = service.deletePack(Integer.parseInt(user_id),user_key,Integer.parseInt(StickerPack.get(position).identifier));
+                        call.enqueue(new Callback<ApiResponse>() {
+                            @Override
+                            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                                if(response.isSuccessful()) {
+                                    if (response.body().getCode() ==  200){
+                                        Toasty.success(activity,response.body().getMessage(),Toast.LENGTH_LONG).show();
+                                        Intent intent  =  new Intent(activity.getApplicationContext(), UserActivity.class);
+                                        intent.putExtra("id", Integer.parseInt(prf.getString("ID_USER")));
+                                        intent.putExtra("image",prf.getString("IMAGE_USER").toString());
+                                        intent.putExtra("name",prf.getString("NAME_USER").toString());
+                                        activity.startActivity(intent);
+                                        activity.overridePendingTransition(R.anim.enter, R.anim.exit);
+                                        activity.overridePendingTransition(R.anim.enter, R.anim.exit);
+                                        activity.finish();
+                                    }else{
+                                        Toasty.error(activity,response.body().getMessage(),Toast.LENGTH_LONG).show();
+                                    }
+                                }else{
+                                    Toasty.error(activity,activity.getResources().getString(R.string.error_server),Toast.LENGTH_LONG).show();
+                                }
+                                if (dialog_progress!=null){
+                                    dialog_progress.dismiss();
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                                Toasty.error(activity,activity.getResources().getString(R.string.error_server),Toast.LENGTH_LONG).show();
+                                if (dialog_progress!=null){
+                                    dialog_progress.dismiss();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            break;
+            case 2: {
+                final SlideHolder holder = (SlideHolder) holder_parent;
+
+                slide_adapter = new SlideAdapter(activity, slideList);
+                holder.view_pager_slide.setAdapter(slide_adapter);
+                holder.view_pager_slide.setOffscreenPageLimit(1);
+
+                holder.view_pager_slide.setClipToPadding(false);
+                holder.view_pager_slide.setPageMargin(0);
+                holder.view_pager_indicator.setupWithViewPager(holder.view_pager_slide);
+
+                holder.view_pager_slide.setCurrentItem(slideList.size() / 2);
+            }
+            break;
             case 3: {
                 final FollowHolder holder = (FollowHolder) holder_parent;
                 this.linearLayoutManager=  new LinearLayoutManager((activity.getApplicationContext()),LinearLayoutManager.HORIZONTAL,false);

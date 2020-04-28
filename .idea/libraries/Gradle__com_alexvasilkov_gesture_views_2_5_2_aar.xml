@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.alexvasilkov:gesture-views:2.5.2@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-gesture-views-2.5.2.aar/566f9d155999bd7cfdc0925ab79423aa/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-gesture-views-2.5.2.aar/566f9d155999bd7cfdc0925ab79423aa/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-gesture-views-2.5.2.aar/b6113493fda9e82a240d8e292a7acf6d/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-gesture-views-2.5.2.aar/b6113493fda9e82a240d8e292a7acf6d/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -361,7 +361,8 @@ public class UploadActivity extends AppCompatActivity implements  ProgressReques
         this.text_input_layout_publisher    =  (TextInputLayout) findViewById(R.id.text_input_layout_publisher);
         this.edit_text_input_email           =  (EditText) findViewById(R.id.edit_text_input_email);
         this.edit_text_input_website           =  (EditText) findViewById(R.id.edit_text_input_website);
-        this.edit_text_input_privacy           =  (EditText) findViewById(R.id.edit_text_input_privacy);
+        this.edit_text_input_privacy           =  (EditTexttus
+                ) findViewById(R.id.edit_text_input_privacy);
         this.edit_text_input_license           =  (EditText) findViewById(R.id.edit_text_input_license);
         this.edit_text_input_name           =  (EditText) findViewById(R.id.edit_text_input_name);
         this.edit_text_input_publisher      =  (EditText) findViewById(R.id.edit_text_input_publisher);

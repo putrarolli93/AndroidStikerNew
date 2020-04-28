@@ -62,12 +62,6 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdChoicesView;
-import com.facebook.ads.AdError;
-import com.facebook.ads.AdIconView;
-import com.facebook.ads.NativeAdListener;
-import com.facebook.ads.NativeBannerAd;
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -258,7 +252,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
         initRewarded();
         loadRewardedVideoAd();
         initBuy();
-        initAds();
 
     }
     private void initBuy() {
@@ -1469,9 +1462,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
     public void showAdsBanner() {
             if (!checkSUBSCRIBED()) {
                 PrefManager prefManager= new PrefManager(getApplicationContext());
-                if (prefManager.getString("ADMIN_BANNER_TYPE").equals("FACEBOOK")){
-                    showFbBanner();
-                }
                 if (prefManager.getString("ADMIN_BANNER_TYPE").equals("ADMOB")){
                     showAdmobBanner();
                 }
@@ -1479,9 +1469,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
                     if (prefManager.getString("Banner_Ads_display").equals("FACEBOOK")) {
                         prefManager.setString("Banner_Ads_display", "ADMOB");
                         showAdmobBanner();
-                    } else {
-                        prefManager.setString("Banner_Ads_display", "FACEBOOK");
-                        showFbBanner();
                     }
                 }
             }
@@ -1505,104 +1492,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
                 mAdView.setVisibility(View.VISIBLE);
             }
         });
-    }
-    public void showFbBanner(){
-        PrefManager prefManager= new PrefManager(getApplicationContext());
-        LinearLayout linear_layout_ads =  (LinearLayout) findViewById(R.id.linear_layout_ads);
-        com.facebook.ads.AdView adView = new com.facebook.ads.AdView(this, prefManager.getString("ADMIN_BANNER_FACEBOOK_ID"), com.facebook.ads.AdSize.BANNER_HEIGHT_90);
-        linear_layout_ads.addView(adView);
-        adView.loadAd();
-
-    }
-    private RelativeLayout nativeBannerAdContainer;
-    private LinearLayout adView;
-    private NativeBannerAd nativeBannerAd;
-    public void initAds(){
-        PrefManager prefManager= new PrefManager(getApplicationContext());
-
-        if (prefManager.getString("SUBSCRIBED").equals("TRUE"))
-            return;
-        // Instantiate a NativeBannerAd object.
-        // NOTE: the placement ID will eventually identify this as your App, you can ignore it for
-        // now, while you are testing and replace it later when you have signed up.
-        // While you are using this temporary code you will only get test ads and if you release
-        // your code like this to the Google Play your users will not receive ads (you will get a no fill error).
-        nativeBannerAd = new NativeBannerAd(this,  prefManager.getString("ADMIN_NATIVE_BANNER_FACEBOOK_ID"));
-        nativeBannerAd.setAdListener(new NativeAdListener() {
-            @Override
-            public void onMediaDownloaded(Ad ad) {
-                // Native ad finished downloading all assets
-                Log.e(TAG, "Native ad finished downloading all assets.");
-            }
-
-            @Override
-            public void onError(Ad ad, AdError adError) {
-                // Native ad failed to load
-                Log.e(TAG, "Native ad failed to load: " + adError.getErrorMessage());
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-                // Race condition, load() called again before last ad was displayed
-                if (nativeBannerAd == null || nativeBannerAd != ad) {
-                    return;
-                }
-                // Inflate Native Banner Ad into Container
-                inflateAd(nativeBannerAd);
-                Log.d(TAG, "Native ad is loaded and ready to be displayed!");
-            }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-                // Native ad clicked
-                Log.d(TAG, "Native ad clicked!");
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Native ad impression
-                Log.d(TAG, "Native ad impression logged!");
-            }
-        });
-        // load the ad
-        nativeBannerAd.loadAd();
-    }
-    private void inflateAd(NativeBannerAd nativeBannerAd) {
-        // Unregister last ad
-        nativeBannerAd.unregisterView();
-
-        // Add the Ad view into the ad container.
-        nativeBannerAdContainer = findViewById(R.id.native_banner_ad_container);
-        LayoutInflater inflater = LayoutInflater.from(this);
-        // Inflate the Ad view.  The layout referenced is the one you created in the last step.
-        adView = (LinearLayout) inflater.inflate(R.layout.item_native_banner_ad_layout, nativeBannerAdContainer, false);
-        nativeBannerAdContainer.addView(adView);
-
-        // Add the AdChoices icon (NativeBannerAdActivity.this, nativeBannerAd, true);
-        RelativeLayout adChoicesContainer = adView.findViewById(R.id.ad_choices_container);
-        AdChoicesView adChoicesView = new AdChoicesView(getApplicationContext(),nativeBannerAd,true);
-        adChoicesContainer.addView(adChoicesView, 0);
-
-        // Create native UI using the ad metadata.
-        TextView nativeAdTitle = adView.findViewById(R.id.native_ad_title);
-        TextView nativeAdSocialContext = adView.findViewById(R.id.native_ad_social_context);
-        TextView sponsoredLabel = adView.findViewById(R.id.native_ad_sponsored_label);
-        AdIconView nativeAdIconView = adView.findViewById(R.id.native_icon_view);
-        Button nativeAdCallToAction = adView.findViewById(R.id.native_ad_call_to_action);
-
-        // Set the Text.
-        nativeAdCallToAction.setText(nativeBannerAd.getAdCallToAction());
-        nativeAdCallToAction.setVisibility(
-                nativeBannerAd.hasCallToAction() ? View.VISIBLE : View.INVISIBLE);
-        nativeAdTitle.setText(nativeBannerAd.getAdvertiserName());
-        nativeAdSocialContext.setText(nativeBannerAd.getAdSocialContext());
-        sponsoredLabel.setText(nativeBannerAd.getSponsoredTranslation());
-
-        // Register the Title and CTA button to listen for clicks.
-        List<View> clickableViews = new ArrayList<>();
-        clickableViews.add(nativeAdTitle);
-        clickableViews.add(nativeAdCallToAction);
-        nativeBannerAd.registerViewForInteraction(adView, nativeAdIconView, clickableViews);
     }
 
     @Override

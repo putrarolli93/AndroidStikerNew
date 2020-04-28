@@ -22,15 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -49,10 +40,6 @@ import com.icaali.StickerIslami.api.apiRest;
 import com.icaali.StickerIslami.entity.ApiResponse;
 import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 import com.icaali.StickerIslami.ui.views.OtpEditText;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener
@@ -62,11 +49,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private static final String TAG = "LoginActivity";
     private static final int RC_SIGN_IN = 9001;
 
-    private LoginButton sign_in_button_facebook;
     private SignInButton sign_in_button_google;
 
     private GoogleApiClient mGoogleApiClient;
-    private CallbackManager callbackManager;
 
     private ProgressDialog register_progress;
     private TextView text_view_skip_login;
@@ -110,7 +95,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
         initView();
         initAction();
-        FaceookSignIn();
         GoogleSignIn();
     }
 
@@ -124,7 +108,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         this.relative_layout_confirm_top_login_activity   =      (RelativeLayout)  findViewById(R.id.relative_layout_confirm_top_login_activity);
         this.relative_layout_google_login   =      (RelativeLayout)  findViewById(R.id.relative_layout_google_login);
         this.sign_in_button_google   =      (SignInButton)  findViewById(R.id.sign_in_button_google);
-        this.sign_in_button_facebook =      (LoginButton)   findViewById(R.id.sign_in_button_facebook);
         this.relative_layout_phone_login =      (RelativeLayout)   findViewById(R.id.relative_layout_phone_login);
         this.relative_layout_confirm_phone_number =      (RelativeLayout)   findViewById(R.id.relative_layout_confirm_phone_number);
         this.linear_layout_buttons_login_activity =      (LinearLayout)   findViewById(R.id.linear_layout_buttons_login_activity);
@@ -215,7 +198,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             getResultGoogle(result);
@@ -230,39 +212,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-    }
-    public void FaceookSignIn(){
-
-        // Other app specific specializationsign_in_button_facebook.setReadPermissions(Arrays.asList("public_profile"));
-        callbackManager = CallbackManager.Factory.create();
-
-        // Callback registration
-        sign_in_button_facebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        getResultFacebook(object);
-                    }
-                });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name,link,email,picture.type(large)");
-                request.setParameters(parameters);
-                request.executeAsync();
-            }
-
-            @Override
-            public void onCancel() {
-                set(LoginActivity.this, "Operation has been cancelled ! ");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                set(LoginActivity.this, "Operation has been cancelled ! ");
-            }
-        });
     }
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -286,14 +235,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             signUp(acct.getId().toString(),acct.getId(), acct.getDisplayName().toString(),"google",photo);
             Auth.GoogleSignInApi.signOut(mGoogleApiClient);
         } else {
-        }
-    }
-    private void getResultFacebook(JSONObject object){
-        Log.d(TAG, object.toString());
-        try {
-            signUp(object.getString("id").toString(),object.getString("id").toString(),object.getString("name").toString(),"facebook",object.getJSONObject("picture").getJSONObject("data").getString("url"));
-            LoginManager.getInstance().logOut();        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 

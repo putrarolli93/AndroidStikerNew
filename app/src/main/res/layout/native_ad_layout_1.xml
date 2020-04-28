@@ -43,13 +43,6 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-                        <com.facebook.ads.MediaView
-                            android:elevation="1dp"
-
-                            android:id="@+id/native_ad_media"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center" />
                         <LinearLayout
                             android:layout_margin="3dp"
                             android:layout_alignParentRight="true"
@@ -84,11 +77,6 @@
                             android:paddingBottom="3dp"
                             android:paddingTop="3dp">
 
-                            <com.facebook.ads.AdIconView
-                                android:padding="3dp"
-                                android:id="@+id/native_ad_icon"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp" />
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"

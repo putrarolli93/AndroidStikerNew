@@ -12,6 +12,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.icaali.StickerIslami.api.apiClient;
 import com.icaali.StickerIslami.api.apiRest;
 import com.icaali.StickerIslami.entity.PackApi;
@@ -35,6 +37,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static com.google.android.gms.common.util.CollectionUtils.listOf;
+
 public class MainActivity extends AppCompatActivity implements GetStickers.Callbacks {
 
     public static final String EXTRA_STICKER_PACK_ID = "sticker_pack_id";
@@ -57,6 +61,21 @@ public class MainActivity extends AppCompatActivity implements GetStickers.Callb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        RequestConfiguration requestConfiguration;
+        if (BuildConfig.DEBUG) {
+            String deviceId = "3200cbcb466bb599";
+            requestConfiguration = new RequestConfiguration.Builder()
+                    .setTestDeviceIds(listOf(deviceId))
+                    .setTagForChildDirectedTreatment(RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE)
+                    .build();
+        } else {
+            requestConfiguration = new RequestConfiguration.Builder()
+                    .setTagForChildDirectedTreatment(RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE)
+                    .build();
+        }
+        MobileAds.setRequestConfiguration(requestConfiguration);
+        MobileAds.initialize(this);
+
         stickerPacks = new ArrayList<>();
         path = getFilesDir() + "/" + "stickers_asset";
         mStickers = new ArrayList<>();

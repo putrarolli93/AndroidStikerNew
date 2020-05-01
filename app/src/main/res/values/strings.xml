@@ -10,15 +10,6 @@
 
     <string-array name="fonts">
         <item>font_1.ttf</item>
-        <item>font_2.ttf</item>
-        <item>font_3.ttf</item>
-        <item>font_4.ttf</item>
-        <item>font_5.ttf</item>
-        <item>font_6.ttf</item>
-        <item>font_7.ttf</item>
-        <item>font_8.ttf</item>
-        <item>font_9.ttf</item>
-        <item>font_10.ttf</item>
     </string-array>
 
 

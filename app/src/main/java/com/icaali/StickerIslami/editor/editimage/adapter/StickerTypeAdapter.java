@@ -19,8 +19,8 @@ import com.icaali.StickerIslami.editor.editimage.fragment.StickerFragment;
  */
 public class StickerTypeAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-    public static final String[] stickerPath = {"stickers/type1", "stickers/type2", "stickers/type3", "stickers/type4", "stickers/type5", "stickers/type6"};
-    public static final String[] stickerPathName = {"Pack 1", "Pack 2", "Pack 3", "Pack 4", "Pack 5", "Pack 6"};
+    public static final String[] stickerPath = {"stickers/type1"};
+    public static final String[] stickerPathName = {"Pack 1"};
     private StickerFragment mStickerFragment;
     private ImageClick mImageClick = new ImageClick();
 

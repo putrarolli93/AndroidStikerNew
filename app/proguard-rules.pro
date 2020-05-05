@@ -46,6 +46,11 @@
 -keepattributes EnclosingMethod
 -keepattributes Deprecated
 
+# Don't note a bunch of dynamically referenced classes
+-dontnote com.google.**
+-dontnote com.squareup.okhttp.**
+-dontnote okhttp3.internal.**
+
 #COMMON JAVA
 -keepnames class * implements java.io.Serializable { *;}
 -keep class java.util.** { *; }

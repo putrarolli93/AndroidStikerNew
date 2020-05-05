@@ -80,9 +80,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (getItemViewType(position)) {
             case 1: {
                 CategoryHolder categoryHolder = (CategoryHolder) holder;
-                Typeface face = Typeface.createFromAsset(activity.getAssets(), "Pattaya-Regular.ttf");
-                categoryHolder.text_view_item_category.setTypeface(face);
-                categoryHolder.text_view_item_category_shadow.setTypeface(face);
                 int index = 0;
                 for (int i = 0; i < position; i++) {
                     index ++;
@@ -143,9 +140,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
                 CategoryMiniHolder categoryHolder = (CategoryMiniHolder) holder;
-                Typeface face = Typeface.createFromAsset(activity.getAssets(), "Pattaya-Regular.ttf");
-                categoryHolder.text_view_item_category.setTypeface(face);
-                categoryHolder.text_view_item_category_counter.setTypeface(face);
                 categoryHolder.card_view.setCardBackgroundColor(Color.parseColor(colorsTxt[index]));
 
                 categoryHolder.text_view_item_category.setText(categoryList.get(position).getTitle());

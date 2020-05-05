@@ -292,11 +292,7 @@ public class AddTextFragment extends BaseEditFragment implements TextWatcher {
         @Override
         public void onBindViewHolder(FontHolder holder, final int position) {
             holder.text_view_item_tag_item.setText("Text");
-            Typeface face = Typeface.createFromAsset(getActivity().getAssets(),"fonts/"+
-                    fontsList.get(position));
-            holder.text_view_item_tag_item.setTypeface(face);
             holder.text_view_item_tag_item.setOnClickListener(v -> {
-                mTextStickerView.setTextFont(face);
             });
         }
 

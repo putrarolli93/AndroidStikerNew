@@ -64,8 +64,6 @@ public class TagAdapter extends  RecyclerView.Adapter<TagAdapter.TagHolder>{
             }
 
             holder.card_view_tag_item_global.setCardBackgroundColor(Color.parseColor(colorsTxt[step-1]));
-            Typeface face = Typeface.createFromAsset(activity.getAssets(), "Pattaya-Regular.ttf");
-            holder.text_view_item_tag_item.setTypeface(face);
 
             holder.card_view_tag_item_global.setOnClickListener(new View.OnClickListener() {
                 @Override

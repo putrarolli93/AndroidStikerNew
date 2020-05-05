@@ -8,80 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:655179086910:android:8021ba9239a09001d1e56f",
-        "android_client_info": {
-          "package_name": "com.dzikir.tasbeeh"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "655179086910-rdtn7sofoibt4vkn64eiec2b8tp8j7pi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.dzikir.tasbeeh",
-            "certificate_hash": "8a9b2847007c3f60997147288840232453b48dee"
-          }
-        },
-        {
-          "client_id": "655179086910-4arid1np1hpqocq0cpmhmd561ilsed8j.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.dzikir.tasbeeh",
-            "certificate_hash": "578c7d6e69daf484ea9aa0e7751bc175d077024f"
-          }
-        },
-        {
-          "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB78ZHuxtCe2zAeOP2xAQ9rJFHjOHN3z-4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:655179086910:android:584791f856e03c45",
-        "android_client_info": {
-          "package_name": "com.icaali.StickerDakwahIslamBismillah"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB78ZHuxtCe2zAeOP2xAQ9rJFHjOHN3z-4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:655179086910:android:4e8cc8f5057ab7bd",
         "android_client_info": {
           "package_name": "com.icaali.StickerFunny"
@@ -111,42 +37,20 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:655179086910:android:d26a71fb104f60a0",
-        "android_client_info": {
-          "package_name": "com.icaali.StickerIslamDakwah"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB78ZHuxtCe2zAeOP2xAQ9rJFHjOHN3z-4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      },
-      "admob_app_id": "ca-app-pub-5079073523461972~4907592070"
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:655179086910:android:5b46800632566801",
         "android_client_info": {
           "package_name": "com.icaali.StickerIslami"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "655179086910-r6d3s6b2c5q5crqs24mqne1hfs3uqj2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.icaali.StickerIslami",
+            "certificate_hash": "2347a807558e0c810821dbb536eb653f09bd3c33"
+          }
+        },
         {
           "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
           "client_type": 3
@@ -201,6 +105,52 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:655179086910:android:9e2d04a54831994ed1e56f",
+        "android_client_info": {
+          "package_name": "com.icaali.makkah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655179086910-jnlm4be67bivuqdt9gqsig4ep4pgm5dn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.icaali.makkah",
+            "certificate_hash": "ee448cefb4a4b2ff51464cf09b7ad16ff036c292"
+          }
+        },
+        {
+          "client_id": "655179086910-963p2hv1o5jphpmri2qupu12rmft7gtg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.icaali.makkah",
+            "certificate_hash": "d78c6e6d958beb4dde3d0dc55c7deb0f8e3f1695"
+          }
+        },
+        {
+          "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB78ZHuxtCe2zAeOP2xAQ9rJFHjOHN3z-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-5079073523461972~9024353177"
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:655179086910:android:7f8e301358172fa6",
         "android_client_info": {
           "package_name": "com.icaali.sticker_jokowi"
@@ -228,6 +178,52 @@
         }
       },
       "admob_app_id": "ca-app-pub-5079073523461972~4728576798"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655179086910:android:72dbf152067d261bd1e56f",
+        "android_client_info": {
+          "package_name": "com.icaali.tasbeeh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655179086910-jcjb424q32auu0ttub9mhveob6efl330.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.icaali.tasbeeh",
+            "certificate_hash": "578c7d6e69daf484ea9aa0e7751bc175d077024f"
+          }
+        },
+        {
+          "client_id": "655179086910-o22sv54in33vs3ho72a0e5j2m66iedq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.icaali.tasbeeh",
+            "certificate_hash": "8a9b2847007c3f60997147288840232453b48dee"
+          }
+        },
+        {
+          "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB78ZHuxtCe2zAeOP2xAQ9rJFHjOHN3z-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655179086910-a7g8bhj4v2ree2a9qb84q69gp8rqo473.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-5079073523461972~9127057853"
     }
   ],
   "configuration_version": "1"

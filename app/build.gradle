@@ -18,8 +18,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         multiDexEnabled true
-        versionCode 4
-        versionName "1.0"
+        versionCode 24
+        versionName "5.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         def contentProviderAuthority = applicationId + ".provider.StickerContentProvider"

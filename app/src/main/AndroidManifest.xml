@@ -29,12 +29,12 @@
             android:theme="@style/Base.Theme.AppCompat.Light" />
         <activity
             android:name="com.icaali.StickerIslami.editor.picchooser.SelectPictureActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.icaali.StickerIslami.editor.editimage.EditImageActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
 
         <service android:name="com.icaali.StickerIslami.services.NotifFirebaseMessagingService">
             <intent-filter>
@@ -92,11 +92,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.icaali.StickerIslami.ui.LoginActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.UserDialog" />
         <activity
             android:name="com.icaali.StickerIslami.ui.EditActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.UserDialog" />
         <activity
             android:name="com.icaali.StickerIslami.ui.SearchActivity"
@@ -135,10 +133,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.icaali.StickerIslami.ui.UploadActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.icaali.StickerIslami.ui.EditorActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
     </application>
 

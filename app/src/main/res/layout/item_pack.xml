@@ -369,6 +369,7 @@
             android:padding="1dp"
             android:layout_width="16dp"
             android:layout_height="16dp"
+            android:visibility="invisible"
             android:tint="@color/white"
             app:srcCompat="@drawable/ic_attach_money" />
         <TextView

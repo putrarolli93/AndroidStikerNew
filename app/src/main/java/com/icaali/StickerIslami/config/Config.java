@@ -4,6 +4,7 @@ public class Config {
 
         public static final String API_URL = "https://www.icaali.com/adminstiker/api/";
         public static final String SECURE_KEY = "hm7237aOxvPxMBYR2ZdYQO0lRubrgvXU";
+        public static final String PLAYSTORE_URL = "https://play.google.com/store/apps/details?id=com.icaali.StickerIslami";
 
         // Purchases Data : Item Purchase Code
 

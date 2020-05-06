@@ -761,7 +761,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
             image.compress(Bitmap.CompressFormat.PNG, 90, stream);
             stream.flush();
             stream.close();
-            uri = FileProvider.getUriForFile(this, "com.virmana.StickerIslami.fileprovider", file);
+            uri = FileProvider.getUriForFile(this, "com.icaali.StickerIslami.fileprovider", file);
 
         } catch (IOException e) {
             Log.d(TAG, "IOException while trying to write file for sharing: " + e.getMessage());
@@ -771,7 +771,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
     private void shareImageUri(Uri uri){
         Intent intent = new Intent(android.content.Intent.ACTION_SEND);
 
-        String shareBody =stickerPack.name+"\n\n"+getResources().getString(R.string.download_pack_from)+"\n"+ Config.API_URL.replace("api","share")+stickerPack.identifier+".html";
+        String shareBody = getResources().getString(R.string.download_pack_from)+"\n"+ Config.PLAYSTORE_URL;
 
         intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
 

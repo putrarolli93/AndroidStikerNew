@@ -131,13 +131,6 @@
         <activity
             android:name="com.icaali.StickerIslami.ui.SlideActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="com.icaali.StickerIslami.ui.UploadActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.icaali.StickerIslami.ui.EditorActivity"
-            android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>

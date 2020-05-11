@@ -154,14 +154,14 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -462,7 +462,7 @@ public class HomeActivity extends AppCompatActivity
         this.searchView = (MaterialSearchView) findViewById(R.id.search_view);
         this.navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab = (FloatingActionButton) findViewById(R.id.fab);
         viewPager = (ViewPager) findViewById(R.id.vp_horizontal_ntb);
         viewPager.setOffscreenPageLimit(100);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -572,21 +572,14 @@ public class HomeActivity extends AppCompatActivity
                 return false;
             }
         });
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    PrefManager prf= new PrefManager(getApplicationContext());
-                    if (prf.getString("LOGGED").toString().equals("TRUE")) {
-                        Intent intent = new Intent(getApplicationContext(), UploadActivity.class);
-                       startActivity(intent);
-                        overridePendingTransition(R.anim.enter, R.anim.exit);
-                    }else{
-                        FromLogin=true;
-                        Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
-                        startActivity(intent);
-                    }
-                }
-        });
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FromLogin=true;
+//                Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+//                startActivity(intent);
+//                }
+//        });
     }
     class ViewPagerAdapter extends FragmentPagerAdapter {
 

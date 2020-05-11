@@ -121,19 +121,4 @@ tools:context=".ui.HomeActivity">
             app:bt_icon="@drawable/ic_favorite_border"
             app:bt_title="Favorites" />
     </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="end|bottom"
-        android:layout_marginBottom="70dp"
-        android:layout_marginRight="10dp"
-        app:elevation="1dp"
-        app:borderWidth="0dp"
-        android:visibility="gone"
-        tools:visibility="visible"
-        app:fabCustomSize="50dp"
-        android:tint="@color/white"
-        app:srcCompat="@drawable/ic_add" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,5 +1,6 @@
 package com.icaali.StickerIslami.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -17,12 +18,10 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.IBinder;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,12 +56,6 @@ import com.android.vending.billing.IInAppBillingService;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.Constants;
 import com.anjlab.android.iab.v3.TransactionDetails;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -128,12 +121,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
     public static String path;
     public static String mainpath;
-    private ImageView pack_try_image;
-    private TextView item_pack_name;
-    private TextView item_pack_publisher;
-    private TextView text_view_create_pack;
     private TextView text_view_downloads_pack;
-    private TextView text_view_size_pack;
     private LinearLayout linear_layout_add_to_whatsapp;
     private LinearLayout linear_layout_progress;
     private CircularImageView circle_image_view_user_image;
@@ -205,12 +193,12 @@ public class StickerDetailsActivity extends AppCompatActivity {
         stickerPack = getIntent().getParcelableExtra(MainActivity.EXTRA_STICKERPACK);
         fromLoad =  getIntent().getBooleanExtra("from",false);
         toolbar = findViewById(R.id.toolbar);
-        pack_try_image = findViewById(R.id.pack_try_image);
-        item_pack_name = findViewById(R.id.item_pack_name);
-        item_pack_publisher = findViewById(R.id.item_pack_publisher);
-        text_view_create_pack = findViewById(R.id.text_view_create_pack);
+        ImageView pack_try_image = findViewById(R.id.pack_try_image);
+        TextView item_pack_name = findViewById(R.id.item_pack_name);
+        TextView item_pack_publisher = findViewById(R.id.item_pack_publisher);
+        TextView text_view_create_pack = findViewById(R.id.text_view_create_pack);
         text_view_downloads_pack = findViewById(R.id.text_view_downloads_pack);
-        text_view_size_pack = findViewById(R.id.text_view_size_pack);
+        TextView text_view_size_pack = findViewById(R.id.text_view_size_pack);
         linear_layout_add_to_whatsapp = findViewById(R.id.linear_layout_add_to_whatsapp);
         linear_layout_progress = findViewById(R.id.linear_layout_progress);
         Picasso.with(this).load(stickerPack.trayImageUrl).placeholder(getResources().getDrawable(R.drawable.sticker_error)).error(getResources().getDrawable(R.drawable.sticker_error)).into(pack_try_image);
@@ -227,8 +215,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         stickers = stickerPack.getStickers();
         strings = new ArrayList<>();
         path = getFilesDir() + "/" + "stickers_asset" + "/" + stickerPack.identifier + "/";
-        File file = new File(path + stickers.get(0).imageFileName);
-        Log.d(TAG, "onCreate: " +path + stickers.get(0).imageFileName);
+        Log.d(TAG, "onCreate: " + path + stickers.get(0).imageFileName);
         for (Sticker s : stickers) {
             strings.add(s.imageFileUrlThum);
         }
@@ -249,6 +236,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         checkFavorite();
         initRewarded();
         loadRewardedVideoAd();
+        admobInterstitialAd = AdManager.getInterstitialAd();
         initBuy();
 
     }
@@ -340,30 +328,30 @@ public class StickerDetailsActivity extends AppCompatActivity {
         this.progress_bar_sticker =  findViewById(R.id.progress_bar_sticker);
         this.progress_bar_pack =  findViewById(R.id.progress_bar_pack);
 
-        this.linear_layout_share =(LinearLayout) findViewById(R.id.linear_layout_share);
-        this.linear_layout_pack_screen_shot =(RelativeLayout) findViewById(R.id.linear_layout_pack_screen_shot);
-        this.rating_bar_guide_main_pack_activity=(AppCompatRatingBar) findViewById(R.id.rating_bar_guide_main_pack_activity);
-        this.rating_bar_guide_value_pack_activity=(AppCompatRatingBar) findViewById(R.id.rating_bar_guide_value_pack_activity);
-        this.rating_bar_guide_1_pack_activity=(RatingBar) findViewById(R.id.rating_bar_guide_1_pack_activity);
-        this.rating_bar_guide_2_pack_activity=(RatingBar) findViewById(R.id.rating_bar_guide_2_pack_activity);
-        this.rating_bar_guide_3_pack_activity=(RatingBar) findViewById(R.id.rating_bar_guide_3_pack_activity);
-        this.rating_bar_guide_4_pack_activity=(RatingBar) findViewById(R.id.rating_bar_guide_4_pack_activity);
-        this.rating_bar_guide_5_pack_activity=(RatingBar) findViewById(R.id.rating_bar_guide_5_pack_activity);
+        this.linear_layout_share = findViewById(R.id.linear_layout_share);
+        this.linear_layout_pack_screen_shot = findViewById(R.id.linear_layout_pack_screen_shot);
+        this.rating_bar_guide_main_pack_activity= findViewById(R.id.rating_bar_guide_main_pack_activity);
+        this.rating_bar_guide_value_pack_activity= findViewById(R.id.rating_bar_guide_value_pack_activity);
+        this.rating_bar_guide_1_pack_activity= findViewById(R.id.rating_bar_guide_1_pack_activity);
+        this.rating_bar_guide_2_pack_activity= findViewById(R.id.rating_bar_guide_2_pack_activity);
+        this.rating_bar_guide_3_pack_activity= findViewById(R.id.rating_bar_guide_3_pack_activity);
+        this.rating_bar_guide_4_pack_activity= findViewById(R.id.rating_bar_guide_4_pack_activity);
+        this.rating_bar_guide_5_pack_activity= findViewById(R.id.rating_bar_guide_5_pack_activity);
 
-        this.text_view_rate_1_pack_activity=(TextView) findViewById(R.id.text_view_rate_1_pack_activity);
-        this.text_view_rate_2_pack_activity=(TextView) findViewById(R.id.text_view_rate_2_pack_activity);
-        this.text_view_rate_3_pack_activity=(TextView) findViewById(R.id.text_view_rate_3_pack_activity);
-        this.text_view_rate_4_pack_activity=(TextView) findViewById(R.id.text_view_rate_4_pack_activity);
-        this.text_view_rate_5_pack_activity=(TextView) findViewById(R.id.text_view_rate_5_pack_activity);
-        this.text_view_rate_main_pack_activity=(TextView) findViewById(R.id.text_view_rate_main_pack_activity);
-        this.progress_bar_rate_1_pack_activity=(ProgressBar) findViewById(R.id.progress_bar_rate_1_pack_activity);
-        this.progress_bar_rate_2_pack_activity=(ProgressBar) findViewById(R.id.progress_bar_rate_2_pack_activity);
-        this.progress_bar_rate_3_pack_activity=(ProgressBar) findViewById(R.id.progress_bar_rate_3_pack_activity);
-        this.progress_bar_rate_4_pack_activity=(ProgressBar) findViewById(R.id.progress_bar_rate_4_pack_activity);
-        this.progress_bar_rate_5_pack_activity=(ProgressBar) findViewById(R.id.progress_bar_rate_5_pack_activity);
+        this.text_view_rate_1_pack_activity= findViewById(R.id.text_view_rate_1_pack_activity);
+        this.text_view_rate_2_pack_activity= findViewById(R.id.text_view_rate_2_pack_activity);
+        this.text_view_rate_3_pack_activity= findViewById(R.id.text_view_rate_3_pack_activity);
+        this.text_view_rate_4_pack_activity= findViewById(R.id.text_view_rate_4_pack_activity);
+        this.text_view_rate_5_pack_activity= findViewById(R.id.text_view_rate_5_pack_activity);
+        this.text_view_rate_main_pack_activity= findViewById(R.id.text_view_rate_main_pack_activity);
+        this.progress_bar_rate_1_pack_activity= findViewById(R.id.progress_bar_rate_1_pack_activity);
+        this.progress_bar_rate_2_pack_activity= findViewById(R.id.progress_bar_rate_2_pack_activity);
+        this.progress_bar_rate_3_pack_activity= findViewById(R.id.progress_bar_rate_3_pack_activity);
+        this.progress_bar_rate_4_pack_activity= findViewById(R.id.progress_bar_rate_4_pack_activity);
+        this.progress_bar_rate_5_pack_activity= findViewById(R.id.progress_bar_rate_5_pack_activity);
 
-        this.image_view_fav  = (ImageView) findViewById(R.id.image_view_fav);
-        this.button_follow_user  = (Button) findViewById(R.id.button_follow_user);
+        this.image_view_fav  = findViewById(R.id.image_view_fav);
+        this.button_follow_user  = findViewById(R.id.button_follow_user);
     }
     public void initAction(){
         this.linear_layout_add_to_whatsapp.setOnClickListener(new View.OnClickListener() {
@@ -375,7 +363,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
                     showDialog();
                 }
                 else{
-                    admobInterstitialAd = AdManager.getInterstitialAd();
                     if (admobInterstitialAd.isLoaded()){
                         AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS = 0;
                         admobInterstitialAd.setAdListener(new AdListener() {
@@ -457,21 +444,15 @@ public class StickerDetailsActivity extends AppCompatActivity {
         });
     }
 
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.pack, menu);
         return true;
     }
 
-
     private void addFavotite() {
-
-
         List<PackApi> favorites_list =Hawk.get("favorite");
-        Boolean exist = false;
+        boolean exist = false;
         if (favorites_list == null) {
             favorites_list = new ArrayList<>();
         }
@@ -482,7 +463,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
                 fav_position = i;
             }
         }
-        if (exist == false) {
+        if (!exist) {
             favorites_list.add(packApi);
             Hawk.put("favorite",favorites_list);
             image_view_fav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black));
@@ -497,7 +478,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
     public void follow(){
 
         PrefManager prf= new PrefManager(getApplicationContext());
-        if (prf.getString("LOGGED").toString().equals("TRUE")) {
+        if (prf.getString("LOGGED").equals("TRUE")) {
             button_follow_user.setText(getResources().getString(R.string.loading));
             button_follow_user.setEnabled(false);
             String follower = prf.getString("ID_USER");
@@ -532,10 +513,9 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
     private void getUser() {
         PrefManager prf= new PrefManager(getApplicationContext());
-        if (prf.getString("LOGGED").toString().equals("TRUE")) {
+        if (prf.getString("LOGGED").equals("TRUE")) {
             button_follow_user.setEnabled(false);
-            Integer follower= -1;
-            follower = Integer.parseInt(prf.getString("ID_USER"));
+            int follower = Integer.parseInt(prf.getString("ID_USER"));
             if (follower!=Integer.parseInt(stickerPack.userid)){
                 button_follow_user.setVisibility(View.VISIBLE);
             }
@@ -573,7 +553,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
     public void addRate(final float value) {
         PrefManager prf = new PrefManager(getApplicationContext());
-        if (prf.getString("LOGGED").toString().equals("TRUE")) {
+        if (prf.getString("LOGGED").equals("TRUE")) {
             Retrofit retrofit = apiClient.getClient();
             apiRest service = retrofit.create(apiRest.class);
             Call<ApiResponse> call = service.addRate(prf.getString("ID_USER").toString(),Integer.parseInt(stickerPack.identifier), value);
@@ -611,8 +591,8 @@ public class StickerDetailsActivity extends AppCompatActivity {
     public void getRate() {
         PrefManager prf = new PrefManager(getApplicationContext());
         String user_id = "0";
-        if (prf.getString("LOGGED").toString().equals("TRUE")) {
-            user_id=prf.getString("ID_USER").toString();
+        if (prf.getString("LOGGED").equals("TRUE")) {
+            user_id=prf.getString("ID_USER");
         }
         Retrofit retrofit = apiClient.getClient();
         apiRest service = retrofit.create(apiRest.class);
@@ -629,11 +609,11 @@ public class StickerDetailsActivity extends AppCompatActivity {
                         rating_bar_guide_main_pack_activity.setRating(0);
                     }
                     if(response.body().getCode() != 500){
-                        Integer rate_1=0;
-                        Integer rate_2=0;
-                        Integer rate_3=0;
-                        Integer rate_4=0;
-                        Integer rate_5=0;
+                        int rate_1=0;
+                        int rate_2=0;
+                        int rate_3=0;
+                        int rate_4=0;
+                        int rate_5=0;
                         float rate=0;
                         for (int i=0;i<response.body().getValues().size();i++){
 
@@ -666,7 +646,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
                         text_view_rate_3_pack_activity.setText(rate_3+"");
                         text_view_rate_4_pack_activity.setText(rate_4+"");
                         text_view_rate_5_pack_activity.setText(rate_5+"");
-                        Integer total= rate_1 + rate_2 + rate_3 + rate_4 + rate_5;
+                        int total= rate_1 + rate_2 + rate_3 + rate_4 + rate_5;
                         if(total==0) {
                             total = 1;
                         }
@@ -736,20 +716,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
             }
         }
     }
-    private Uri saveImageExternal(Bitmap image) {
-        //TODO - Should be processed in another thread
-        Uri uri = null;
-        try {
-            File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "to-share.png");
-            FileOutputStream stream = new FileOutputStream(file);
-            image.compress(Bitmap.CompressFormat.PNG, 90, stream);
-            stream.close();
-            uri = Uri.fromFile(file);
-        } catch (IOException e) {
-            Log.d(TAG, "IOException while trying to write file for sharing: " + e.getMessage());
-        }
-        return uri;
-    }
+
     private Uri saveImage(Bitmap image) {
         //TODO - Should be processed in another thread
         File imagesFolder = new File(getCacheDir(), "images");
@@ -776,13 +743,10 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
         intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
 
-        if (1!=1){
-            intent.setType("text/plain");
-        }else{
-            intent.setType("image/png");
-            intent.putExtra(Intent.EXTRA_STREAM, uri);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        }
+        intent.setType("image/png");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
         startActivity(Intent.createChooser(intent, " Shared via " + getResources().getString(R.string.app_name) ));
 
     }
@@ -815,17 +779,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         //return the bitmap
         return returnedBitmap;
     }
-    // used for scanning gallery
-    private void scanGallery(Context cntx, String path) {
-        try {
-            MediaScannerConnection.scanFile(cntx, new String[] { path },null, new MediaScannerConnection.OnScanCompletedListener() {
-                public void onScanCompleted(String path, Uri uri) {
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
     public void share(){
 
 
@@ -834,102 +788,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
             shareImageUri(saveImage(bitmap));
         }
     }
-
-    public void downloadTryImage(){
-        Glide.with(getApplicationContext())
-                .asBitmap()
-                .load(stickerPack.trayImageUrl)
-                .addListener(new RequestListener<Bitmap>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
-                                        /*Bitmap bitmap1 = Bitmap.createBitmap(96, 96, Bitmap.Config.ARGB_8888);
-                                        Matrix matrix = new Matrix();
-                                        Canvas canvas = new Canvas(bitmap1);
-                                        canvas.drawColor(Color.TRANSPARENT);
-                                        matrix.postTranslate(
-                                                canvas.getWidth() / 2 - resource.getWidth() / 2,
-                                                canvas.getHeight() / 2 - resource.getHeight() / 2
-                                        );
-                                        canvas.drawBitmap(resource, matrix, null);*/
-                        int width = 96; // - Dimension in pixels
-                        int height= 96;  // - Dimension in pixels
-                        Bitmap bitmap1 =  Bitmap.createScaledBitmap(resource, width, height, false);
-                        SaveTryImage(bitmap1,stickerPack.trayImageFile,stickerPack.identifier);
-                        downloadStickers();
-                        return false;
-                    }
-                })
-                .submit();
-    }
-    public  void downloadStickers(){
-        ArrayList<StickerPack> stickerPacks =  Hawk.get("whatsapp_sticker_packs",new ArrayList<StickerPack>());
-        if(stickerPacks==null){
-            stickerPacks = new ArrayList<>();
-        }else {
-
-        }
-        for (int i = 0; i < stickerPacks.size(); i++) {
-            if (stickerPacks.get(i).identifier.equals(stickerPack.identifier)){
-                stickerPacks.remove(i);
-                Log.e("PACKSTICKER","DELETED");
-                i--;
-            }
-        }
-        stickerPacks.add(stickerPack);
-        Hawk.put("whatsapp_sticker_packs", stickerPacks);
-        for (int i = 0; i < stickerPacks.size(); i++) {
-            Log.e("PACKSTICKER",stickerPacks.get(i).identifier + " / " + stickerPacks.get(i).name);
-        }
-        Log.d("adapter", "onClick: " + stickerPack.getStickers().size());
-        Log.d("adapter", "URLTRAY: " + stickerPack.trayImageUrl);
-        ((Activity) this).runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        for (final Sticker s : stickerPack.getStickers()) {
-                            Log.d("adapter", "onClick: " + s.imageFileUrl);
-                            Glide.with(getApplicationContext())
-                                    .asBitmap()
-                                    .apply(new RequestOptions().override(512, 512))
-                                    .load(s.imageFileUrl)
-                                    .addListener(new RequestListener<Bitmap>() {
-                                        @Override
-                                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
-                                            return false;
-                                        }
-
-                                        @Override
-                                        public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
-                                           /* Bitmap bitmap1 = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888);
-                                            Matrix matrix = new Matrix();
-                                            Canvas canvas = new Canvas(bitmap1);
-                                            canvas.drawColor(Color.TRANSPARENT);
-                                            matrix.postTranslate(
-                                                    canvas.getWidth() / 2 - resource.getWidth() / 2,
-                                                    canvas.getHeight() / 2 - resource.getHeight() / 2
-                                            );
-                                            canvas.drawBitmap(resource, matrix, null);*/
-                                            int width = 512; // - Dimension in pixels
-                                            int height= 512;  // - Dimension in pixels
-                                            Bitmap bitmap1 =  Bitmap.createScaledBitmap(resource, width, height, false);
-                                            SaveImage(bitmap1, s.imageFileName, stickerPack.identifier);
-                                            return true;
-
-                                        }
-                                    }).submit();
-                        }
-
-
-                    }
-                }
-        );
-    }
-
 
     public static void SaveImage(Bitmap finalBitmap, String name, String identifier) {
 
@@ -976,6 +834,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
     private  int progress =  0;
 
+    @SuppressLint("StaticFieldLeak")
     class DownloadOneStickerFileFromURL extends AsyncTask<String, String, String> {
 
 
@@ -1046,6 +905,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
             }
         }
     }
+    @SuppressLint("StaticFieldLeak")
     class DownloadTryImageFileFromURL extends AsyncTask<String, String, String> {
 
 
@@ -1130,109 +990,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
         }
     }
 
-    class DownloadFileFromURL extends AsyncTask<String, String, String> {
-
-
-        /**
-         * Before starting background thread
-         * Show Progress Bar Dialog
-         * */
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            linear_layout_add_to_whatsapp.setVisibility(View.GONE);
-            linear_layout_progress.setVisibility(View.VISIBLE);
-        }
-
-        /**
-         * Downloading file in background thread
-         * */
-        @Override
-        protected String doInBackground(String... f_url) {
-
-            try {
-
-
-                System.out.println("Downloading");
-                URL urltry = new URL(stickerPack.trayImageUrl);
-
-                URLConnection conectiontry = urltry.openConnection();
-                conectiontry.connect();
-
-                InputStream input_try = new BufferedInputStream(urltry.openStream(), 8192);
-
-                Bitmap resource_try =  BitmapFactory.decodeStream(input_try);
-                int width_try = 96; // - Dimension in pixels
-                int height_try= 96;  // - Dimension in pixels
-                Bitmap bitmap_try =  Bitmap.createScaledBitmap(resource_try, width_try, height_try, false);
-
-                SaveTryImage(bitmap_try,stickerPack.trayImageFile,stickerPack.identifier);
-                ArrayList<StickerPack> stickerPacks =  Hawk.get("whatsapp_sticker_packs",new ArrayList<StickerPack>());
-                if(stickerPacks==null){
-                    stickerPacks = new ArrayList<>();
-                }else {
-
-                }
-                for (int i = 0; i < stickerPacks.size(); i++) {
-                    if (stickerPacks.get(i).identifier.equals(stickerPack.identifier)){
-                        stickerPacks.remove(i);
-                        Log.e("PACKSTICKER","DELETED");
-                        i--;
-                    }
-                }
-                stickerPacks.add(stickerPack);
-                Hawk.put("whatsapp_sticker_packs", stickerPacks);
-                for (int i = 0; i < stickerPacks.size(); i++) {
-                    Log.e("PACKSTICKER",stickerPacks.get(i).identifier + " / " + stickerPacks.get(i).name);
-                }
-                Log.d("adapter", "onClick: " + stickerPack.getStickers().size());
-                Log.d("adapter", "URLTRAY: " + stickerPack.trayImageUrl);
-                int progress =  0;
-                for (final Sticker s : stickerPack.getStickers()) {
-
-                    System.out.println("Downloading");
-                    URL url = new URL(s.imageFileUrl);
-
-                    URLConnection conection = url.openConnection();
-                    conection.connect();
-
-                    InputStream input = new BufferedInputStream(url.openStream(), 8192);
-
-                    Bitmap resource =  BitmapFactory.decodeStream(input);
-                    /*int width = 512; // - Dimension in pixels
-                    int height= 512;  // - Dimension in pixels
-                    Bitmap bitmap1 =  Bitmap.createScaledBitmap(resource, width, height, false);*/
-                    Bitmap bitmap1 = scaleBitmap(resource,512,512);
-                    SaveImage(bitmap1, s.imageFileName, stickerPack.identifier);
-                    Log.e("PACKSTICKER",s.imageFileName);
-                    Log.e("PACKSTICKER",s.imageFileUrl);
-
-                    progress++;
-                    publishProgress(""+(int)((progress*100)/stickerPack.getStickers().size()));
-
-                }
-            } catch (Exception e) {
-
-            }
-            return null;
-        }
-        /**
-         * Updating progress bar
-         * */
-        protected void onProgressUpdate(String... progress) {
-            progress_bar_pack.setProgress(Integer.parseInt(progress[0]));
-        }
-        /**
-         * After completing background task
-         * Dismiss the progress dialog
-         * **/
-        @Override
-        protected void onPostExecute(String file_url) {
-            linear_layout_add_to_whatsapp.setVisibility(View.VISIBLE);
-            linear_layout_progress.setVisibility(View.GONE);
-            Addtowhatsapp();
-        }
-    }
     public void initRewarded() {
 
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
@@ -1322,9 +1079,22 @@ public class StickerDetailsActivity extends AppCompatActivity {
         relative_layout_watch_ads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mRewardedVideoAd.isLoaded()){
+                if (!mRewardedVideoAd.isLoaded()){
                     mRewardedVideoAd.show();
-                }else{
+                }else if (admobInterstitialAd.isLoaded()){
+                    AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS = 0;
+                    admobInterstitialAd.setAdListener(new AdListener() {
+                        @Override
+                        public void onAdClosed() {
+                            AdManager.INTERSTITIAL_AD_IS_LOADING = false;
+                            AdManager.loadInterstitialAd();
+                            dialog.dismiss();
+                            NewAddPack();
+                        }
+                    });
+                    admobInterstitialAd.show();
+                }
+                else {
                     autoDisplay =  true;
                     loadRewardedVideoAd();
                     text_view_watch_ads.setText("SHOW LOADING.");

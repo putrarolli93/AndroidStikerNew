@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,6 +35,7 @@ import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
+import com.icaali.StickerIslami.Manager.AdManager;
 import com.orhanobut.hawk.Hawk;
 import com.icaali.StickerIslami.Manager.PrefManager;
 import com.icaali.StickerIslami.R;
@@ -86,12 +86,6 @@ public class StickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public StickerAdapter(Activity activity, ArrayList<StickerPack> StickerPack) {
         this.activity = activity;
         this.StickerPack = StickerPack;
-    }
-
-    public StickerAdapter(Activity activity, ArrayList<StickerPack> StickerPack, List<SlideApi> slideList) {
-        this.activity = activity;
-        this.StickerPack = StickerPack;
-        this.slideList = slideList;
     }
 
     public StickerAdapter(Activity activity, ArrayList<StickerPack> StickerPack, List<SlideApi> slideList, List<CategoryApi> categoryList, Boolean b) {
@@ -215,61 +209,31 @@ public class StickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent((activity), StickerDetailsActivity.class).putExtra(EXTRA_STICKERPACK, StickerPack.get(viewHolder.getAdapterPosition()));
+                        StickerPack stickerPackChoose = StickerPack.get(viewHolder.getAdapterPosition());
+                        Intent intent = new Intent((activity), StickerDetailsActivity.class).putExtra(EXTRA_STICKERPACK, stickerPackChoose);
 
-                        PrefManager prefManager = new PrefManager(activity);
-
-                        if (checkSUBSCRIBED()) {
+                        if (checkSUBSCRIBED() || stickerPackChoose.premium.equals("true")) {
                             (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-                        } else {
-                            if (prefManager.getString("ADMIN_INTERSTITIAL_TYPE").equals("ADMOB")) {
-                                requestAdmobInterstitial();
-
-                                if (prefManager.getInt("ADMIN_INTERSTITIAL_CLICKS") <= prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")) {
-                                    if (admobInterstitialAd.isLoaded()) {
-                                        prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS", 0);
-                                        admobInterstitialAd.show();
-                                        admobInterstitialAd.setAdListener(new AdListener() {
-                                            @Override
-                                            public void onAdClosed() {
-                                                requestAdmobInterstitial();
-                                                (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-                                            }
-                                        });
-                                    } else {
+                        } else if (AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS >= AdManager.ADMOB_INTERSTITIAL_SHOW_CLICKS){
+                            admobInterstitialAd = AdManager.getInterstitialAd();
+                            if (admobInterstitialAd.isLoaded()){
+                                AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS = 0;
+                                admobInterstitialAd.setAdListener(new AdListener() {
+                                    @Override
+                                    public void onAdClosed() {
+                                        AdManager.INTERSTITIAL_AD_IS_LOADING = false;
                                         (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-                                        requestAdmobInterstitial();
+                                        AdManager.loadInterstitialAd();
                                     }
-                                } else {
-                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-                                    prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS", prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS") + 1);
-                                }
-                            } else if (prefManager.getString("ADMIN_INTERSTITIAL_TYPE").equals("BOTH")) {
-                                requestAdmobInterstitial();
-                                if (prefManager.getInt("ADMIN_INTERSTITIAL_CLICKS") <= prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS")) {
-                                    if (prefManager.getString("AD_INTERSTITIAL_SHOW_TYPE").equals("ADMOB")) {
-                                        if (admobInterstitialAd.isLoaded()) {
-                                            prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS", 0);
-                                            prefManager.setString("AD_INTERSTITIAL_SHOW_TYPE", "FACEBOOK");
-                                            admobInterstitialAd.show();
-                                            admobInterstitialAd.setAdListener(new AdListener() {
-                                                @Override
-                                                public void onAdClosed() {
-                                                    super.onAdClosed();
-                                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-                                                }
-                                            });
-                                        } else {
-                                            (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-                                        }
-                                    }
-                                } else {
-                                    (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
-                                    prefManager.setInt("ADMOB_INTERSTITIAL_COUNT_CLICKS", prefManager.getInt("ADMOB_INTERSTITIAL_COUNT_CLICKS") + 1);
-                                }
+                                });
+                                admobInterstitialAd.show();
                             } else {
                                 (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                                AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS += 1;
                             }
+                        }else {
+                            (activity).startActivity(intent, ActivityOptionsCompat.makeScaleUpAnimation(v, (int) v.getX(), (int) v.getY(), v.getWidth(), v.getHeight()).toBundle());
+                            AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS += 1;
                         }
                     }
                 });
@@ -665,19 +629,6 @@ public class StickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             });
         } else {
 
-        }
-    }
-
-    private void requestAdmobInterstitial() {
-        if (admobInterstitialAd == null) {
-            PrefManager prefManager = new PrefManager(activity);
-            admobInterstitialAd = new InterstitialAd(activity.getApplicationContext());
-            admobInterstitialAd.setAdUnitId(prefManager.getString("ADMIN_INTERSTITIAL_ADMOB_ID"));
-        }
-        if (!admobInterstitialAd.isLoaded()) {
-            AdRequest adRequest = new AdRequest.Builder()
-                    .build();
-            admobInterstitialAd.loadAd(adRequest);
         }
     }
 

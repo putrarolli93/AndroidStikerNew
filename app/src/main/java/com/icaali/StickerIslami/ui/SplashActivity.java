@@ -23,6 +23,7 @@ import com.android.vending.billing.IInAppBillingService;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.anjlab.android.iab.v3.Constants;
 import com.anjlab.android.iab.v3.TransactionDetails;
+import com.icaali.StickerIslami.Manager.AdManager;
 import com.icaali.StickerIslami.Manager.PrefManager;
 import com.icaali.StickerIslami.R;
 import com.icaali.StickerIslami.config.Config;
@@ -108,8 +109,6 @@ public class SplashActivity extends AppCompatActivity {
         prf.setString("ADMIN_NATIVE_BANNER_FACEBOOK_ID","");
 
         prf.setString("ADMIN_INTERSTITIAL_ADMOB_ID","");
-        prf.setString("ADMIN_INTERSTITIAL_FACEBOOK_ID","");
-        prf.setString("ADMIN_INTERSTITIAL_TYPE","FALSE");
         prf.setInt("ADMIN_INTERSTITIAL_CLICKS",3);
 
         prf.setString("ADMIN_BANNER_ADMOB_ID","");
@@ -164,7 +163,7 @@ public class SplashActivity extends AppCompatActivity {
     }
     private void checkAccount() {
 
-        Integer version = -1;
+        int version = -1;
         try {
             PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
             version = pInfo.versionCode;
@@ -184,8 +183,11 @@ public class SplashActivity extends AppCompatActivity {
 
                         for (int i = 0; i < response.body().getValues().size(); i++) {
                             if ( response.body().getValues().get(i).getName().equals("ADMIN_APP_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_APP_ID",response.body().getValues().get(i).getValue());
+                                String admobAppId = response.body().getValues().get(i).getValue();
+                                if (response.body().getValues().get(i).getValue()!=null) {
+                                    prf.setString("ADMIN_APP_ID", admobAppId);
+                                    AdManager.ADMOB_APP_ID = admobAppId;
+                                }
                             }
                             if ( response.body().getValues().get(i).getName().equals("ADMIN_PUBLISHER_ID") ){
                                 if (response.body().getValues().get(i).getValue()!=null)
@@ -195,42 +197,26 @@ public class SplashActivity extends AppCompatActivity {
                                 if (response.body().getValues().get(i).getValue()!=null)
                                     prf.setString("ADMIN_REWARDED_ADMOB_ID",response.body().getValues().get(i).getValue());
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_NATIVE_BANNER_FACEBOOK_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_NATIVE_BANNER_FACEBOOK_ID",response.body().getValues().get(i).getValue());
+                            if ( response.body().getValues().get(i).getName().equals("ADMIN_INTERSTITIAL_ADMOB_ID") ) {
+                                String admobInterstitialId = response.body().getValues().get(i).getValue();
+                                if (null != admobInterstitialId)
+                                    AdManager.ADMOB_INTERSTITIAL_ID = admobInterstitialId;
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_INTERSTITIAL_ADMOB_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_INTERSTITIAL_ADMOB_ID",response.body().getValues().get(i).getValue());
-                            }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_INTERSTITIAL_FACEBOOK_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_INTERSTITIAL_FACEBOOK_ID",response.body().getValues().get(i).getValue());
-                            }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_INTERSTITIAL_TYPE") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_INTERSTITIAL_TYPE",response.body().getValues().get(i).getValue());
-                            }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_INTERSTITIAL_CLICKS") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setInt("ADMIN_INTERSTITIAL_CLICKS",Integer.parseInt(response.body().getValues().get(i).getValue()));
+                            if ( response.body().getValues().get(i).getName().equals("ADMIN_INTERSTITIAL_CLICKS") ) {
+                                String admobInterstitialClick = response.body().getValues().get(i).getValue();
+                                if (null != admobInterstitialClick)
+                                    AdManager.ADMOB_INTERSTITIAL_SHOW_CLICKS = Integer.parseInt(admobInterstitialClick);
                             }
                             if ( response.body().getValues().get(i).getName().equals("ADMIN_BANNER_ADMOB_ID") ){
                                 if (response.body().getValues().get(i).getValue()!=null)
                                     prf.setString("ADMIN_BANNER_ADMOB_ID",response.body().getValues().get(i).getValue());
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_BANNER_FACEBOOK_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_BANNER_FACEBOOK_ID",response.body().getValues().get(i).getValue());
-                            }
+
                             if ( response.body().getValues().get(i).getName().equals("ADMIN_BANNER_TYPE") ){
                                 if (response.body().getValues().get(i).getValue()!=null)
                                     prf.setString("ADMIN_BANNER_TYPE",response.body().getValues().get(i).getValue());
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_NATIVE_FACEBOOK_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_NATIVE_FACEBOOK_ID",response.body().getValues().get(i).getValue());
-                            }
+
                             if ( response.body().getValues().get(i).getName().equals("ADMIN_NATIVE_ADMOB_ID") ){
                                 if (response.body().getValues().get(i).getValue()!=null)
                                     prf.setString("ADMIN_NATIVE_ADMOB_ID",response.body().getValues().get(i).getValue());

@@ -14,12 +14,14 @@ import timber.log.Timber;
 
 public class Application extends MultiDexApplication {
 
+    private static Context appContext;
     private static Application instance;
 
     @Override
     public void onCreate()
     {
         super.onCreate();
+        appContext = getApplicationContext();
         Hawk.init(this).build();
 
         instance = this;
@@ -56,5 +58,9 @@ public class Application extends MultiDexApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+    }
+
+    public static Context getAppContext() {
+        return appContext;
     }
 }

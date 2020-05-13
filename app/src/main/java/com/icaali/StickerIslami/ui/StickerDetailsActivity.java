@@ -34,12 +34,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.DisplayMetrics;
+
 import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -70,12 +68,14 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.icaali.StickerIslami.BuildConfig;
 import com.icaali.StickerIslami.MainActivity;
+import com.icaali.StickerIslami.Manager.AdManager;
 import com.icaali.StickerIslami.Manager.PrefManager;
 import com.icaali.StickerIslami.R;
 import com.icaali.StickerIslami.Sticker;
@@ -111,24 +111,20 @@ import static com.icaali.StickerIslami.MainActivity.EXTRA_STICKER_PACK_NAME;
 
 public class StickerDetailsActivity extends AppCompatActivity {
 
-
-
     private RewardedVideoAd mRewardedVideoAd;
-
+    private InterstitialAd admobInterstitialAd;
     private Boolean autoDisplay =  false;
-
-
+    private Boolean hasRewarded = false;
     private static final int ADD_PACK = 200;
     private static final String TAG = StickerDetailsActivity.class.getSimpleName();
+    private PackApi packApi;
+
     StickerPack stickerPack;
     StickerDetailsAdapter adapter;
     Toolbar toolbar;
     RecyclerView recyclerView;
     List<Sticker> stickers;
     ArrayList<String> strings;
-
-    private PackApi packApi;
-
 
     public static String path;
     public static String mainpath;
@@ -206,7 +202,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
         // added from main Activity
         mainpath = getFilesDir() + "/" + "stickers_asset";
 
-
         stickerPack = getIntent().getParcelableExtra(MainActivity.EXTRA_STICKERPACK);
         fromLoad =  getIntent().getBooleanExtra("from",false);
         toolbar = findViewById(R.id.toolbar);
@@ -263,11 +258,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
         serviceIntent.setPackage("com.android.vending");
         bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
 
-
-        if(!BillingProcessor.isIabServiceAvailable(this)) {
-            //  showToast("In-app billing service is unavailable, please upgrade Android Market/Play to version >= 3.9.16");
-        }
-
         bp = new BillingProcessor(this, Config.LICENSE_KEY, MERCHANT_ID, new BillingProcessor.IBillingHandler() {
             @Override
             public void onProductPurchased(@NonNull String productId, @Nullable TransactionDetails details) {
@@ -307,8 +297,6 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
     public Bundle getPurchases(){
         if (!bp.isInitialized()) {
-
-
             //  Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
             return null;
         }
@@ -381,13 +369,26 @@ public class StickerDetailsActivity extends AppCompatActivity {
         this.linear_layout_add_to_whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!stickerPack.premium.equals("true")){
+                if (checkSUBSCRIBED()) {
                     NewAddPack();
-                }else{
-                    if (checkSUBSCRIBED()) {
+                }else if (stickerPack.premium.equals("true")){
+                    showDialog();
+                }
+                else{
+                    admobInterstitialAd = AdManager.getInterstitialAd();
+                    if (admobInterstitialAd.isLoaded()){
+                        AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS = 0;
+                        admobInterstitialAd.setAdListener(new AdListener() {
+                            @Override
+                            public void onAdClosed() {
+                                AdManager.INTERSTITIAL_AD_IS_LOADING = false;
+                                NewAddPack();
+                                AdManager.loadInterstitialAd();
+                            }
+                        });
+                        admobInterstitialAd.show();
+                    } else {
                         NewAddPack();
-                    }else{
-                        showDialog();
                     }
                 }
             }
@@ -832,89 +833,8 @@ public class StickerDetailsActivity extends AppCompatActivity {
         if(bitmap!=null){
             shareImageUri(saveImage(bitmap));
         }
-
-
-        /*try{
-            File file = new File(getApplicationContext().getCacheDir()+"/Image.png");
-            bitmap.compress(Bitmap.CompressFormat.PNG,100,new FileOutputStream(file));
-            Uri uri = FileProvider.getUriForFile(getApplicationContext(),"com.virmana.StickerIslami.fileprovider", file);
-
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
-            shareIntent.setType("image/jpeg");
-            getApplicationContext().startActivity(Intent.createChooser(shareIntent, "Share"));
-
-        }catch (FileNotFoundException e) {e.printStackTrace();}
-
-        /*Bitmap bitmap = Bitmap.createBitmap(
-                linear_layout_pack_screen_shot.getChildAt(0).getWidth(),
-                linear_layout_pack_screen_shot.getChildAt(0).getHeight(),
-                Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bitmap);
-        linear_layout_pack_screen_shot.getChildAt(0).draw(c);
-        Uri  uri =   saveImageExternal(bitmap);
-
-        Toast.makeText(this, uri.getPath(), Toast.LENGTH_SHORT).show();
-        File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "to-share.png");
-        if (file.exists()){
-            Toast.makeText(this, "exit", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "not exist", Toast.LENGTH_SHORT).show();
-        }
-        pack_try_image.setImageURI(uri);
-
-
-        try {
-
-            File cachePath = new File(getApplication().getCacheDir(), "images");
-            cachePath.mkdirs(); // don't forget to make the directory
-            FileOutputStream stream = new FileOutputStream(cachePath + "/image.png"); // overwrites this image every time
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            stream.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        File imagePath = new File(getApplication().getCacheDir(), "images");
-        File newFile = new File(imagePath, "image.png");
-        Uri contentUri = FileProvider.getUriForFile(getApplicationContext(), "com.virmana.StickerIslami.fileprovider", newFile);
-
-        if (contentUri != null) {
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
-            shareIntent.setDataAndType(contentUri, getContentResolver().getType(contentUri));
-            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            startActivity(Intent.createChooser(shareIntent, "Choose an app"));
-        }
-        /*Intent intent = new Intent(android.content.Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.setType("image/png");
-        startActivity(intent);
-        */
-        /*Intent i = new Intent(Intent.ACTION_SEND);
-        i.setType("image/*");
-
-
-
-        i.putExtra(Intent.EXTRA_STREAM, saveImageExternal(bitmap));
-
-
-        i.putExtra(Intent.EXTRA_TEXT, "Shared via" + getResources().getString(R.string.app_name) + " - Download it from : https://play.google.com/store/apps/details?id="+getPackageName() );
-        startActivity(Intent.createChooser(i, "Shared via" + getResources().getString(R.string.app_name) ));
-*/
-
-       /* String shareBody =stickerPack.name +"\n\n"+getResources().getString(R.string.download_pack_from)+"\n"+ Config.API_URL.replace("api","share")+ stickerPack.identifier +".html";
-        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        sharingIntent.putExtra(Intent.EXTRA_SUBJECT,  getString(R.string.app_name));
-        startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));*/
     }
+
     public void downloadTryImage(){
         Glide.with(getApplicationContext())
                 .asBitmap()
@@ -1340,21 +1260,21 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
             @Override
             public void onRewardedVideoCompleted() {
-
             }
 
             @Override
             public void onRewardedVideoAdClosed() {
+                if (hasRewarded)
+                    NewAddPack();
                 loadRewardedVideoAd();
                 Log.d("Rewarded","onRewardedVideoAdClosed ");
-
             }
 
             @Override
             public void onRewarded(RewardItem rewardItem) {
                 stickerPack.premium =  "false";
                 dialog.dismiss();
-                Toasty.success(getApplicationContext(),"Now you can use this premium wallpaper for free").show();
+                hasRewarded = true;
                 Log.d("Rewarded","onRewarded ");
 
             }

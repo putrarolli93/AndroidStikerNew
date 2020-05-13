@@ -1079,7 +1079,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         relative_layout_watch_ads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!mRewardedVideoAd.isLoaded()){
+                if (mRewardedVideoAd.isLoaded()){
                     mRewardedVideoAd.show();
                 }else if (admobInterstitialAd.isLoaded()){
                     AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS = 0;

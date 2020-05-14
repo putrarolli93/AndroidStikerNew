@@ -16,6 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -172,6 +176,7 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         initView();
+        showAdmobBanner();
         initAction();
         initBuy();
         firebaseSubscribe();
@@ -179,6 +184,27 @@ public class HomeActivity extends AppCompatActivity
         PrefManager prf= new PrefManager(getApplicationContext());
 
     }
+
+    public void showAdmobBanner(){
+        PrefManager prefManager= new PrefManager(getApplicationContext());
+        LinearLayout linear_layout_ads =  (LinearLayout) findViewById(R.id.linear_layout_ads);
+        final AdView mAdView = new AdView(this);
+        mAdView.setAdSize(AdSize.BANNER);
+        mAdView.setAdUnitId(prefManager.getString("ADMIN_BANNER_ADMOB_ID"));
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
+        linear_layout_ads.addView(mAdView);
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mAdView.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
     private void firebaseSubscribe() {
         FirebaseMessaging.getInstance().subscribeToTopic("StickersAppTopic")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

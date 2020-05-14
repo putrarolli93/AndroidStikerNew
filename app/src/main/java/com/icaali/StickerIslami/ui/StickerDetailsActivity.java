@@ -23,6 +23,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityOptionsCompat;
@@ -87,6 +88,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -106,7 +108,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
     private RewardedVideoAd mRewardedVideoAd;
     private InterstitialAd admobInterstitialAd;
-    private Boolean autoDisplay =  false;
+    private Boolean autoDisplay = false;
     private Boolean hasRewarded = false;
     private static final int ADD_PACK = 200;
     private static final String TAG = StickerDetailsActivity.class.getSimpleName();
@@ -128,6 +130,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
     private ImageView image_view_trusted_user;
     private TextView text_view_user_name;
     private LinearLayout linear_layout_ads;
+    private WhiteListCheckAsyncTask whiteListCheckAsyncTask;
 
 
     private AppCompatRatingBar rating_bar_guide_main_pack_activity;
@@ -156,18 +159,17 @@ public class StickerDetailsActivity extends AppCompatActivity {
     private ProgressBar progress_bar_sticker;
 
 
-
     private Dialog dialog;
 
-    private  Boolean DialogOpened = false;
-    private  Boolean fromLoad = false;
+    private Boolean DialogOpened = false;
+    private Boolean fromLoad = false;
 
     IInAppBillingService mService;
 
     private static final String LOG_TAG = "iabv3";
     // put your Google merchant id here (as stated in public profile of your Payments Merchant Center)
     // if filled library will provide protection against Freedom alike Play Market simulators
-    private static final String MERCHANT_ID=null;
+    private static final String MERCHANT_ID = null;
 
     private BillingProcessor bp;
     private boolean readyToPurchase = false;
@@ -177,6 +179,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         public void onServiceDisconnected(ComponentName name) {
             mService = null;
         }
+
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mService = IInAppBillingService.Stub.asInterface(service);
@@ -191,7 +194,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         mainpath = getFilesDir() + "/" + "stickers_asset";
 
         stickerPack = getIntent().getParcelableExtra(MainActivity.EXTRA_STICKERPACK);
-        fromLoad =  getIntent().getBooleanExtra("from",false);
+        fromLoad = getIntent().getBooleanExtra("from", false);
         toolbar = findViewById(R.id.toolbar);
         ImageView pack_try_image = findViewById(R.id.pack_try_image);
         TextView item_pack_name = findViewById(R.id.item_pack_name);
@@ -240,6 +243,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         initBuy();
 
     }
+
     private void initBuy() {
         Intent serviceIntent =
                 new Intent("com.android.vending.billing.InAppBillingService.BIND");
@@ -250,27 +254,30 @@ public class StickerDetailsActivity extends AppCompatActivity {
             @Override
             public void onProductPurchased(@NonNull String productId, @Nullable TransactionDetails details) {
                 //  showToast("onProductPurchased: " + productId);
-                Intent intent= new Intent(StickerDetailsActivity.this,SplashActivity.class);
+                Intent intent = new Intent(StickerDetailsActivity.this, SplashActivity.class);
                 startActivity(intent);
                 finish();
                 updateTextViews();
             }
+
             @Override
             public void onBillingError(int errorCode, @Nullable Throwable error) {
                 // showToast("onBillingError: " + Integer.toString(errorCode));
             }
+
             @Override
             public void onBillingInitialized() {
                 //  showToast("onBillingInitialized");
                 readyToPurchase = true;
                 updateTextViews();
             }
+
             @Override
             public void onPurchaseHistoryRestored() {
                 // showToast("onPurchaseHistoryRestored");
-                for(String sku : bp.listOwnedProducts())
+                for (String sku : bp.listOwnedProducts())
                     Log.d(LOG_TAG, "Owned Managed Product: " + sku);
-                for(String sku : bp.listOwnedSubscriptions())
+                for (String sku : bp.listOwnedSubscriptions())
                     Log.d(LOG_TAG, "Owned Subscription: " + sku);
                 updateTextViews();
             }
@@ -279,20 +286,21 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
 
     private void updateTextViews() {
-        PrefManager prf= new PrefManager(getApplicationContext());
+        PrefManager prf = new PrefManager(getApplicationContext());
         bp.loadOwnedPurchasesFromGoogle();
 
     }
-    public Bundle getPurchases(){
+
+    public Bundle getPurchases() {
         if (!bp.isInitialized()) {
             //  Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
             return null;
         }
-        try{
+        try {
             // Toast.makeText(this, "good", Toast.LENGTH_SHORT).show();
 
-            return  mService.getPurchases(Constants.GOOGLE_API_VERSION, getApplicationContext().getPackageName(), Constants.PRODUCT_TYPE_SUBSCRIPTION, null);
-        }catch (Exception e) {
+            return mService.getPurchases(Constants.GOOGLE_API_VERSION, getApplicationContext().getPackageName(), Constants.PRODUCT_TYPE_SUBSCRIPTION, null);
+        } catch (Exception e) {
             //  Toast.makeText(this, "ex", Toast.LENGTH_SHORT).show();
 
             e.printStackTrace();
@@ -301,7 +309,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
 
     private void checkFavorite() {
-        List<PackApi> favorites_list =Hawk.get("favorite");
+        List<PackApi> favorites_list = Hawk.get("favorite");
         Boolean exist = false;
         if (favorites_list == null) {
             favorites_list = new ArrayList<>();
@@ -312,58 +320,56 @@ public class StickerDetailsActivity extends AppCompatActivity {
                 exist = true;
             }
         }
-        if (exist){
+        if (exist) {
             image_view_fav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black));
-        }else{
+        } else {
             image_view_fav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_border));
 
         }
     }
 
-    public void initView(){
+    public void initView() {
         this.linear_layout_ads = findViewById(R.id.linear_layout_ads);
         this.circle_image_view_user_image = findViewById(R.id.circle_image_view_user_image);
         this.image_view_trusted_user = findViewById(R.id.image_view_trusted_user);
         this.text_view_user_name = findViewById(R.id.text_view_user_name);
-        this.progress_bar_sticker =  findViewById(R.id.progress_bar_sticker);
-        this.progress_bar_pack =  findViewById(R.id.progress_bar_pack);
+        this.progress_bar_sticker = findViewById(R.id.progress_bar_sticker);
+        this.progress_bar_pack = findViewById(R.id.progress_bar_pack);
 
         this.linear_layout_share = findViewById(R.id.linear_layout_share);
         this.linear_layout_pack_screen_shot = findViewById(R.id.linear_layout_pack_screen_shot);
-        this.rating_bar_guide_main_pack_activity= findViewById(R.id.rating_bar_guide_main_pack_activity);
-        this.rating_bar_guide_value_pack_activity= findViewById(R.id.rating_bar_guide_value_pack_activity);
-        this.rating_bar_guide_1_pack_activity= findViewById(R.id.rating_bar_guide_1_pack_activity);
-        this.rating_bar_guide_2_pack_activity= findViewById(R.id.rating_bar_guide_2_pack_activity);
-        this.rating_bar_guide_3_pack_activity= findViewById(R.id.rating_bar_guide_3_pack_activity);
-        this.rating_bar_guide_4_pack_activity= findViewById(R.id.rating_bar_guide_4_pack_activity);
-        this.rating_bar_guide_5_pack_activity= findViewById(R.id.rating_bar_guide_5_pack_activity);
+        this.rating_bar_guide_main_pack_activity = findViewById(R.id.rating_bar_guide_main_pack_activity);
+        this.rating_bar_guide_value_pack_activity = findViewById(R.id.rating_bar_guide_value_pack_activity);
+        this.rating_bar_guide_1_pack_activity = findViewById(R.id.rating_bar_guide_1_pack_activity);
+        this.rating_bar_guide_2_pack_activity = findViewById(R.id.rating_bar_guide_2_pack_activity);
+        this.rating_bar_guide_3_pack_activity = findViewById(R.id.rating_bar_guide_3_pack_activity);
+        this.rating_bar_guide_4_pack_activity = findViewById(R.id.rating_bar_guide_4_pack_activity);
+        this.rating_bar_guide_5_pack_activity = findViewById(R.id.rating_bar_guide_5_pack_activity);
 
-        this.text_view_rate_1_pack_activity= findViewById(R.id.text_view_rate_1_pack_activity);
-        this.text_view_rate_2_pack_activity= findViewById(R.id.text_view_rate_2_pack_activity);
-        this.text_view_rate_3_pack_activity= findViewById(R.id.text_view_rate_3_pack_activity);
-        this.text_view_rate_4_pack_activity= findViewById(R.id.text_view_rate_4_pack_activity);
-        this.text_view_rate_5_pack_activity= findViewById(R.id.text_view_rate_5_pack_activity);
-        this.text_view_rate_main_pack_activity= findViewById(R.id.text_view_rate_main_pack_activity);
-        this.progress_bar_rate_1_pack_activity= findViewById(R.id.progress_bar_rate_1_pack_activity);
-        this.progress_bar_rate_2_pack_activity= findViewById(R.id.progress_bar_rate_2_pack_activity);
-        this.progress_bar_rate_3_pack_activity= findViewById(R.id.progress_bar_rate_3_pack_activity);
-        this.progress_bar_rate_4_pack_activity= findViewById(R.id.progress_bar_rate_4_pack_activity);
-        this.progress_bar_rate_5_pack_activity= findViewById(R.id.progress_bar_rate_5_pack_activity);
+        this.text_view_rate_1_pack_activity = findViewById(R.id.text_view_rate_1_pack_activity);
+        this.text_view_rate_2_pack_activity = findViewById(R.id.text_view_rate_2_pack_activity);
+        this.text_view_rate_3_pack_activity = findViewById(R.id.text_view_rate_3_pack_activity);
+        this.text_view_rate_4_pack_activity = findViewById(R.id.text_view_rate_4_pack_activity);
+        this.text_view_rate_5_pack_activity = findViewById(R.id.text_view_rate_5_pack_activity);
+        this.text_view_rate_main_pack_activity = findViewById(R.id.text_view_rate_main_pack_activity);
+        this.progress_bar_rate_1_pack_activity = findViewById(R.id.progress_bar_rate_1_pack_activity);
+        this.progress_bar_rate_2_pack_activity = findViewById(R.id.progress_bar_rate_2_pack_activity);
+        this.progress_bar_rate_3_pack_activity = findViewById(R.id.progress_bar_rate_3_pack_activity);
+        this.progress_bar_rate_4_pack_activity = findViewById(R.id.progress_bar_rate_4_pack_activity);
+        this.progress_bar_rate_5_pack_activity = findViewById(R.id.progress_bar_rate_5_pack_activity);
 
-        this.image_view_fav  = findViewById(R.id.image_view_fav);
-        this.button_follow_user  = findViewById(R.id.button_follow_user);
+        this.image_view_fav = findViewById(R.id.image_view_fav);
+        this.button_follow_user = findViewById(R.id.button_follow_user);
     }
-    public void initAction(){
+
+    public void initAction() {
         this.linear_layout_add_to_whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkSUBSCRIBED()) {
-                    NewAddPack();
-                }else if (stickerPack.premium.equals("true")){
+                if (stickerPack.premium.equals("true")) {
                     showDialog();
-                }
-                else{
-                    if (admobInterstitialAd.isLoaded()){
+                } else {
+                    if (admobInterstitialAd.isLoaded()) {
                         AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS = 0;
                         admobInterstitialAd.setAdListener(new AdListener() {
                             @Override
@@ -402,7 +408,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         this.rating_bar_guide_main_pack_activity.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if (fromUser){
+                if (fromUser) {
                     addRate(rating);
                 }
 
@@ -411,14 +417,14 @@ public class StickerDetailsActivity extends AppCompatActivity {
         this.text_view_user_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  =  new Intent(getApplicationContext(), UserActivity.class);
-                intent.putExtra("id",Integer.parseInt(stickerPack.userid));
-                intent.putExtra("image",stickerPack.userimage);
-                intent.putExtra("name",stickerPack.username);
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                intent.putExtra("id", Integer.parseInt(stickerPack.userid));
+                intent.putExtra("image", stickerPack.userimage);
+                intent.putExtra("name", stickerPack.username);
                 if (stickerPack.trused.equals("true"))
-                    intent.putExtra("trusted",true);
+                    intent.putExtra("trusted", true);
                 else
-                    intent.putExtra("trusted",false);
+                    intent.putExtra("trusted", false);
                 startActivity(intent,
                         ActivityOptionsCompat.makeScaleUpAnimation(view, (int) view.getX(), (int) view.getY(), view.getWidth(),
                                 view.getHeight()).toBundle());
@@ -427,15 +433,15 @@ public class StickerDetailsActivity extends AppCompatActivity {
         this.circle_image_view_user_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  =  new Intent(getApplicationContext(), UserActivity.class);
-                intent.putExtra("id",Integer.parseInt(stickerPack.userid));
-                intent.putExtra("image",stickerPack.userimage);
-                intent.putExtra("name",stickerPack.username);
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                intent.putExtra("id", Integer.parseInt(stickerPack.userid));
+                intent.putExtra("image", stickerPack.userimage);
+                intent.putExtra("name", stickerPack.username);
 
                 if (stickerPack.trused.equals("true"))
-                    intent.putExtra("trusted",true);
+                    intent.putExtra("trusted", true);
                 else
-                    intent.putExtra("trusted",false);
+                    intent.putExtra("trusted", false);
 
                 startActivity(intent,
                         ActivityOptionsCompat.makeScaleUpAnimation(view, (int) view.getX(), (int) view.getY(), view.getWidth(),
@@ -451,7 +457,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
 
     private void addFavotite() {
-        List<PackApi> favorites_list =Hawk.get("favorite");
+        List<PackApi> favorites_list = Hawk.get("favorite");
         boolean exist = false;
         if (favorites_list == null) {
             favorites_list = new ArrayList<>();
@@ -465,19 +471,19 @@ public class StickerDetailsActivity extends AppCompatActivity {
         }
         if (!exist) {
             favorites_list.add(packApi);
-            Hawk.put("favorite",favorites_list);
+            Hawk.put("favorite", favorites_list);
             image_view_fav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_black));
 
-        }else{
+        } else {
             favorites_list.remove(fav_position);
-            Hawk.put("favorite",favorites_list);
+            Hawk.put("favorite", favorites_list);
             image_view_fav.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_border));
         }
     }
 
-    public void follow(){
+    public void follow() {
 
-        PrefManager prf= new PrefManager(getApplicationContext());
+        PrefManager prf = new PrefManager(getApplicationContext());
         if (prf.getString("LOGGED").equals("TRUE")) {
             button_follow_user.setText(getResources().getString(R.string.loading));
             button_follow_user.setEnabled(false);
@@ -490,9 +496,9 @@ public class StickerDetailsActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                     if (response.isSuccessful()) {
-                        if (response.body().getCode().equals(200)){
+                        if (response.body().getCode().equals(200)) {
                             button_follow_user.setText("UnFollow");
-                        }else if (response.body().getCode().equals(202)) {
+                        } else if (response.body().getCode().equals(202)) {
                             button_follow_user.setText("Follow");
 
                         }
@@ -506,30 +512,31 @@ public class StickerDetailsActivity extends AppCompatActivity {
                     button_follow_user.setEnabled(true);
                 }
             });
-        }else{
-            Intent intent = new Intent(StickerDetailsActivity.this,LoginActivity.class);
+        } else {
+            Intent intent = new Intent(StickerDetailsActivity.this, LoginActivity.class);
             startActivity(intent);
         }
     }
+
     private void getUser() {
-        PrefManager prf= new PrefManager(getApplicationContext());
+        PrefManager prf = new PrefManager(getApplicationContext());
         if (prf.getString("LOGGED").equals("TRUE")) {
             button_follow_user.setEnabled(false);
             int follower = Integer.parseInt(prf.getString("ID_USER"));
-            if (follower!=Integer.parseInt(stickerPack.userid)){
+            if (follower != Integer.parseInt(stickerPack.userid)) {
                 button_follow_user.setVisibility(View.VISIBLE);
             }
             Retrofit retrofit = apiClient.getClient();
             apiRest service = retrofit.create(apiRest.class);
-            Call<ApiResponse> call = service.getUser(Integer.parseInt(stickerPack.userid),follower);
+            Call<ApiResponse> call = service.getUser(Integer.parseInt(stickerPack.userid), follower);
             call.enqueue(new Callback<ApiResponse>() {
                 @Override
                 public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
 
-                        for (int i=0;i<response.body().getValues().size();i++){
+                        for (int i = 0; i < response.body().getValues().size(); i++) {
 
-                            if (response.body().getValues().get(i).getName().equals("follow")){
+                            if (response.body().getValues().get(i).getName().equals("follow")) {
                                 if (response.body().getValues().get(i).getValue().equals("true"))
                                     button_follow_user.setText("UnFollow");
                                 else
@@ -537,12 +544,13 @@ public class StickerDetailsActivity extends AppCompatActivity {
                             }
                         }
 
-                    }else{
+                    } else {
 
 
                     }
                     button_follow_user.setEnabled(true);
                 }
+
                 @Override
                 public void onFailure(Call<ApiResponse> call, Throwable t) {
                     button_follow_user.setEnabled(true);
@@ -556,7 +564,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         if (prf.getString("LOGGED").equals("TRUE")) {
             Retrofit retrofit = apiClient.getClient();
             apiRest service = retrofit.create(apiRest.class);
-            Call<ApiResponse> call = service.addRate(prf.getString("ID_USER").toString(),Integer.parseInt(stickerPack.identifier), value);
+            Call<ApiResponse> call = service.addRate(prf.getString("ID_USER").toString(), Integer.parseInt(stickerPack.identifier), value);
             call.enqueue(new Callback<ApiResponse>() {
                 @Override
                 public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
@@ -564,7 +572,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         if (response.body().getCode() == 200) {
                             Toasty.success(StickerDetailsActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        }else{
+                        } else {
                             Toasty.success(StickerDetailsActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                         getRate();
@@ -592,72 +600,73 @@ public class StickerDetailsActivity extends AppCompatActivity {
         PrefManager prf = new PrefManager(getApplicationContext());
         String user_id = "0";
         if (prf.getString("LOGGED").equals("TRUE")) {
-            user_id=prf.getString("ID_USER");
+            user_id = prf.getString("ID_USER");
         }
         Retrofit retrofit = apiClient.getClient();
         apiRest service = retrofit.create(apiRest.class);
-        Call<ApiResponse> call = service.getRate(user_id,Integer.parseInt(stickerPack.identifier));
+        Call<ApiResponse> call = service.getRate(user_id, Integer.parseInt(stickerPack.identifier));
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getCode() == 200) {
                         rating_bar_guide_main_pack_activity.setRating(Integer.parseInt(response.body().getMessage()));
-                    } else if (response.body().getCode() == 202){
+                    } else if (response.body().getCode() == 202) {
                         rating_bar_guide_main_pack_activity.setRating(0);
-                    }else{
+                    } else {
                         rating_bar_guide_main_pack_activity.setRating(0);
                     }
-                    if(response.body().getCode() != 500){
-                        int rate_1=0;
-                        int rate_2=0;
-                        int rate_3=0;
-                        int rate_4=0;
-                        int rate_5=0;
-                        float rate=0;
-                        for (int i=0;i<response.body().getValues().size();i++){
+                    if (response.body().getCode() != 500) {
+                        int rate_1 = 0;
+                        int rate_2 = 0;
+                        int rate_3 = 0;
+                        int rate_4 = 0;
+                        int rate_5 = 0;
+                        float rate = 0;
+                        for (int i = 0; i < response.body().getValues().size(); i++) {
 
-                            if (response.body().getValues().get(i).getName().equals("1")){
-                                rate_1=Integer.parseInt(response.body().getValues().get(i).getValue());
+                            if (response.body().getValues().get(i).getName().equals("1")) {
+                                rate_1 = Integer.parseInt(response.body().getValues().get(i).getValue());
                             }
-                            if (response.body().getValues().get(i).getName().equals("2")){
-                                rate_2=Integer.parseInt(response.body().getValues().get(i).getValue());
+                            if (response.body().getValues().get(i).getName().equals("2")) {
+                                rate_2 = Integer.parseInt(response.body().getValues().get(i).getValue());
                             }
-                            if (response.body().getValues().get(i).getName().equals("3")){
-                                rate_3=Integer.parseInt(response.body().getValues().get(i).getValue());
+                            if (response.body().getValues().get(i).getName().equals("3")) {
+                                rate_3 = Integer.parseInt(response.body().getValues().get(i).getValue());
                             }
-                            if (response.body().getValues().get(i).getName().equals("4")){
-                                rate_4=Integer.parseInt(response.body().getValues().get(i).getValue());
+                            if (response.body().getValues().get(i).getName().equals("4")) {
+                                rate_4 = Integer.parseInt(response.body().getValues().get(i).getValue());
                             }
-                            if (response.body().getValues().get(i).getName().equals("5")){
-                                rate_5=Integer.parseInt(response.body().getValues().get(i).getValue());
+                            if (response.body().getValues().get(i).getName().equals("5")) {
+                                rate_5 = Integer.parseInt(response.body().getValues().get(i).getValue());
                             }
-                            if (response.body().getValues().get(i).getName().equals("rate")){
-                                rate=Float.parseFloat(response.body().getValues().get(i).getValue());
+                            if (response.body().getValues().get(i).getName().equals("rate")) {
+                                rate = Float.parseFloat(response.body().getValues().get(i).getValue());
                             }
                         }
                         rating_bar_guide_value_pack_activity.setRating(rate);
-                        String formattedString=rate + "";
+                        String formattedString = rate + "";
 
 
                         text_view_rate_main_pack_activity.setText(formattedString);
-                        text_view_rate_1_pack_activity.setText(rate_1+"");
-                        text_view_rate_2_pack_activity.setText(rate_2+"");
-                        text_view_rate_3_pack_activity.setText(rate_3+"");
-                        text_view_rate_4_pack_activity.setText(rate_4+"");
-                        text_view_rate_5_pack_activity.setText(rate_5+"");
-                        int total= rate_1 + rate_2 + rate_3 + rate_4 + rate_5;
-                        if(total==0) {
+                        text_view_rate_1_pack_activity.setText(rate_1 + "");
+                        text_view_rate_2_pack_activity.setText(rate_2 + "");
+                        text_view_rate_3_pack_activity.setText(rate_3 + "");
+                        text_view_rate_4_pack_activity.setText(rate_4 + "");
+                        text_view_rate_5_pack_activity.setText(rate_5 + "");
+                        int total = rate_1 + rate_2 + rate_3 + rate_4 + rate_5;
+                        if (total == 0) {
                             total = 1;
                         }
-                        progress_bar_rate_1_pack_activity.setProgress((int) ((rate_1*100) / total)  );
-                        progress_bar_rate_2_pack_activity.setProgress((int) ((rate_2*100) / total)  );
-                        progress_bar_rate_3_pack_activity.setProgress((int) ((rate_3*100) / total)  );
-                        progress_bar_rate_4_pack_activity.setProgress((int) ((rate_4*100) / total)  );
-                        progress_bar_rate_5_pack_activity.setProgress((int) ((rate_5*100) / total)  );
+                        progress_bar_rate_1_pack_activity.setProgress((int) ((rate_1 * 100) / total));
+                        progress_bar_rate_2_pack_activity.setProgress((int) ((rate_2 * 100) / total));
+                        progress_bar_rate_3_pack_activity.setProgress((int) ((rate_3 * 100) / total));
+                        progress_bar_rate_4_pack_activity.setProgress((int) ((rate_4 * 100) / total));
+                        progress_bar_rate_5_pack_activity.setProgress((int) ((rate_5 * 100) / total));
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
 
@@ -666,7 +675,8 @@ public class StickerDetailsActivity extends AppCompatActivity {
         });
 
     }
-    public void addDownload(){
+
+    public void addDownload() {
 
         Retrofit retrofit = apiClient.getClient();
         apiRest service = retrofit.create(apiRest.class);
@@ -674,26 +684,29 @@ public class StickerDetailsActivity extends AppCompatActivity {
         call.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-                if(response.isSuccessful()) {
-                    text_view_downloads_pack.setText(response.body()+"");
+                if (response.isSuccessful()) {
+                    text_view_downloads_pack.setText(response.body() + "");
                 }
             }
+
             @Override
             public void onFailure(Call<Integer> call, Throwable t) {
 
             }
         });
     }
-    public void setUser(){
+
+    public void setUser() {
         text_view_user_name.setText(stickerPack.username);
         Picasso.with(this).load(stickerPack.userimage).placeholder(getResources().getDrawable(R.drawable.profile)).placeholder(getResources().getDrawable(R.drawable.profile)).into(circle_image_view_user_image);
-        if (stickerPack.trused.equals("true")){
+        if (stickerPack.trused.equals("true")) {
             image_view_trusted_user.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             image_view_trusted_user.setVisibility(View.GONE);
         }
     }
-    public void Addtowhatsapp(){
+
+    public void Addtowhatsapp() {
         Intent intent = new Intent();
         intent.setAction("com.whatsapp.intent.action.ENABLE_STICKER_PACK");
         intent.putExtra(EXTRA_STICKER_PACK_ID, stickerPack.identifier);
@@ -736,10 +749,11 @@ public class StickerDetailsActivity extends AppCompatActivity {
         }
         return uri;
     }
-    private void shareImageUri(Uri uri){
+
+    private void shareImageUri(Uri uri) {
         Intent intent = new Intent(android.content.Intent.ACTION_SEND);
 
-        String shareBody = getResources().getString(R.string.download_pack_from)+"\n"+ Config.PLAYSTORE_URL;
+        String shareBody = getResources().getString(R.string.download_pack_from) + "\n" + Config.PLAYSTORE_URL;
 
         intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
 
@@ -747,9 +761,10 @@ public class StickerDetailsActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-        startActivity(Intent.createChooser(intent, " Shared via " + getResources().getString(R.string.app_name) ));
+        startActivity(Intent.createChooser(intent, " Shared via " + getResources().getString(R.string.app_name)));
 
     }
+
     private Bitmap convertLayoutToImage() {
 
         //linear_layout_pack_screen_shot.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
@@ -760,17 +775,18 @@ public class StickerDetailsActivity extends AppCompatActivity {
         //  linear_layout_pack_screen_shot.buildDrawingCache();
         return getBitmapFromView(linear_layout_pack_screen_shot);// creates bitmap and returns the same
     }
+
     private Bitmap getBitmapFromView(View view) {
         //Define a bitmap with the same size as the view
-        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),Bitmap.Config.ARGB_8888);
+        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
         //Bind a canvas to it
         Canvas canvas = new Canvas(returnedBitmap);
         //Get the view's background
-        Drawable bgDrawable =view.getBackground();
-        if (bgDrawable!=null) {
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null) {
             //has background drawable, then draw it on the canvas
             bgDrawable.draw(canvas);
-        }   else{
+        } else {
             //does not have background drawable, then draw white background on the canvas
             canvas.drawColor(Color.WHITE);
         }
@@ -780,11 +796,11 @@ public class StickerDetailsActivity extends AppCompatActivity {
         return returnedBitmap;
     }
 
-    public void share(){
+    public void share() {
 
 
         Bitmap bitmap = convertLayoutToImage();
-        if(bitmap!=null){
+        if (bitmap != null) {
             shareImageUri(saveImage(bitmap));
         }
     }
@@ -813,7 +829,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         String root = mainpath + "/" + identifier;
         File myDir = new File(root + "/" + "try");
         myDir.mkdirs();
-        String fname = name.replace(".png","").replace(" ","_") + ".png";
+        String fname = name.replace(".png", "").replace(" ", "_") + ".png";
         File file = new File(myDir, fname);
         if (file.exists()) file.delete();
         try {
@@ -826,13 +842,15 @@ public class StickerDetailsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     private void NewAddPack() {
         linear_layout_add_to_whatsapp.setVisibility(View.GONE);
         linear_layout_progress.setVisibility(View.VISIBLE);
         progress = 0;
         new DownloadTryImageFileFromURL().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
-    private  int progress =  0;
+
+    private int progress = 0;
 
     @SuppressLint("StaticFieldLeak")
     class DownloadOneStickerFileFromURL extends AsyncTask<String, String, String> {
@@ -841,7 +859,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         /**
          * Before starting background thread
          * Show Progress Bar Dialog
-         * */
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -850,7 +868,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
         /**
          * Downloading file in background thread
-         * */
+         */
         @Override
         protected String doInBackground(String... f_url) {
 
@@ -858,7 +876,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
                 Log.d("adapter", "onClick: " + stickerPack.getStickers().size());
                 Log.d("adapter", "URLTRAY: " + stickerPack.trayImageUrl);
-                Sticker s =  stickerPack.getStickers().get(Integer.parseInt(f_url[0]));
+                Sticker s = stickerPack.getStickers().get(Integer.parseInt(f_url[0]));
 
                 System.out.println("Downloading");
                 URL url = new URL(s.imageFileUrl);
@@ -868,17 +886,17 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
 
-                Bitmap resource =  BitmapFactory.decodeStream(input);
+                Bitmap resource = BitmapFactory.decodeStream(input);
                     /*int width = 512; // - Dimension in pixels
                     int height= 512;  // - Dimension in pixels
                     Bitmap bitmap1 =  Bitmap.createScaledBitmap(resource, width, height, false);*/
-                Bitmap bitmap1 = scaleBitmap(resource,512,512);
+                Bitmap bitmap1 = scaleBitmap(resource, 512, 512);
                 SaveImage(bitmap1, s.imageFileName, stickerPack.identifier);
-                Log.e("PACKSTICKER",s.imageFileName);
-                Log.e("PACKSTICKER",s.imageFileUrl);
+                Log.e("PACKSTICKER", s.imageFileName);
+                Log.e("PACKSTICKER", s.imageFileUrl);
 
                 progress++;
-                publishProgress(""+(int)((progress*100)/stickerPack.getStickers().size()));
+                publishProgress("" + (int) ((progress * 100) / stickerPack.getStickers().size()));
 
 
             } catch (Exception e) {
@@ -886,25 +904,28 @@ public class StickerDetailsActivity extends AppCompatActivity {
             }
             return null;
         }
+
         /**
          * Updating progress bar
-         * */
+         */
         protected void onProgressUpdate(String... progress) {
             progress_bar_pack.setProgress(Integer.parseInt(progress[0]));
         }
+
         /**
          * After completing background task
          * Dismiss the progress dialog
-         * **/
+         **/
         @Override
         protected void onPostExecute(String file_url) {
-            if (progress==stickerPack.getStickers().size()+1){
+            if (progress == stickerPack.getStickers().size() + 1) {
                 linear_layout_add_to_whatsapp.setVisibility(View.VISIBLE);
                 linear_layout_progress.setVisibility(View.GONE);
                 Addtowhatsapp();
             }
         }
     }
+
     @SuppressLint("StaticFieldLeak")
     class DownloadTryImageFileFromURL extends AsyncTask<String, String, String> {
 
@@ -912,7 +933,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
         /**
          * Before starting background thread
          * Show Progress Bar Dialog
-         * */
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -921,7 +942,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
         /**
          * Downloading file in background thread
-         * */
+         */
         @Override
         protected String doInBackground(String... f_url) {
 
@@ -934,58 +955,59 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
                 InputStream input_try = new BufferedInputStream(urltry.openStream(), 8192);
 
-                Bitmap resource_try =  BitmapFactory.decodeStream(input_try);
+                Bitmap resource_try = BitmapFactory.decodeStream(input_try);
                 int width_try = 96; // - Dimension in pixels
-                int height_try= 96;  // - Dimension in pixels
-                Bitmap bitmap_try =  Bitmap.createScaledBitmap(resource_try, width_try, height_try, false);
-                SaveTryImage(bitmap_try,stickerPack.trayImageFile,stickerPack.identifier);
+                int height_try = 96;  // - Dimension in pixels
+                Bitmap bitmap_try = Bitmap.createScaledBitmap(resource_try, width_try, height_try, false);
+                SaveTryImage(bitmap_try, stickerPack.trayImageFile, stickerPack.identifier);
                 System.out.println("Try Image has been downloaded");
                 progress++;
-                publishProgress(""+(int)((progress*100)/stickerPack.getStickers().size()));
+                publishProgress("" + (int) ((progress * 100) / stickerPack.getStickers().size()));
 
             } catch (Exception e) {
 
             }
             return null;
         }
+
         /**
          * Updating progress bar
-         * */
+         */
         protected void onProgressUpdate(String... progress) {
             progress_bar_pack.setProgress(Integer.parseInt(progress[0]));
         }
+
         /**
          * After completing background task
          * Dismiss the progress dialog
-         * **/
+         **/
         @Override
         protected void onPostExecute(String file_url) {
 
 
-
-            ArrayList<StickerPack> stickerPacks =  Hawk.get("whatsapp_sticker_packs",new ArrayList<StickerPack>());
-            if(stickerPacks==null){
+            ArrayList<StickerPack> stickerPacks = Hawk.get("whatsapp_sticker_packs", new ArrayList<StickerPack>());
+            if (stickerPacks == null) {
                 stickerPacks = new ArrayList<>();
-            }else {
+            } else {
 
             }
             for (int i = 0; i < stickerPacks.size(); i++) {
-                if (stickerPacks.get(i).identifier.equals(stickerPack.identifier)){
+                if (stickerPacks.get(i).identifier.equals(stickerPack.identifier)) {
                     stickerPacks.remove(i);
-                    Log.e("PACKSTICKER","DELETED");
+                    Log.e("PACKSTICKER", "DELETED");
                     i--;
                 }
             }
             stickerPacks.add(stickerPack);
             Hawk.put("whatsapp_sticker_packs", stickerPacks);
             for (int i = 0; i < stickerPacks.size(); i++) {
-                Log.e("PACKSTICKER",stickerPacks.get(i).identifier + " / " + stickerPacks.get(i).name);
+                Log.e("PACKSTICKER", stickerPacks.get(i).identifier + " / " + stickerPacks.get(i).name);
             }
             for (int i = 0; i < stickerPack.getStickers().size(); i++) {
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-                    new DownloadOneStickerFileFromURL().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,i+"");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+                    new DownloadOneStickerFileFromURL().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, i + "");
                 else
-                    new DownloadOneStickerFileFromURL().execute(i+"");
+                    new DownloadOneStickerFileFromURL().execute(i + "");
             }
         }
     }
@@ -996,22 +1018,22 @@ public class StickerDetailsActivity extends AppCompatActivity {
         mRewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
             @Override
             public void onRewardedVideoAdLoaded() {
-                if (autoDisplay){
+                if (autoDisplay) {
                     autoDisplay = false;
                     mRewardedVideoAd.show();
                 }
-                Log.d("Rewarded","onRewardedVideoAdLoaded ");
+                Log.d("Rewarded", "onRewardedVideoAdLoaded ");
 
             }
 
             @Override
             public void onRewardedVideoAdOpened() {
-                Log.d("Rewarded","onRewardedVideoAdOpened ");
+                Log.d("Rewarded", "onRewardedVideoAdOpened ");
             }
 
             @Override
             public void onRewardedVideoStarted() {
-                Log.d("Rewarded","onRewardedVideoStarted ");
+                Log.d("Rewarded", "onRewardedVideoStarted ");
 
             }
 
@@ -1024,64 +1046,65 @@ public class StickerDetailsActivity extends AppCompatActivity {
                 if (hasRewarded)
                     NewAddPack();
                 loadRewardedVideoAd();
-                Log.d("Rewarded","onRewardedVideoAdClosed ");
+                Log.d("Rewarded", "onRewardedVideoAdClosed ");
             }
 
             @Override
             public void onRewarded(RewardItem rewardItem) {
-                stickerPack.premium =  "false";
+                stickerPack.premium = "false";
                 dialog.dismiss();
                 hasRewarded = true;
-                Log.d("Rewarded","onRewarded ");
+                Log.d("Rewarded", "onRewarded ");
 
             }
 
             @Override
             public void onRewardedVideoAdLeftApplication() {
-                Log.d("Rewarded","onRewardedVideoAdLeftApplication ");
+                Log.d("Rewarded", "onRewardedVideoAdLeftApplication ");
 
             }
 
             @Override
             public void onRewardedVideoAdFailedToLoad(int i) {
-                Log.d("Rewarded","onRewardedVideoAdFailedToLoad "+ i);
+                Log.d("Rewarded", "onRewardedVideoAdFailedToLoad " + i);
             }
         });
 
     }
+
     public void loadRewardedVideoAd() {
-        PrefManager     prefManager= new PrefManager(getApplicationContext());
+        PrefManager prefManager = new PrefManager(getApplicationContext());
         mRewardedVideoAd.loadAd(prefManager.getString("ADMIN_REWARDED_ADMOB_ID"),
                 new AdRequest.Builder().build());
     }
 
-    public void showDialog(){
-        this.dialog = new Dialog(this,R.style.Theme_Dialog);
+    public void showDialog() {
+        this.dialog = new Dialog(this, R.style.Theme_Dialog);
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Window window = dialog.getWindow();
         WindowManager.LayoutParams wlp = window.getAttributes();
-        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         wlp.gravity = Gravity.BOTTOM;
         wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         window.setAttributes(wlp);
-        final   PrefManager prf= new PrefManager(getApplicationContext());
+        final PrefManager prf = new PrefManager(getApplicationContext());
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_subscribe);
 
-        final TextView text_view_watch_ads=(TextView) dialog.findViewById(R.id.text_view_watch_ads);
+        final TextView text_view_watch_ads = (TextView) dialog.findViewById(R.id.text_view_watch_ads);
         text_view_watch_ads.setText("WATCH AD TO DOWNLOAD");
 
-        RelativeLayout relative_layout_watch_ads=(RelativeLayout) dialog.findViewById(R.id.relative_layout_watch_ads);
+        RelativeLayout relative_layout_watch_ads = (RelativeLayout) dialog.findViewById(R.id.relative_layout_watch_ads);
         relative_layout_watch_ads.setVisibility(View.VISIBLE);
         relative_layout_watch_ads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mRewardedVideoAd.isLoaded()){
+                if (mRewardedVideoAd.isLoaded()) {
                     mRewardedVideoAd.show();
-                }else if (admobInterstitialAd.isLoaded()){
+                } else if (admobInterstitialAd.isLoaded()) {
                     AdManager.ADMOB_INTERSTITIAL_COUNT_CLICKS = 0;
                     admobInterstitialAd.setAdListener(new AdListener() {
                         @Override
@@ -1093,16 +1116,15 @@ public class StickerDetailsActivity extends AppCompatActivity {
                         }
                     });
                     admobInterstitialAd.show();
-                }
-                else {
-                    autoDisplay =  true;
+                } else {
+                    autoDisplay = true;
                     loadRewardedVideoAd();
                     text_view_watch_ads.setText("SHOW LOADING.");
                 }
             }
         });
 
-        TextView text_view_go_pro=(TextView) dialog.findViewById(R.id.text_view_go_pro);
+        TextView text_view_go_pro = (TextView) dialog.findViewById(R.id.text_view_go_pro);
         text_view_go_pro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1123,7 +1145,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
             }
         });
         dialog.show();
-        DialogOpened=true;
+        DialogOpened = true;
 
     }
 
@@ -1131,21 +1153,28 @@ public class StickerDetailsActivity extends AppCompatActivity {
     public void onResume() {
         mRewardedVideoAd.resume(this);
         super.onResume();
+        whiteListCheckAsyncTask = new WhiteListCheckAsyncTask(this);
+        whiteListCheckAsyncTask.execute(stickerPack);
     }
 
     @Override
     public void onPause() {
         mRewardedVideoAd.pause(this);
         super.onPause();
+        if (whiteListCheckAsyncTask != null && !whiteListCheckAsyncTask.isCancelled()) {
+            whiteListCheckAsyncTask.cancel(true);
+        }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unbindService(mServiceConn);
         mRewardedVideoAd.destroy(this);
     }
-    public boolean checkSUBSCRIBED(){
-        PrefManager prefManager= new PrefManager(getApplicationContext());
+
+    public boolean checkSUBSCRIBED() {
+        PrefManager prefManager = new PrefManager(getApplicationContext());
         if (!prefManager.getString("SUBSCRIBED").equals("TRUE")) {
             return false;
         }
@@ -1153,23 +1182,24 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
 
     public void showAdsBanner() {
-            if (!checkSUBSCRIBED()) {
-                PrefManager prefManager= new PrefManager(getApplicationContext());
-                if (prefManager.getString("ADMIN_BANNER_TYPE").equals("ADMOB")){
+        if (!checkSUBSCRIBED()) {
+            PrefManager prefManager = new PrefManager(getApplicationContext());
+            if (prefManager.getString("ADMIN_BANNER_TYPE").equals("ADMOB")) {
+                showAdmobBanner();
+            }
+            if (prefManager.getString("ADMIN_BANNER_TYPE").equals("BOTH")) {
+                if (prefManager.getString("Banner_Ads_display").equals("FACEBOOK")) {
+                    prefManager.setString("Banner_Ads_display", "ADMOB");
                     showAdmobBanner();
                 }
-                if (prefManager.getString("ADMIN_BANNER_TYPE").equals("BOTH")) {
-                    if (prefManager.getString("Banner_Ads_display").equals("FACEBOOK")) {
-                        prefManager.setString("Banner_Ads_display", "ADMOB");
-                        showAdmobBanner();
-                    }
-                }
             }
+        }
 
     }
-    public void showAdmobBanner(){
-        PrefManager prefManager= new PrefManager(getApplicationContext());
-        LinearLayout linear_layout_ads =  (LinearLayout) findViewById(R.id.linear_layout_ads);
+
+    public void showAdmobBanner() {
+        PrefManager prefManager = new PrefManager(getApplicationContext());
+        LinearLayout linear_layout_ads = (LinearLayout) findViewById(R.id.linear_layout_ads);
         final AdView mAdView = new AdView(this);
         mAdView.setAdSize(AdSize.SMART_BANNER);
         mAdView.setAdUnitId(prefManager.getString("ADMIN_BANNER_ADMOB_ID"));
@@ -1188,63 +1218,66 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
-        if (fromLoad){
-            Intent intent =  new Intent(getApplicationContext(),HomeActivity.class);
+    public void onBackPressed() {
+        if (fromLoad) {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_enter, R.anim.slide_exit);
-        }else{
+        } else {
             super.onBackPressed();
             overridePendingTransition(R.anim.slide_enter, R.anim.slide_exit);
         }
         return;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                if (fromLoad){
-                    Intent intent =  new Intent(getApplicationContext(),HomeActivity.class);
+                if (fromLoad) {
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_enter, R.anim.slide_exit);
-                }else{
+                } else {
                     super.onBackPressed();
                     overridePendingTransition(R.anim.slide_enter, R.anim.slide_exit);
                 }
                 return true;
             case R.id.action_infos:
-                Intent intent = new Intent(getApplicationContext(),InfosActivity.class);
-                intent.putExtra("name",packApi.getName());
-                intent.putExtra("publisher",packApi.getPublisher());
-                intent.putExtra("publisherEmail",packApi.getPublisherEmail());
-                intent.putExtra("publisherWebsite",packApi.getPublisherWebsite());
-                intent.putExtra("privacyPolicyWebsite",packApi.getPrivacyPolicyWebsite());
-                intent.putExtra("licenseAgreementWebsite",packApi.getLicenseAgreementWebsite());
+                Intent intent = new Intent(getApplicationContext(), InfosActivity.class);
+                intent.putExtra("name", packApi.getName());
+                intent.putExtra("publisher", packApi.getPublisher());
+                intent.putExtra("publisherEmail", packApi.getPublisherEmail());
+                intent.putExtra("publisherWebsite", packApi.getPublisherWebsite());
+                intent.putExtra("privacyPolicyWebsite", packApi.getPrivacyPolicyWebsite());
+                intent.putExtra("licenseAgreementWebsite", packApi.getLicenseAgreementWebsite());
                 startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public  Bitmap scaleBitmap(Bitmap bitmapGived, int wantedWidth, int wantedHeight) {
-        if (bitmapGived.getHeight()>bitmapGived.getWidth()){
-            return scaleBitmapH(bitmapGived,wantedWidth,wantedHeight);
-        }else{
-            return scaleBitmapW(bitmapGived,wantedWidth,wantedHeight);
+    public Bitmap scaleBitmap(Bitmap bitmapGived, int wantedWidth, int wantedHeight) {
+        if (bitmapGived.getHeight() > bitmapGived.getWidth()) {
+            return scaleBitmapH(bitmapGived, wantedWidth, wantedHeight);
+        } else {
+            return scaleBitmapW(bitmapGived, wantedWidth, wantedHeight);
 
         }
     }
-    public  Bitmap scaleBitmapH(Bitmap bitmapGived, int wantedWidth, int wantedHeight) {
-        Bitmap resultBitmap= Bitmap.createBitmap(bitmapGived.getHeight(), bitmapGived.getHeight(), Bitmap.Config.ARGB_8888);
+
+    public Bitmap scaleBitmapH(Bitmap bitmapGived, int wantedWidth, int wantedHeight) {
+        Bitmap resultBitmap = Bitmap.createBitmap(bitmapGived.getHeight(), bitmapGived.getHeight(), Bitmap.Config.ARGB_8888);
 
         Canvas c = new Canvas(resultBitmap);
 
         Rect sourceRect = new Rect(0, 0, bitmapGived.getWidth(), bitmapGived.getHeight());
-        Rect destinationRect = new Rect((resultBitmap.getWidth() - bitmapGived.getWidth())/2, (resultBitmap.getHeight() - bitmapGived.getHeight())/2, (resultBitmap.getWidth() + bitmapGived.getWidth())/2, bitmapGived.getHeight());
+        Rect destinationRect = new Rect((resultBitmap.getWidth() - bitmapGived.getWidth()) / 2, (resultBitmap.getHeight() - bitmapGived.getHeight()) / 2, (resultBitmap.getWidth() + bitmapGived.getWidth()) / 2, bitmapGived.getHeight());
         c.drawBitmap(bitmapGived, sourceRect, destinationRect, null);
-        return getFinalBitmap(resultBitmap,512,512);
+        return getFinalBitmap(resultBitmap, 512, 512);
     }
+
     public Bitmap getFinalBitmap(Bitmap bitmapGived, int wantedWidth, int wantedHeight) {
         Bitmap output = Bitmap.createBitmap(wantedWidth, wantedHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
@@ -1256,7 +1289,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
 
     public Bitmap scaleBitmapW(Bitmap originalImage, int width, int height) {
-        Bitmap background = Bitmap.createBitmap((int)width, (int)height, Bitmap.Config.ARGB_8888);
+        Bitmap background = Bitmap.createBitmap((int) width, (int) height, Bitmap.Config.ARGB_8888);
 
         float originalWidth = originalImage.getWidth();
         float originalHeight = originalImage.getHeight();
@@ -1278,5 +1311,46 @@ public class StickerDetailsActivity extends AppCompatActivity {
         canvas.drawBitmap(originalImage, transformation, paint);
 
         return background;
+    }
+
+    static class WhiteListCheckAsyncTask extends AsyncTask<StickerPack, Void, Boolean> {
+        private final WeakReference<StickerDetailsActivity> stickerPackDetailsActivityWeakReference;
+
+        WhiteListCheckAsyncTask(StickerDetailsActivity stickerPackListActivity) {
+            this.stickerPackDetailsActivityWeakReference = new WeakReference<>(stickerPackListActivity);
+        }
+
+        @Override
+        protected final Boolean doInBackground(StickerPack... stickerPacks) {
+            StickerPack stickerPack = stickerPacks[0];
+            final StickerDetailsActivity stickerPackDetailsActivity = stickerPackDetailsActivityWeakReference.get();
+            if (stickerPackDetailsActivity == null) {
+                return false;
+            }
+            return WhitelistCheck.isWhitelisted(stickerPackDetailsActivity, stickerPack.identifier);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean isWhitelisted) {
+            final StickerDetailsActivity stickerPackDetailsActivity = stickerPackDetailsActivityWeakReference.get();
+            if (stickerPackDetailsActivity != null) {
+                stickerPackDetailsActivity.updateAddUI(isWhitelisted);
+            }
+        }
+    }
+
+    private void updateAddUI(Boolean isWhitelisted) {
+        LinearLayout llAddtowa = findViewById(R.id.llAddtowa);
+        TextView tvAddToWa = findViewById(R.id.tvAddToWa);
+
+        if (isWhitelisted) {
+            linear_layout_add_to_whatsapp.setClickable(false);
+            llAddtowa.setBackgroundResource(R.color.gray_color);
+            tvAddToWa.setText("Has Been Added");
+        } else {
+            linear_layout_add_to_whatsapp.setClickable(true);
+            llAddtowa.setBackgroundResource(R.drawable.background_size);
+            tvAddToWa.setText("ADD TO WHATSAPP");
+        }
     }
 }

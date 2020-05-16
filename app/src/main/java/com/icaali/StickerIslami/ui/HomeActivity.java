@@ -59,6 +59,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -102,6 +103,7 @@ public class HomeActivity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView text_view_name_nave_header;
     private CircularImageView circle_image_view_profile_nav_header;
+    private InterstitialAd admobInterstitialAd;
 
     // Lists
     private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -111,17 +113,16 @@ public class HomeActivity extends AppCompatActivity
     private FollowFragment followFragment;
 
     //variables
-    private  Boolean FromLogin = false;
+    private Boolean FromLogin = false;
 
 
     IInAppBillingService mService;
 
 
-
     private static final String LOG_TAG = "iabv3";
     // put your Google merchant id here (as stated in public profile of your Payments Merchant Center)
     // if filled library will provide protection against Freedom alike Play Market simulators
-    private static final String MERCHANT_ID=null;
+    private static final String MERCHANT_ID = null;
 
     private BillingProcessor bp;
     private boolean readyToPurchase = false;
@@ -141,6 +142,7 @@ public class HomeActivity extends AppCompatActivity
 
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,8 +150,14 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        AdManager.loadInterstitialAd();
-
+        admobInterstitialAd = AdManager.getInterstitialAd();
+        admobInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                Log.d("Interstial : ", "Success Load Interstial");
+            }
+        });
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -164,13 +172,13 @@ public class HomeActivity extends AppCompatActivity
         initBuy();
         firebaseSubscribe();
         initGDPR();
-        PrefManager prf= new PrefManager(getApplicationContext());
+        PrefManager prf = new PrefManager(getApplicationContext());
 
     }
 
-    public void showAdmobBanner(){
-        PrefManager prefManager= new PrefManager(getApplicationContext());
-        LinearLayout linear_layout_ads =  (LinearLayout) findViewById(R.id.linear_layout_ads);
+    public void showAdmobBanner() {
+        PrefManager prefManager = new PrefManager(getApplicationContext());
+        LinearLayout linear_layout_ads = (LinearLayout) findViewById(R.id.linear_layout_ads);
         final AdView mAdView = new AdView(this);
         mAdView.setAdSize(AdSize.BANNER);
         mAdView.setAdUnitId(prefManager.getString("ADMIN_BANNER_ADMOB_ID"));
@@ -196,19 +204,19 @@ public class HomeActivity extends AppCompatActivity
                     public void onComplete(@NonNull Task<Void> task) {
                         Retrofit retrofit = apiClient.getClient();
                         apiRest service = retrofit.create(apiRest.class);
-                        String unique_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),Settings.Secure.ANDROID_ID);
+                        String unique_id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
                         Call<ApiResponse> call = service.addDevice(unique_id);
                         call.enqueue(new Callback<ApiResponse>() {
                             @Override
                             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                                 if (response.isSuccessful())
-                                    Log.v("HomeActivity","Added : "+response.body().getMessage());
+                                    Log.v("HomeActivity", "Added : " + response.body().getMessage());
                             }
 
                             @Override
                             public void onFailure(Call<ApiResponse> call, Throwable t) {
-                                Log.v("HomeActivity","onFailure : "+ t.getMessage().toString());
+                                Log.v("HomeActivity", "onFailure : " + t.getMessage().toString());
                             }
                         });
                     }
@@ -216,6 +224,7 @@ public class HomeActivity extends AppCompatActivity
 
 
     }
+
     private void initBuy() {
         Intent serviceIntent =
                 new Intent("com.android.vending.billing.InAppBillingService.BIND");
@@ -226,50 +235,55 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onProductPurchased(@NonNull String productId, @Nullable TransactionDetails details) {
                 //  showToast("onProductPurchased: " + productId);
-                Intent intent= new Intent(HomeActivity.this,SplashActivity.class);
+                Intent intent = new Intent(HomeActivity.this, SplashActivity.class);
                 startActivity(intent);
                 finish();
                 updateTextViews();
             }
+
             @Override
             public void onBillingError(int errorCode, @Nullable Throwable error) {
                 // showToast("onBillingError: " + Integer.toString(errorCode));
             }
+
             @Override
             public void onBillingInitialized() {
                 //  showToast("onBillingInitialized");
                 readyToPurchase = true;
                 updateTextViews();
             }
+
             @Override
             public void onPurchaseHistoryRestored() {
                 // showToast("onPurchaseHistoryRestored");
-                for(String sku : bp.listOwnedProducts())
+                for (String sku : bp.listOwnedProducts())
                     Log.d(LOG_TAG, "Owned Managed Product: " + sku);
-                for(String sku : bp.listOwnedSubscriptions())
+                for (String sku : bp.listOwnedSubscriptions())
                     Log.d(LOG_TAG, "Owned Subscription: " + sku);
                 updateTextViews();
             }
         });
         bp.loadOwnedPurchasesFromGoogle();
     }
+
     private void updateTextViews() {
-        PrefManager prf= new PrefManager(getApplicationContext());
+        PrefManager prf = new PrefManager(getApplicationContext());
         bp.loadOwnedPurchasesFromGoogle();
 
     }
-    public Bundle getPurchases(){
+
+    public Bundle getPurchases() {
         if (!bp.isInitialized()) {
 
 
             //  Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
             return null;
         }
-        try{
+        try {
             // Toast.makeText(this, "good", Toast.LENGTH_SHORT).show();
 
-            return  mService.getPurchases(Constants.GOOGLE_API_VERSION, getApplicationContext().getPackageName(), Constants.PRODUCT_TYPE_SUBSCRIPTION, null);
-        }catch (Exception e) {
+            return mService.getPurchases(Constants.GOOGLE_API_VERSION, getApplicationContext().getPackageName(), Constants.PRODUCT_TYPE_SUBSCRIPTION, null);
+        } catch (Exception e) {
             //  Toast.makeText(this, "ex", Toast.LENGTH_SHORT).show();
 
             e.printStackTrace();
@@ -282,6 +296,7 @@ public class HomeActivity extends AppCompatActivity
         if (!bp.handleActivityResult(requestCode, resultCode, data))
             super.onActivityResult(requestCode, resultCode, data);
     }
+
     @Override
     public void onBackPressed() {
         if (searchView.isSearchOpen()) {
@@ -332,56 +347,55 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
-        } else if(id == R.id.login){
-            Intent intent= new Intent(HomeActivity.this, LoginActivity.class);
+        } else if (id == R.id.login) {
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
             startActivity(intent);
-            FromLogin=true;
+            FromLogin = true;
 
-        }else if (id == R.id.nav_help  ){
+        } else if (id == R.id.nav_help) {
             Intent intent = new Intent(getApplicationContext(), SupportActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
-        }
-        else if (id == R.id.nav_policy  ){
+        } else if (id == R.id.nav_policy) {
             Intent intent = new Intent(getApplicationContext(), PolicyActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.enter, R.anim.exit);
-        }else if (id == R.id.nav_share  ){
-            final String appPackageName=getApplication().getPackageName();
-            String shareBody = "Download "+getString(R.string.app_name)+" From :  "+"http://play.google.com/store/apps/details?id=" + appPackageName;
+        } else if (id == R.id.nav_share) {
+            final String appPackageName = getApplication().getPackageName();
+            String shareBody = "Download " + getString(R.string.app_name) + " From :  " + "http://play.google.com/store/apps/details?id=" + appPackageName;
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-            sharingIntent.putExtra(Intent.EXTRA_SUBJECT,  getString(R.string.app_name));
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
             startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.app_name)));
 
-        }else if(id == R.id.nav_rate){
+        } else if (id == R.id.nav_rate) {
             rateDialog(false);
-        }else if(id ==  R.id.nav_go_pro){
+        } else if (id == R.id.nav_go_pro) {
             showDialog();
-        }else if (id == R.id.nav_exit) {
+        } else if (id == R.id.nav_exit) {
             final PrefManager prf = new PrefManager(getApplicationContext());
             if (prf.getString("NOT_RATE_APP").equals("TRUE")) {
                 super.onBackPressed();
             } else {
                 rateDialog(true);
             }
-        }else if (id==R.id.my_profile){
-            PrefManager prf= new PrefManager(getApplicationContext());
-            if (prf.getString("LOGGED").equals("TRUE")){
-                Intent intent  =  new Intent(getApplicationContext(), UserActivity.class);
+        } else if (id == R.id.my_profile) {
+            PrefManager prf = new PrefManager(getApplicationContext());
+            if (prf.getString("LOGGED").equals("TRUE")) {
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
                 intent.putExtra("id", Integer.parseInt(prf.getString("ID_USER")));
-                intent.putExtra("image",prf.getString("IMAGE_USER"));
-                intent.putExtra("name",prf.getString("NAME_USER"));
+                intent.putExtra("image", prf.getString("IMAGE_USER"));
+                intent.putExtra("name", prf.getString("NAME_USER"));
                 startActivity(intent);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
-            }else{
-                Intent intent= new Intent(HomeActivity.this, LoginActivity.class);
+            } else {
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(intent);
-                FromLogin=true;
+                FromLogin = true;
             }
-        }else if (id==R.id.logout){
+        } else if (id == R.id.logout) {
             logout();
         }
 
@@ -473,9 +487,7 @@ public class HomeActivity extends AppCompatActivity
         );
 
 
-
-
-        PrefManager prf= new PrefManager(getApplicationContext());
+        PrefManager prf = new PrefManager(getApplicationContext());
         if (!prf.getString("SUBSCRIBED").equals("FALSE")) {
             navigationView.getMenu().findItem(R.id.nav_go_pro).setVisible(false);
         }
@@ -491,12 +503,13 @@ public class HomeActivity extends AppCompatActivity
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Intent intent  = new Intent(HomeActivity.this,SearchActivity.class);
-                intent.putExtra("query",query);
+                Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
+                intent.putExtra("query", query);
                 startActivity(intent);
 
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
@@ -531,15 +544,15 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-    public void showDialog(){
-        this.dialog = new Dialog(this,R.style.Theme_Dialog);
+    public void showDialog() {
+        this.dialog = new Dialog(this, R.style.Theme_Dialog);
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Window window = dialog.getWindow();
         WindowManager.LayoutParams wlp = window.getAttributes();
-        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         wlp.gravity = Gravity.BOTTOM;
         wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         window.setAttributes(wlp);
@@ -568,24 +581,25 @@ public class HomeActivity extends AppCompatActivity
         });
         dialog.show();
     }
+
     private Dialog rateDialog;
 
-    public void rateDialog(final boolean close){
-        this.rateDialog = new Dialog(this,R.style.Theme_Dialog);
+    public void rateDialog(final boolean close) {
+        this.rateDialog = new Dialog(this, R.style.Theme_Dialog);
 
         rateDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         rateDialog.setCancelable(true);
         rateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Window window = rateDialog.getWindow();
         WindowManager.LayoutParams wlp = window.getAttributes();
-        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         wlp.gravity = Gravity.BOTTOM;
         wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         window.setAttributes(wlp);
-        final   PrefManager prf= new PrefManager(getApplicationContext());
+        final PrefManager prf = new PrefManager(getApplicationContext());
         rateDialog.setCancelable(false);
         rateDialog.setContentView(R.layout.dialog_rating_app);
-        final AppCompatRatingBar AppCompatRatingBar_dialog_rating_app=(AppCompatRatingBar) rateDialog.findViewById(R.id.AppCompatRatingBar_dialog_rating_app);
+        final AppCompatRatingBar AppCompatRatingBar_dialog_rating_app = (AppCompatRatingBar) rateDialog.findViewById(R.id.AppCompatRatingBar_dialog_rating_app);
         final LinearLayout linear_layout_feedback = rateDialog.findViewById(R.id.linear_layout_feedback);
         final LinearLayout linear_layout_rate = rateDialog.findViewById(R.id.linear_layout_rate);
         final Button buttun_send_feedback = rateDialog.findViewById(R.id.buttun_send_feedback);
@@ -623,13 +637,13 @@ public class HomeActivity extends AppCompatActivity
                 prf.setString("NOT_RATE_APP", "TRUE");
                 Retrofit retrofit = apiClient.getClient();
                 apiRest service = retrofit.create(apiRest.class);
-                Call<ApiResponse> call = service.addSupport("Application rating feedback",AppCompatRatingBar_dialog_rating_app.getRating()+" star(s) Rating".toString(),edit_text_feed_back.getText().toString());
+                Call<ApiResponse> call = service.addSupport("Application rating feedback", AppCompatRatingBar_dialog_rating_app.getRating() + " star(s) Rating".toString(), edit_text_feed_back.getText().toString());
                 call.enqueue(new Callback<ApiResponse>() {
                     @Override
                     public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                        if(response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             Toasty.success(getApplicationContext(), getResources().getString(R.string.message_sended), Toast.LENGTH_SHORT).show();
-                        }else{
+                        } else {
                             Toasty.error(getApplicationContext(), getString(R.string.error_server), Toast.LENGTH_SHORT).show();
                         }
                         rateDialog.dismiss();
@@ -638,6 +652,7 @@ public class HomeActivity extends AppCompatActivity
                             finish();
 
                     }
+
                     @Override
                     public void onFailure(Call<ApiResponse> call, Throwable t) {
                         Toasty.error(getApplicationContext(), getString(R.string.error_server), Toast.LENGTH_SHORT).show();
@@ -652,8 +667,8 @@ public class HomeActivity extends AppCompatActivity
         AppCompatRatingBar_dialog_rating_app.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if (fromUser){
-                    if (rating>3){
+                if (fromUser) {
+                    if (rating > 3) {
                         final String appPackageName = getApplication().getPackageName();
                         try {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
@@ -662,7 +677,7 @@ public class HomeActivity extends AppCompatActivity
                         }
                         prf.setString("NOT_RATE_APP", "TRUE");
                         rateDialog.dismiss();
-                    }else{
+                    } else {
                         linear_layout_feedback.setVisibility(View.VISIBLE);
                         linear_layout_rate.setVisibility(View.GONE);
                     }
@@ -689,7 +704,7 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
-    public void loadCategories(){
+    public void loadCategories() {
         Retrofit retrofit = apiClient.getClient();
         apiRest service = retrofit.create(apiRest.class);
         Call<List<CategoryApi>> call = service.AllCategories();
@@ -697,40 +712,43 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onResponse(Call<List<CategoryApi>> call, Response<List<CategoryApi>> response) {
             }
+
             @Override
             public void onFailure(Call<List<CategoryApi>> call, Throwable t) {
             }
         });
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         loadCategories();
-        PrefManager prf= new PrefManager(getApplicationContext());
+        PrefManager prf = new PrefManager(getApplicationContext());
         Menu nav_Menu = navigationView.getMenu();
 
-        if (prf.getString("LOGGED").equals("TRUE")){
+        if (prf.getString("LOGGED").equals("TRUE")) {
             nav_Menu.findItem(R.id.my_profile).setVisible(true);
             nav_Menu.findItem(R.id.logout).setVisible(true);
             nav_Menu.findItem(R.id.login).setVisible(false);
             text_view_name_nave_header.setText(prf.getString("NAME_USER"));
-            Picasso.with(getApplicationContext()).load(prf.getString("IMAGE_USER")).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
-        }else{
+            Picasso.with(getApplicationContext()).load(prf.getString("IMAGE_USER")).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200, 200).centerCrop().into(circle_image_view_profile_nav_header);
+        } else {
             nav_Menu.findItem(R.id.my_profile).setVisible(false);
             nav_Menu.findItem(R.id.logout).setVisible(false);
             nav_Menu.findItem(R.id.login).setVisible(true);
             text_view_name_nave_header.setText(getResources().getString(R.string.please_login));
-            Picasso.with(getApplicationContext()).load(R.drawable.profile).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
+            Picasso.with(getApplicationContext()).load(R.drawable.profile).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200, 200).centerCrop().into(circle_image_view_profile_nav_header);
         }
-        if (FromLogin){
+        if (FromLogin) {
             followFragment.Resume();
             FromLogin = false;
         }
     }
-    public void logout(){
+
+    public void logout() {
         loadCategories();
-        PrefManager prf= new PrefManager(getApplicationContext());
+        PrefManager prf = new PrefManager(getApplicationContext());
         prf.remove("ID_USER");
         prf.remove("SALT_USER");
         prf.remove("TOKEN_USER");
@@ -739,27 +757,29 @@ public class HomeActivity extends AppCompatActivity
         prf.remove("USERN_USER");
         prf.remove("IMAGE_USER");
         prf.remove("LOGGED");
-        if (prf.getString("LOGGED").equals("TRUE")){
+        if (prf.getString("LOGGED").equals("TRUE")) {
             text_view_name_nave_header.setText(prf.getString("NAME_USER"));
-            Picasso.with(getApplicationContext()).load(prf.getString("IMAGE_USER")).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
-        }else{
+            Picasso.with(getApplicationContext()).load(prf.getString("IMAGE_USER")).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200, 200).centerCrop().into(circle_image_view_profile_nav_header);
+        } else {
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.my_profile).setVisible(false);
             nav_Menu.findItem(R.id.logout).setVisible(false);
             nav_Menu.findItem(R.id.login).setVisible(true);
             text_view_name_nave_header.setText(getResources().getString(R.string.please_login));
-            Picasso.with(getApplicationContext()).load(R.drawable.profile).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
+            Picasso.with(getApplicationContext()).load(R.drawable.profile).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200, 200).centerCrop().into(circle_image_view_profile_nav_header);
         }
 
         followFragment.Resume();
 
-        Toast.makeText(getApplicationContext(),getString(R.string.message_logout),Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.message_logout), Toast.LENGTH_LONG).show();
     }
-    public void setFromLogin(){
+
+    public void setFromLogin() {
         this.FromLogin = true;
     }
+
     private void initGDPR() {
-        PrefManager prefManager= new PrefManager(getApplicationContext());
+        PrefManager prefManager = new PrefManager(getApplicationContext());
 
         if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             return;
@@ -775,29 +795,29 @@ public class HomeActivity extends AppCompatActivity
                     @Override
                     public void onConsentInfoUpdated(ConsentStatus consentStatus) {
 // User's consent status successfully updated.
-                        Log.d(TAG,"onConsentInfoUpdated");
-                        switch (consentStatus){
+                        Log.d(TAG, "onConsentInfoUpdated");
+                        switch (consentStatus) {
                             case PERSONALIZED:
-                                Log.d(TAG,"PERSONALIZED");
+                                Log.d(TAG, "PERSONALIZED");
                                 ConsentInformation.getInstance(HomeActivity.this)
                                         .setConsentStatus(ConsentStatus.PERSONALIZED);
                                 break;
                             case NON_PERSONALIZED:
-                                Log.d(TAG,"NON_PERSONALIZED");
+                                Log.d(TAG, "NON_PERSONALIZED");
                                 ConsentInformation.getInstance(HomeActivity.this)
                                         .setConsentStatus(ConsentStatus.NON_PERSONALIZED);
                                 break;
 
 
                             case UNKNOWN:
-                                Log.d(TAG,"UNKNOWN");
+                                Log.d(TAG, "UNKNOWN");
                                 if
-                                        (ConsentInformation.getInstance(HomeActivity.this).isRequestLocationInEeaOrUnknown
-                                        ()){
+                                (ConsentInformation.getInstance(HomeActivity.this).isRequestLocationInEeaOrUnknown
+                                        ()) {
                                     URL privacyUrl = null;
                                     try {
 // TODO: Replace with your app's privacy policy URL.
-                                        privacyUrl = new URL(Config.API_URL.replace("/api/","/privacy_policy.html"));
+                                        privacyUrl = new URL(Config.API_URL.replace("/api/", "/privacy_policy.html"));
 
                                     } catch (MalformedURLException e) {
                                         e.printStackTrace();
@@ -811,7 +831,7 @@ public class HomeActivity extends AppCompatActivity
 
                                                 public void onConsentFormLoaded() {
 // Consent form loaded successfully.
-                                                    Log.d(TAG,"onConsentFormLoaded");
+                                                    Log.d(TAG, "onConsentFormLoaded");
 
                                                     showform();
                                                 }
@@ -819,7 +839,7 @@ public class HomeActivity extends AppCompatActivity
                                                 @Override
                                                 public void onConsentFormOpened() {
 // Consent form was displayed.
-                                                    Log.d(TAG,"onConsentFormOpened");
+                                                    Log.d(TAG, "onConsentFormOpened");
 
                                                 }
 
@@ -829,7 +849,7 @@ public class HomeActivity extends AppCompatActivity
                                                         ConsentStatus consentStatus, Boolean
                                                         userPrefersAdFree) {
 // Consent form was closed.
-                                                    Log.d(TAG,"onConsentFormClosed");
+                                                    Log.d(TAG, "onConsentFormClosed");
 
                                                 }
 
@@ -839,8 +859,8 @@ public class HomeActivity extends AppCompatActivity
                                                                                        errorDescription) {
 // Consent form error.
 
-                                                    Log.d(TAG,"onConsentFormError");
-                                                    Log.d(TAG,errorDescription);
+                                                    Log.d(TAG, "onConsentFormError");
+                                                    Log.d(TAG, errorDescription);
                                                 }
                                             })
 
@@ -850,7 +870,7 @@ public class HomeActivity extends AppCompatActivity
                                             .build();
                                     form.load();
                                 } else {
-                                    Log.d(TAG,"PERSONALIZED else");
+                                    Log.d(TAG, "PERSONALIZED else");
                                     ConsentInformation.getInstance(HomeActivity.this)
                                             .setConsentStatus(ConsentStatus.PERSONALIZED);
                                 }
@@ -861,19 +881,22 @@ public class HomeActivity extends AppCompatActivity
                                 break;
                         }
                     }
+
                     @Override
                     public void onFailedToUpdateConsentInfo(String errorDescription) {
 // User's consent status failed to update.
-                        Log.d(TAG,"onFailedToUpdateConsentInfo");
-                        Log.d(TAG,errorDescription);
+                        Log.d(TAG, "onFailedToUpdateConsentInfo");
+                        Log.d(TAG, errorDescription);
                     }
                 });
     }
-    private static final String TAG ="MainActivity ----- : " ;
+
+    private static final String TAG = "MainActivity ----- : ";
     ConsentForm form;
-    private void showform(){
-        if (form!=null){
-            Log.d(TAG,"show ok");
+
+    private void showform() {
+        if (form != null) {
+            Log.d(TAG, "show ok");
             form.show();
         }
     }

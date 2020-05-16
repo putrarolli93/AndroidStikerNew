@@ -13,10 +13,11 @@
         android:layout_height="wrap_content"
         app:elevation="2dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,6 +36,7 @@
                         android:layout_height="?attr/actionBarSize"
                         android:background="@color/colorPrimary"
                         app:elevation="2dp"
+                        app:layout_scrollFlags="scroll|enterAlways"
                         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
                     <com.miguelcatalan.materialsearchview.MaterialSearchView
@@ -45,20 +47,17 @@
                 </FrameLayout>
 
             </LinearLayout>
+        </RelativeLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/linear_layout_ads"
-                android:background="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linear_layout_ads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:orientation="vertical">
 
         </LinearLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

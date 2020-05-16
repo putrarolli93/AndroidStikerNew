@@ -1,13 +1,5 @@
 package com.icaali.StickerIslami.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import es.dmoral.toasty.Toasty;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -20,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -38,14 +33,19 @@ import com.icaali.StickerIslami.R;
 import com.icaali.StickerIslami.api.apiClient;
 import com.icaali.StickerIslami.api.apiRest;
 import com.icaali.StickerIslami.entity.ApiResponse;
-import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 import com.icaali.StickerIslami.ui.views.OtpEditText;
+import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
+
 import java.util.concurrent.TimeUnit;
+
+import es.dmoral.toasty.Toasty;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener
 {
-
-
     private static final String TAG = "LoginActivity";
     private static final int RC_SIGN_IN = 9001;
 
@@ -54,19 +54,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private GoogleApiClient mGoogleApiClient;
 
     private ProgressDialog register_progress;
-    private TextView text_view_skip_login;
     private RelativeLayout relative_layout_google_login;
     private RelativeLayout relative_layout_phone_login;
     String VerificationCode = "";
-    private EditText editText;
     private CountryCodePicker countryCodePicker;
     private RelativeLayout relative_layout_confirm_phone_number;
-    private EditText edit_text_otp_1;
-    private EditText edit_text_otp_2;
-    private EditText edit_text_otp_3;
-    private EditText edit_text_otp_4;
-    private EditText edit_text_otp_5;
-    private EditText edit_text_otp_6;
     private OtpEditText otp_edit_text_login_activity;
     private RelativeLayout relative_layout_confirm_top_login_activity;
     private EditText edit_text_phone_number_login_acitivty;
@@ -86,13 +78,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         setContentView(R.layout.activity_login);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-
         prf= new PrefManager(getApplicationContext());
 
-        if (prf.getString("LOGGED").toString().equals("TRUE")){
+        if (prf.getString("LOGGED").equals("TRUE")){
             Intent intent= new Intent(LoginActivity.this,HomeActivity.class);
-            startActivity(intent);
-        }
+            startActivity(intent);}
+
         initView();
         initAction();
         GoogleSignIn();
@@ -102,21 +93,20 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     public void initView(){
 
 
-        this.edit_text_name_login_acitivty   =      (EditText)  findViewById(R.id.edit_text_name_login_acitivty);
-        this.edit_text_phone_number_login_acitivty   =      (EditText)  findViewById(R.id.edit_text_phone_number_login_acitivty);
-        this.otp_edit_text_login_activity   =      (OtpEditText)  findViewById(R.id.otp_edit_text_login_activity);
-        this.relative_layout_confirm_top_login_activity   =      (RelativeLayout)  findViewById(R.id.relative_layout_confirm_top_login_activity);
-        this.relative_layout_google_login   =      (RelativeLayout)  findViewById(R.id.relative_layout_google_login);
-        this.sign_in_button_google   =      (SignInButton)  findViewById(R.id.sign_in_button_google);
-        this.relative_layout_phone_login =      (RelativeLayout)   findViewById(R.id.relative_layout_phone_login);
-        this.relative_layout_confirm_phone_number =      (RelativeLayout)   findViewById(R.id.relative_layout_confirm_phone_number);
-        this.linear_layout_buttons_login_activity =      (LinearLayout)   findViewById(R.id.linear_layout_buttons_login_activity);
-        this.linear_layout_otp_confirm_login_activity =      (LinearLayout)   findViewById(R.id.linear_layout_otp_confirm_login_activity);
-        this.linear_layout_phone_input_login_activity =      (LinearLayout)   findViewById(R.id.linear_layout_phone_input_login_activity);
-        this.linear_layout_name_input_login_activity =      (LinearLayout)   findViewById(R.id.linear_layout_name_input_login_activity);
-        this.relative_layout_confirm_full_name =      (RelativeLayout)   findViewById(R.id.relative_layout_confirm_full_name);
-
-        this.countryCodePicker =      (CountryCodePicker)   findViewById(R.id.CountryCodePicker);
+        this.edit_text_name_login_acitivty = findViewById(R.id.edit_text_name_login_acitivty);
+        this.edit_text_phone_number_login_acitivty = findViewById(R.id.edit_text_phone_number_login_acitivty);
+        this.otp_edit_text_login_activity = findViewById(R.id.otp_edit_text_login_activity);
+        this.relative_layout_confirm_top_login_activity =  findViewById(R.id.relative_layout_confirm_top_login_activity);
+        this.relative_layout_google_login = findViewById(R.id.relative_layout_google_login);
+        this.sign_in_button_google = findViewById(R.id.sign_in_button_google);
+        this.relative_layout_phone_login = findViewById(R.id.relative_layout_phone_login);
+        this.relative_layout_confirm_phone_number = findViewById(R.id.relative_layout_confirm_phone_number);
+        this.linear_layout_buttons_login_activity = findViewById(R.id.linear_layout_buttons_login_activity);
+        this.linear_layout_otp_confirm_login_activity = findViewById(R.id.linear_layout_otp_confirm_login_activity);
+        this.linear_layout_phone_input_login_activity = findViewById(R.id.linear_layout_phone_input_login_activity);
+        this.linear_layout_name_input_login_activity = findViewById(R.id.linear_layout_name_input_login_activity);
+        this.relative_layout_confirm_full_name = findViewById(R.id.relative_layout_confirm_full_name);
+        this.countryCodePicker = findViewById(R.id.CountryCodePicker);
 
     }
     public void initAction(){
@@ -139,7 +129,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }else{
                 if (otp_edit_text_login_activity.getText().toString().trim().equals(VerificationCode.toString().trim())){
                     String photo = "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg" ;
-                    signUp(phoneNum,phoneNum,"null".toString(),"phone",photo);
+                    signUp(phoneNum,phoneNum,"null","phone",photo);
                 }else{
                     Toasty.error(this, "The verification code you have been entered incorrect !", Toast.LENGTH_SHORT).show();
                 }
@@ -232,7 +222,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 photo =  acct.getPhotoUrl().toString();
             }
 
-            signUp(acct.getId().toString(),acct.getId(), acct.getDisplayName().toString(),"google",photo);
+            signUp(acct.getEmail(), acct.getId(), acct.getDisplayName(),"google",photo);
             Auth.GoogleSignInApi.signOut(mGoogleApiClient);
         } else {
         }

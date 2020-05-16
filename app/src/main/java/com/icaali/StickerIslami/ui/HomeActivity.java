@@ -12,37 +12,13 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.widget.AppCompatRatingBar;
-
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.View;
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -52,6 +28,20 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatRatingBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.android.vending.billing.IInAppBillingService;
 import com.anjlab.android.iab.v3.BillingProcessor;
@@ -65,13 +55,20 @@ import com.google.ads.consent.ConsentFormListener;
 import com.google.ads.consent.ConsentInfoUpdateListener;
 import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.icaali.StickerIslami.Manager.AdManager;
 import com.icaali.StickerIslami.Manager.PrefManager;
 import com.icaali.StickerIslami.R;
-import com.icaali.StickerIslami.config.Config;
 import com.icaali.StickerIslami.api.apiClient;
 import com.icaali.StickerIslami.api.apiRest;
+import com.icaali.StickerIslami.config.Config;
 import com.icaali.StickerIslami.entity.ApiResponse;
 import com.icaali.StickerIslami.entity.CategoryApi;
 import com.icaali.StickerIslami.ui.fragmenet.CategoriesFragment;
@@ -79,11 +76,9 @@ import com.icaali.StickerIslami.ui.fragmenet.FavoritesFragment;
 import com.icaali.StickerIslami.ui.fragmenet.FollowFragment;
 import com.icaali.StickerIslami.ui.fragmenet.HomeFragment;
 import com.icaali.StickerIslami.ui.fragmenet.PopularFragment;
-import com.squareup.picasso.Picasso;
 import com.icaali.StickerIslami.ui.views.ScrollHandler;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -102,10 +97,8 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     //view
     private MaterialSearchView searchView;
-    private FloatingActionButton fab;
     private ViewPager viewPager;
     private Dialog dialog;
-    private TextView text_view_go_pro;
     private NavigationView navigationView;
     private TextView text_view_name_nave_header;
     private CircularImageView circle_image_view_profile_nav_header;
@@ -119,9 +112,6 @@ public class HomeActivity extends AppCompatActivity
 
     //variables
     private  Boolean FromLogin = false;
-    private  Boolean DialogOpened = false;
-
-
 
 
     IInAppBillingService mService;
@@ -158,14 +148,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        AdManager.loadInterstitialAd();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -239,11 +222,6 @@ public class HomeActivity extends AppCompatActivity
         serviceIntent.setPackage("com.android.vending");
         bindService(serviceIntent, mServiceConn, Context.BIND_AUTO_CREATE);
 
-
-        if(!BillingProcessor.isIabServiceAvailable(this)) {
-            //  showToast("In-app billing service is unavailable, please upgrade Android Market/Play to version >= 3.9.16");
-        }
-
         bp = new BillingProcessor(this, Config.LICENSE_KEY, MERCHANT_ID, new BillingProcessor.IBillingHandler() {
             @Override
             public void onProductPurchased(@NonNull String productId, @Nullable TransactionDetails details) {
@@ -298,75 +276,6 @@ public class HomeActivity extends AppCompatActivity
         }
         return null;
     }
-    public Boolean isSubscribe(String SUBSCRIPTION_ID_CHECK){
-
-        if (!bp.isSubscribed(Config.SUBSCRIPTION_ID))
-            return false;
-        Bundle b =  getPurchases();
-        if (b==null)
-            return  false;
-        if( b.getInt("RESPONSE_CODE") == 0){
-            // Toast.makeText(this, "RESPONSE_CODE", Toast.LENGTH_SHORT).show();
-            ArrayList<String> ownedSkus =
-                    b.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
-            ArrayList<String>  purchaseDataList =
-                    b.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
-            ArrayList<String>  signatureList =
-                    b.getStringArrayList("INAPP_DATA_SIGNATURE_LIST");
-            String continuationToken =
-                    b.getString("INAPP_CONTINUATION_TOKEN");
-
-            if(purchaseDataList == null){
-                // Toast.makeText(this, "purchaseDataList null", Toast.LENGTH_SHORT).show();
-                return  false;
-
-            }
-            if(purchaseDataList.size()==0){
-                //  Toast.makeText(this, "purchaseDataList empty", Toast.LENGTH_SHORT).show();
-                return  false;
-            }
-            for (int i = 0; i < purchaseDataList.size(); ++i) {
-                String purchaseData = purchaseDataList.get(i);
-                String signature = signatureList.get(i);
-                String sku_1 = ownedSkus.get(i);
-                //Long tsLong = System.currentTimeMillis()/1000;
-
-                try {
-                    JSONObject rowOne = new JSONObject(purchaseData);
-                    String  productId =  rowOne.getString("productId") ;
-                    // Toast.makeText(this,productId, Toast.LENGTH_SHORT).show();
-
-                    if (productId.equals(SUBSCRIPTION_ID_CHECK)){
-
-                        Boolean  autoRenewing =  rowOne.getBoolean("autoRenewing");
-                        if (autoRenewing){
-                            // Toast.makeText(this, "is autoRenewing ", Toast.LENGTH_SHORT).show();
-                            return  true;
-                        }else{
-                            //    Toast.makeText(this, "is not autoRenewing ", Toast.LENGTH_SHORT).show();
-                            Long tsLong = System.currentTimeMillis()/1000;
-                            Long  purchaseTime =  rowOne.getLong("purchaseTime")/1000;
-                            if (tsLong > (purchaseTime + (Config.SUBSCRIPTION_DURATION*86400)) ){
-                                //   Toast.makeText(this, "is Expired ", Toast.LENGTH_SHORT).show();
-                                return  false;
-                            }else{
-                                return  true;
-                            }
-                        }
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-
-        }else{
-            return false;
-        }
-
-        return  false;
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -378,7 +287,7 @@ public class HomeActivity extends AppCompatActivity
         if (searchView.isSearchOpen()) {
             searchView.closeSearch();
         } else {
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
             } else {
@@ -408,10 +317,8 @@ public class HomeActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        switch (id){
-            case R.id.action_go_pro:
-                showDialog();
-                break;
+        if (id == R.id.action_go_pro) {
+            showDialog();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -461,11 +368,11 @@ public class HomeActivity extends AppCompatActivity
             }
         }else if (id==R.id.my_profile){
             PrefManager prf= new PrefManager(getApplicationContext());
-            if (prf.getString("LOGGED").toString().equals("TRUE")){
+            if (prf.getString("LOGGED").equals("TRUE")){
                 Intent intent  =  new Intent(getApplicationContext(), UserActivity.class);
                 intent.putExtra("id", Integer.parseInt(prf.getString("ID_USER")));
-                intent.putExtra("image",prf.getString("IMAGE_USER").toString());
-                intent.putExtra("name",prf.getString("NAME_USER").toString());
+                intent.putExtra("image",prf.getString("IMAGE_USER"));
+                intent.putExtra("name",prf.getString("NAME_USER"));
                 startActivity(intent);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
                 overridePendingTransition(R.anim.enter, R.anim.exit);
@@ -479,17 +386,16 @@ public class HomeActivity extends AppCompatActivity
         }
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     private void initView() {
-        this.searchView = (MaterialSearchView) findViewById(R.id.search_view);
-        this.navigationView = (NavigationView) findViewById(R.id.nav_view);
+        this.searchView = findViewById(R.id.search_view);
+        this.navigationView = findViewById(R.id.nav_view);
 
-//        fab = (FloatingActionButton) findViewById(R.id.fab);
-        viewPager = (ViewPager) findViewById(R.id.vp_horizontal_ntb);
+        viewPager = findViewById(R.id.vp_horizontal_ntb);
         viewPager.setOffscreenPageLimit(100);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         this.followFragment = new FollowFragment();
@@ -530,8 +436,6 @@ public class HomeActivity extends AppCompatActivity
                 viewPager.setCurrentItem(position, true);
             }
         });
-
-        final String[] colors = getResources().getStringArray(R.array.default_preview);
 
         final ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
         models.add(
@@ -576,8 +480,8 @@ public class HomeActivity extends AppCompatActivity
             navigationView.getMenu().findItem(R.id.nav_go_pro).setVisible(false);
         }
         View headerview = navigationView.getHeaderView(0);
-        this.text_view_name_nave_header=(TextView) headerview.findViewById(R.id.text_view_name_nave_header);
-        this.circle_image_view_profile_nav_header=(CircularImageView) headerview.findViewById(R.id.circle_image_view_profile_nav_header);
+        this.text_view_name_nave_header = headerview.findViewById(R.id.text_view_name_nave_header);
+        this.circle_image_view_profile_nav_header = headerview.findViewById(R.id.circle_image_view_profile_nav_header);
 
     }
 
@@ -598,18 +502,12 @@ public class HomeActivity extends AppCompatActivity
                 return false;
             }
         });
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FromLogin=true;
-//                Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
-//                startActivity(intent);
-//                }
-//        });
     }
+
+
     class ViewPagerAdapter extends FragmentPagerAdapter {
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -623,7 +521,7 @@ public class HomeActivity extends AppCompatActivity
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment) {
+        void addFragment(Fragment fragment) {
             mFragmentList.add(fragment);
         }
 
@@ -632,6 +530,7 @@ public class HomeActivity extends AppCompatActivity
             return mFragmentTitleList.get(position);
         }
     }
+
     public void showDialog(){
         this.dialog = new Dialog(this,R.style.Theme_Dialog);
 
@@ -644,10 +543,10 @@ public class HomeActivity extends AppCompatActivity
         wlp.gravity = Gravity.BOTTOM;
         wlp.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         window.setAttributes(wlp);
-        final   PrefManager prf= new PrefManager(getApplicationContext());
+
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog_subscribe);
-        this.text_view_go_pro=(TextView) dialog.findViewById(R.id.text_view_go_pro);
+        TextView text_view_go_pro = dialog.findViewById(R.id.text_view_go_pro);
         text_view_go_pro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -668,8 +567,6 @@ public class HomeActivity extends AppCompatActivity
             }
         });
         dialog.show();
-        DialogOpened=true;
-
     }
     private Dialog rateDialog;
 
@@ -689,12 +586,12 @@ public class HomeActivity extends AppCompatActivity
         rateDialog.setCancelable(false);
         rateDialog.setContentView(R.layout.dialog_rating_app);
         final AppCompatRatingBar AppCompatRatingBar_dialog_rating_app=(AppCompatRatingBar) rateDialog.findViewById(R.id.AppCompatRatingBar_dialog_rating_app);
-        final LinearLayout linear_layout_feedback=(LinearLayout) rateDialog.findViewById(R.id.linear_layout_feedback);
-        final LinearLayout linear_layout_rate=(LinearLayout) rateDialog.findViewById(R.id.linear_layout_rate);
-        final Button buttun_send_feedback=(Button) rateDialog.findViewById(R.id.buttun_send_feedback);
-        final Button button_later=(Button) rateDialog.findViewById(R.id.button_later);
-        final Button button_never=(Button) rateDialog.findViewById(R.id.button_never);
-        final Button button_cancel=(Button) rateDialog.findViewById(R.id.button_cancel);
+        final LinearLayout linear_layout_feedback = rateDialog.findViewById(R.id.linear_layout_feedback);
+        final LinearLayout linear_layout_rate = rateDialog.findViewById(R.id.linear_layout_rate);
+        final Button buttun_send_feedback = rateDialog.findViewById(R.id.buttun_send_feedback);
+        final Button button_later = rateDialog.findViewById(R.id.button_later);
+        final Button button_never = rateDialog.findViewById(R.id.button_never);
+        final Button button_cancel = rateDialog.findViewById(R.id.button_cancel);
         button_never.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -719,7 +616,7 @@ public class HomeActivity extends AppCompatActivity
                     finish();
             }
         });
-        final EditText edit_text_feed_back=(EditText) rateDialog.findViewById(R.id.edit_text_feed_back);
+        final EditText edit_text_feed_back = rateDialog.findViewById(R.id.edit_text_feed_back);
         buttun_send_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -769,8 +666,6 @@ public class HomeActivity extends AppCompatActivity
                         linear_layout_feedback.setVisibility(View.VISIBLE);
                         linear_layout_rate.setVisibility(View.GONE);
                     }
-                }else{
-
                 }
             }
         });
@@ -801,13 +696,6 @@ public class HomeActivity extends AppCompatActivity
         call.enqueue(new Callback<List<CategoryApi>>() {
             @Override
             public void onResponse(Call<List<CategoryApi>> call, Response<List<CategoryApi>> response) {
-                if(response.isSuccessful()){
-                    if (response.body().size()!=0){
-
-
-                    }
-                }
-
             }
             @Override
             public void onFailure(Call<List<CategoryApi>> call, Throwable t) {
@@ -822,15 +710,12 @@ public class HomeActivity extends AppCompatActivity
         PrefManager prf= new PrefManager(getApplicationContext());
         Menu nav_Menu = navigationView.getMenu();
 
-        if (prf.getString("LOGGED").toString().equals("TRUE")){
+        if (prf.getString("LOGGED").equals("TRUE")){
             nav_Menu.findItem(R.id.my_profile).setVisible(true);
             nav_Menu.findItem(R.id.logout).setVisible(true);
             nav_Menu.findItem(R.id.login).setVisible(false);
-            text_view_name_nave_header.setText(prf.getString("NAME_USER").toString());
-            Picasso.with(getApplicationContext()).load(prf.getString("IMAGE_USER").toString()).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
-            if (prf.getString("TYPE_USER").toString().equals("google")){
-            }else {
-            }
+            text_view_name_nave_header.setText(prf.getString("NAME_USER"));
+            Picasso.with(getApplicationContext()).load(prf.getString("IMAGE_USER")).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
         }else{
             nav_Menu.findItem(R.id.my_profile).setVisible(false);
             nav_Menu.findItem(R.id.logout).setVisible(false);
@@ -854,12 +739,9 @@ public class HomeActivity extends AppCompatActivity
         prf.remove("USERN_USER");
         prf.remove("IMAGE_USER");
         prf.remove("LOGGED");
-        if (prf.getString("LOGGED").toString().equals("TRUE")){
-            text_view_name_nave_header.setText(prf.getString("NAME_USER").toString());
-            Picasso.with(getApplicationContext()).load(prf.getString("IMAGE_USER").toString()).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
-            if (prf.getString("TYPE_USER").toString().equals("google")){
-            }else {
-            }
+        if (prf.getString("LOGGED").equals("TRUE")){
+            text_view_name_nave_header.setText(prf.getString("NAME_USER"));
+            Picasso.with(getApplicationContext()).load(prf.getString("IMAGE_USER")).placeholder(R.drawable.profile).error(R.drawable.profile).resize(200,200).centerCrop().into(circle_image_view_profile_nav_header);
         }else{
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.my_profile).setVisible(false);

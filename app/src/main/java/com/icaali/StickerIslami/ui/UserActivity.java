@@ -4,15 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,6 +13,15 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.icaali.StickerIslami.Manager.PrefManager;
@@ -32,8 +33,8 @@ import com.icaali.StickerIslami.entity.ApiResponse;
 import com.icaali.StickerIslami.entity.CategoryApi;
 import com.icaali.StickerIslami.entity.PackApi;
 import com.icaali.StickerIslami.entity.UserApi;
-import com.squareup.picasso.Picasso;
 import com.icaali.StickerIslami.ui.fragmenet.UserFragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,11 +140,11 @@ public class UserActivity extends AppCompatActivity {
             Picasso.with(getApplicationContext()).load(R.drawable.profile).error(R.drawable.profile).placeholder(R.drawable.profile).into(this.image_view_profile_user_activity);
         }
         PrefManager prf = new PrefManager(getApplicationContext());
-        if (prf.getString("LOGGED").toString().equals("TRUE")) {
-            Integer me = Integer.parseInt(prf.getString("ID_USER"));
+        if (prf.getString("LOGGED").equals("TRUE")) {
+            int me = Integer.parseInt(prf.getString("ID_USER"));
             if (id == me) {
                 button_follow_user_activity.setVisibility(View.GONE);
-                button_edit_user_activity.setVisibility(View.VISIBLE);
+                button_edit_user_activity.setVisibility(View.GONE);
             } else {
                 button_follow_user_activity.setVisibility(View.VISIBLE);
                 button_edit_user_activity.setVisibility(View.GONE);

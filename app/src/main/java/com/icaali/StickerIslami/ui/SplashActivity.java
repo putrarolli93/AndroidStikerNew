@@ -2,22 +2,18 @@ package com.icaali.StickerIslami.ui;
 
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.net.Uri;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.vending.billing.IInAppBillingService;
 import com.anjlab.android.iab.v3.BillingProcessor;
@@ -26,10 +22,11 @@ import com.anjlab.android.iab.v3.TransactionDetails;
 import com.icaali.StickerIslami.Manager.AdManager;
 import com.icaali.StickerIslami.Manager.PrefManager;
 import com.icaali.StickerIslami.R;
-import com.icaali.StickerIslami.config.Config;
 import com.icaali.StickerIslami.api.apiClient;
 import com.icaali.StickerIslami.api.apiRest;
+import com.icaali.StickerIslami.config.Config;
 import com.icaali.StickerIslami.entity.ApiResponse;
+import com.icaali.StickerIslami.entity.ApiValue;
 import com.icaali.StickerIslami.entity.CategoryApi;
 
 import org.json.JSONException;
@@ -104,25 +101,11 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 });
             }
-        }, 3000);
-        prf.setString("ADMIN_REWARDED_ADMOB_ID","");
-        prf.setString("ADMIN_NATIVE_BANNER_FACEBOOK_ID","");
-
-        prf.setString("ADMIN_INTERSTITIAL_ADMOB_ID","");
-        prf.setInt("ADMIN_INTERSTITIAL_CLICKS",3);
-
-        prf.setString("ADMIN_BANNER_ADMOB_ID","");
-        prf.setString("ADMIN_BANNER_FACEBOOK_ID","");
-        prf.setString("ADMIN_BANNER_TYPE","FALSE");
-
-        prf.setString("ADMIN_NATIVE_FACEBOOK_ID","");
-        prf.setString("ADMIN_NATIVE_ADMOB_ID","");
-        prf.setString("ADMIN_NATIVE_LINES","6");
-        prf.setString("ADMIN_NATIVE_TYPE","FALSE");
+        }, 1000);
     }
 
     private void checkUser() {
-        if (prf.getString("LOGGED").toString().equals("TRUE")){
+        if (prf.getString("LOGGED").equals("TRUE")){
             Integer user_id =  Integer.parseInt(prf.getString("ID_USER"));
             String user_key = prf.getString("TOKEN_USER");
             Retrofit retrofit = apiClient.getClient();
@@ -149,7 +132,6 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
     public void logout() {
-        PrefManager prf = new PrefManager(getApplicationContext());
         prf.remove("ID_USER");
         prf.remove("SALT_USER");
         prf.remove("TOKEN_USER");
@@ -159,7 +141,6 @@ public class SplashActivity extends AppCompatActivity {
         prf.remove("IMAGE_USER");
         prf.remove("LOGGED");
         Toasty.warning(getApplicationContext(),getString(R.string.message_logout),Toast.LENGTH_LONG).show();
-
     }
     private void checkAccount() {
 
@@ -182,52 +163,36 @@ public class SplashActivity extends AppCompatActivity {
                     if (response.isSuccessful()){
 
                         for (int i = 0; i < response.body().getValues().size(); i++) {
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_APP_ID") ){
-                                String admobAppId = response.body().getValues().get(i).getValue();
-                                if (response.body().getValues().get(i).getValue()!=null) {
-                                    prf.setString("ADMIN_APP_ID", admobAppId);
-                                    AdManager.ADMOB_APP_ID = admobAppId;
-                                }
+
+                            ApiValue data = response.body().getValues().get(i);
+                            
+                            if (data.getName().equals("ADMIN_APP_ID") ){
+                                AdManager.ADMOB_APP_ID = data.getValue();
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_PUBLISHER_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_PUBLISHER_ID",response.body().getValues().get(i).getValue());
+                            else if (data.getName().equals("ADMIN_PUBLISHER_ID") ){
+                                AdManager.PUBLISHER_ID = data.getValue();
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_REWARDED_ADMOB_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_REWARDED_ADMOB_ID",response.body().getValues().get(i).getValue());
+                            else if (data.getName().equals("ADMIN_REWARDED_ADMOB_ID") ){
+                                AdManager.ADMOB_REWARD_ID = data.getValue();
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_INTERSTITIAL_ADMOB_ID") ) {
-                                String admobInterstitialId = response.body().getValues().get(i).getValue();
-                                if (null != admobInterstitialId)
-                                    AdManager.ADMOB_INTERSTITIAL_ID = admobInterstitialId;
+                            else if (data.getName().equals("ADMIN_INTERSTITIAL_ADMOB_ID") ) {
+                                AdManager.ADMOB_INTERSTITIAL_ID = data.getValue();
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_INTERSTITIAL_CLICKS") ) {
-                                String admobInterstitialClick = response.body().getValues().get(i).getValue();
-                                if (null != admobInterstitialClick)
-                                    AdManager.ADMOB_INTERSTITIAL_SHOW_CLICKS = Integer.parseInt(admobInterstitialClick);
+                            else if (data.getName().equals("ADMIN_INTERSTITIAL_CLICKS") ) {
+                                AdManager.ADMOB_INTERSTITIAL_SHOW_CLICKS = Integer.parseInt(response.body().getValues().get(i).getValue());
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_BANNER_ADMOB_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_BANNER_ADMOB_ID",response.body().getValues().get(i).getValue());
+                            else if (data.getName().equals("ADMIN_BANNER_ADMOB_ID") ){
+                                AdManager.ADMOB_BANNER_ID = data.getValue();
                             }
 
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_BANNER_TYPE") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_BANNER_TYPE",response.body().getValues().get(i).getValue());
+                            else if (data.getName().equals("ADMIN_NATIVE_ADMOB_ID") ){
+                                AdManager.ADMOB_NATIVE_ID = data.getValue();
                             }
-
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_NATIVE_ADMOB_ID") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_NATIVE_ADMOB_ID",response.body().getValues().get(i).getValue());
+                            else if (data.getName().equals("ADMIN_NATIVE_LINES") ){
+                                AdManager.ADMOB_NATIVE_LINES = Integer.parseInt(response.body().getValues().get(i).getValue());
                             }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_NATIVE_LINES") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_NATIVE_LINES",response.body().getValues().get(i).getValue());
-                            }
-                            if ( response.body().getValues().get(i).getName().equals("ADMIN_NATIVE_TYPE") ){
-                                if (response.body().getValues().get(i).getValue()!=null)
-                                    prf.setString("ADMIN_NATIVE_TYPE",response.body().getValues().get(i).getValue());
+                            else if (data.getName().equals("ADMIN_NATIVE_TYPE") ){
+                                AdManager.ADMOB_NATIVE_ENABLED =data.getValue();
                             }
                         }
 
@@ -245,50 +210,6 @@ public class SplashActivity extends AppCompatActivity {
                                 finish();
                             }
                         }
-//                        else if (response.body().getCode().equals(202)) {
-//                            String title_update=response.body().getValues().get(0).getValue();
-//                            String featurs_update=response.body().getMessage();
-//                            View v = (View)  getLayoutInflater().inflate(R.layout.update_message,null);
-//                            TextView update_text_view_title=(TextView) v.findViewById(R.id.update_text_view_title);
-//                            TextView update_text_view_updates=(TextView) v.findViewById(R.id.update_text_view_updates);
-//                            update_text_view_title.setText(title_update);
-//                            update_text_view_updates.setText(featurs_update);
-//                            AlertDialog.Builder builder;
-//                            builder = new AlertDialog.Builder(SplashActivity.this);
-//                            builder.setTitle("New Update")
-//                                    //.setMessage(response.body().getValue())
-//                                    .setView(v)
-//                                    .setPositiveButton(getResources().getString(R.string.update_now), new DialogInterface.OnClickListener() {
-//                                        public void onClick(DialogInterface dialog, int which) {
-//                                            final String appPackageName=getApplication().getPackageName();
-//                                            try {
-//                                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-//                                            } catch (android.content.ActivityNotFoundException anfe) {
-//                                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
-//                                            }
-//                                            finish();
-//                                        }
-//                                    })
-//                                    .setNegativeButton(getResources().getString(R.string.skip), new DialogInterface.OnClickListener() {
-//                                        public void onClick(DialogInterface dialog, int which) {
-//                                            if (!prf.getString("first").equals("true")){
-//                                                Intent intent = new Intent(SplashActivity.this,SlideActivity.class);
-//                                                startActivity(intent);
-//                                                overridePendingTransition(R.anim.enter, R.anim.exit);
-//                                                finish();
-//                                                prf.setString("first","true");
-//                                            }else{
-//                                                Intent intent = new Intent(SplashActivity.this,HomeActivity.class);
-//                                                startActivity(intent);
-//                                                overridePendingTransition(R.anim.enter, R.anim.exit);
-//                                                finish();
-//                                            }
-//                                        }
-//                                    })
-//                                    .setCancelable(false)
-//                                    .setIcon(R.drawable.ic_update)
-//                                    .show();
-//                        }
                         else {
                             if (!prf.getString("first").equals("true")){
                                 Intent intent = new Intent(SplashActivity.this,HomeActivity.class);
@@ -340,7 +261,6 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-
     private void initBuy() {
         Intent serviceIntent =
                 new Intent("com.android.vending.billing.InAppBillingService.BIND");
@@ -383,7 +303,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void updateTextViews() {
-        PrefManager prf= new PrefManager(getApplicationContext());
         bp.loadOwnedPurchasesFromGoogle();
         if(isSubscribe(Config.SUBSCRIPTION_ID)){
             prf.setString("SUBSCRIBED","TRUE");

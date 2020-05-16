@@ -2,10 +2,6 @@ package com.icaali.StickerIslami.ui.fragmenet;
 
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.orhanobut.hawk.Hawk;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.icaali.StickerIslami.Manager.AdManager;
 import com.icaali.StickerIslami.Manager.PrefManager;
 import com.icaali.StickerIslami.R;
 import com.icaali.StickerIslami.Sticker;
@@ -25,6 +26,7 @@ import com.icaali.StickerIslami.api.apiRest;
 import com.icaali.StickerIslami.entity.PackApi;
 import com.icaali.StickerIslami.entity.StickerApi;
 import com.icaali.StickerIslami.ui.HomeActivity;
+import com.orhanobut.hawk.Hawk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -143,9 +145,9 @@ public class PopularFragment extends Fragment {
     private void initView() {
         PrefManager prefManager= new PrefManager(getActivity().getApplicationContext());
 
-        if (!prefManager.getString("ADMIN_NATIVE_TYPE").equals("FALSE")){
+        if (!AdManager.ADMOB_NATIVE_ENABLED.equals("FALSE")){
             native_ads_enabled=true;
-            lines_beetween_ads=Integer.parseInt(prefManager.getString("ADMIN_NATIVE_LINES"));
+            lines_beetween_ads=AdManager.ADMOB_NATIVE_LINES;
         }
         if (prefManager.getString("SUBSCRIBED").equals("TRUE")) {
             native_ads_enabled=false;
@@ -244,23 +246,8 @@ public class PopularFragment extends Fragment {
                             item++;
                             if (item == lines_beetween_ads ){
                                 item= 0;
-                                if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("ADMOB")) {
-                                    stickerPacks.add(new StickerPack().setViewType(6));
-                                    position++;
-                                }else if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("FACEBOOK")){
-                                    stickerPacks.add(new StickerPack().setViewType(4));
-                                    position++;
-                                } else if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("BOTH")){
-                                    if (type_ads == 0) {
-                                        stickerPacks.add(new StickerPack().setViewType(6));
-                                        position++;
-                                        type_ads = 1;
-                                    }else if (type_ads == 1){
-                                        stickerPacks.add(new StickerPack().setViewType(4));
-                                        position++;
-                                        type_ads = 0;
-                                    }
-                                }
+                                stickerPacks.add(new StickerPack().setViewType(6));
+                                position++;
                             }
                         }
                     }
@@ -345,23 +332,8 @@ public class PopularFragment extends Fragment {
                                 item++;
                                 if (item == lines_beetween_ads ){
                                     item= 0;
-                                    if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("ADMOB")) {
-                                        stickerPacks.add(new StickerPack().setViewType(6));
-                                        position++;
-                                    }else if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("FACEBOOK")){
-                                        stickerPacks.add(new StickerPack().setViewType(4));
-                                        position++;
-                                    } else if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("BOTH")){
-                                        if (type_ads == 0) {
-                                            stickerPacks.add(new StickerPack().setViewType(6));
-                                            position++;
-                                            type_ads = 1;
-                                        }else if (type_ads == 1){
-                                            stickerPacks.add(new StickerPack().setViewType(4));
-                                            position++;
-                                            type_ads = 0;
-                                        }
-                                    }
+                                    stickerPacks.add(new StickerPack().setViewType(6));
+                                    position++;
                                 }
                             }
                         }

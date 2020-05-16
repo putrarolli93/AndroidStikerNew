@@ -4,13 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +11,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.siyamed.shapeimageview.CircularImageView;
 import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
@@ -36,20 +34,20 @@ import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
 import com.icaali.StickerIslami.Manager.AdManager;
-import com.orhanobut.hawk.Hawk;
 import com.icaali.StickerIslami.Manager.PrefManager;
 import com.icaali.StickerIslami.R;
 import com.icaali.StickerIslami.StickerPack;
-import com.icaali.StickerIslami.entity.CategoryApi;
-import com.icaali.StickerIslami.ui.StickerDetailsActivity;
-import com.icaali.StickerIslami.ui.UserActivity;
 import com.icaali.StickerIslami.api.apiClient;
 import com.icaali.StickerIslami.api.apiRest;
 import com.icaali.StickerIslami.entity.ApiResponse;
+import com.icaali.StickerIslami.entity.CategoryApi;
 import com.icaali.StickerIslami.entity.PackApi;
 import com.icaali.StickerIslami.entity.SlideApi;
 import com.icaali.StickerIslami.entity.UserApi;
+import com.icaali.StickerIslami.ui.StickerDetailsActivity;
+import com.icaali.StickerIslami.ui.UserActivity;
 import com.icaali.StickerIslami.ui.views.ClickableViewPager;
+import com.orhanobut.hawk.Hawk;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -462,11 +460,8 @@ public class StickerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public AdmobNativeHolder(@NonNull View itemView) {
             super(itemView);
 
-
-            PrefManager prefManager = new PrefManager(activity);
-
-            frameLayout = (FrameLayout) itemView.findViewById(R.id.fl_adplaceholder);
-            AdLoader.Builder builder = new AdLoader.Builder(activity, prefManager.getString("ADMIN_NATIVE_ADMOB_ID"));
+            frameLayout = itemView.findViewById(R.id.fl_adplaceholder);
+            AdLoader.Builder builder = new AdLoader.Builder(activity, AdManager.ADMOB_NATIVE_ID);
 
             builder.forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
                 // OnUnifiedNativeAdLoadedListener implementation.

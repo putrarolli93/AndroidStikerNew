@@ -1,12 +1,6 @@
 package com.icaali.StickerIslami.ui;
 
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,11 +8,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.orhanobut.hawk.Hawk;
+import com.icaali.StickerIslami.Manager.AdManager;
 import com.icaali.StickerIslami.Manager.PrefManager;
 import com.icaali.StickerIslami.R;
 import com.icaali.StickerIslami.Sticker;
@@ -28,6 +28,7 @@ import com.icaali.StickerIslami.api.apiClient;
 import com.icaali.StickerIslami.api.apiRest;
 import com.icaali.StickerIslami.entity.PackApi;
 import com.icaali.StickerIslami.entity.StickerApi;
+import com.orhanobut.hawk.Hawk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,18 +125,17 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void initView() {
 
-
         PrefManager prefManager= new PrefManager(getApplicationContext());
 
-        if (!prefManager.getString("ADMIN_NATIVE_TYPE").equals("FALSE")){
-            native_ads_enabled=true;
-            lines_beetween_ads=Integer.parseInt(prefManager.getString("ADMIN_NATIVE_LINES"));
+        if (!AdManager.ADMOB_NATIVE_ENABLED.equals("FALSE")){
+            native_ads_enabled = true;
+            lines_beetween_ads = AdManager.ADMOB_NATIVE_LINES;
         }
         if (prefManager.getString("SUBSCRIBED").equals("TRUE")) {
             native_ads_enabled=false;
         }
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -233,23 +233,8 @@ public class CategoryActivity extends AppCompatActivity {
                             item++;
                             if (item == lines_beetween_ads ){
                                 item= 0;
-                                if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("ADMOB")) {
-                                    stickerPacks.add(new StickerPack().setViewType(6));
-                                    position++;
-                                }else if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("FACEBOOK")){
-                                    stickerPacks.add(new StickerPack().setViewType(4));
-                                    position++;
-                                } else if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("BOTH")){
-                                    if (type_ads == 0) {
-                                        stickerPacks.add(new StickerPack().setViewType(6));
-                                        position++;
-                                        type_ads = 1;
-                                    }else if (type_ads == 1){
-                                        stickerPacks.add(new StickerPack().setViewType(4));
-                                        position++;
-                                        type_ads = 0;
-                                    }
-                                }
+                                stickerPacks.add(new StickerPack().setViewType(6));
+                                position++;
                             }
                         }
 
@@ -336,23 +321,8 @@ public class CategoryActivity extends AppCompatActivity {
                                 item++;
                                 if (item == lines_beetween_ads ){
                                     item= 0;
-                                    if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("ADMOB")) {
-                                        stickerPacks.add(new StickerPack().setViewType(6));
-                                        position++;
-                                    }else if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("FACEBOOK")){
-                                        stickerPacks.add(new StickerPack().setViewType(4));
-                                        position++;
-                                    } else if (prefManager.getString("ADMIN_NATIVE_TYPE").equals("BOTH")){
-                                        if (type_ads == 0) {
-                                            stickerPacks.add(new StickerPack().setViewType(6));
-                                            position++;
-                                            type_ads = 1;
-                                        }else if (type_ads == 1){
-                                            stickerPacks.add(new StickerPack().setViewType(4));
-                                            position++;
-                                            type_ads = 0;
-                                        }
-                                    }
+                                    stickerPacks.add(new StickerPack().setViewType(6));
+                                    position++;
                                 }
                             }
 
@@ -418,13 +388,11 @@ public class CategoryActivity extends AppCompatActivity {
 
     }
     public void showAdmobBanner(){
-        PrefManager prefManager= new PrefManager(getApplicationContext());
-        LinearLayout linear_layout_ads =  (LinearLayout) findViewById(R.id.linear_layout_ads);
+        LinearLayout linear_layout_ads = findViewById(R.id.linear_layout_ads);
         final AdView mAdView = new AdView(this);
         mAdView.setAdSize(AdSize.SMART_BANNER);
-        mAdView.setAdUnitId(prefManager.getString("ADMIN_BANNER_ADMOB_ID"));
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
+        mAdView.setAdUnitId(AdManager.ADMOB_BANNER_ID);
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         linear_layout_ads.addView(mAdView);
 

@@ -6,8 +6,12 @@ import com.icaali.StickerIslami.Application;
 
 public class AdManager{
 
+    public static String PUBLISHER_ID;
     public static String ADMOB_APP_ID;
     public static String ADMOB_BANNER_ID;
+    public static String ADMOB_NATIVE_ID;
+    public static Integer ADMOB_NATIVE_LINES = 6;
+    public static String ADMOB_NATIVE_ENABLED;
     public static String ADMOB_INTERSTITIAL_ID;
     public static String ADMOB_REWARD_ID;
 

@@ -23,18 +23,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.content.FileProvider;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatRatingBar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
-
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -52,6 +40,16 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatRatingBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.vending.billing.IInAppBillingService;
 import com.anjlab.android.iab.v3.BillingProcessor;
@@ -75,13 +73,13 @@ import com.icaali.StickerIslami.R;
 import com.icaali.StickerIslami.Sticker;
 import com.icaali.StickerIslami.StickerPack;
 import com.icaali.StickerIslami.adapter.StickerDetailsAdapter;
-import com.icaali.StickerIslami.config.Config;
-import com.orhanobut.hawk.Hawk;
 import com.icaali.StickerIslami.api.apiClient;
 import com.icaali.StickerIslami.api.apiRest;
+import com.icaali.StickerIslami.config.Config;
 import com.icaali.StickerIslami.entity.ApiResponse;
-import com.squareup.picasso.Picasso;
 import com.icaali.StickerIslami.entity.PackApi;
+import com.orhanobut.hawk.Hawk;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -1073,9 +1071,7 @@ public class StickerDetailsActivity extends AppCompatActivity {
     }
 
     public void loadRewardedVideoAd() {
-        PrefManager prefManager = new PrefManager(getApplicationContext());
-        mRewardedVideoAd.loadAd(prefManager.getString("ADMIN_REWARDED_ADMOB_ID"),
-                new AdRequest.Builder().build());
+        mRewardedVideoAd.loadAd(AdManager.ADMOB_REWARD_ID, new AdRequest.Builder().build());
     }
 
     public void showDialog() {
@@ -1183,28 +1179,15 @@ public class StickerDetailsActivity extends AppCompatActivity {
 
     public void showAdsBanner() {
         if (!checkSUBSCRIBED()) {
-            PrefManager prefManager = new PrefManager(getApplicationContext());
-            if (prefManager.getString("ADMIN_BANNER_TYPE").equals("ADMOB")) {
-                showAdmobBanner();
-            }
-            if (prefManager.getString("ADMIN_BANNER_TYPE").equals("BOTH")) {
-                if (prefManager.getString("Banner_Ads_display").equals("FACEBOOK")) {
-                    prefManager.setString("Banner_Ads_display", "ADMOB");
-                    showAdmobBanner();
-                }
-            }
+            showAdmobBanner();
         }
-
     }
 
     public void showAdmobBanner() {
-        PrefManager prefManager = new PrefManager(getApplicationContext());
-        LinearLayout linear_layout_ads = (LinearLayout) findViewById(R.id.linear_layout_ads);
         final AdView mAdView = new AdView(this);
         mAdView.setAdSize(AdSize.SMART_BANNER);
-        mAdView.setAdUnitId(prefManager.getString("ADMIN_BANNER_ADMOB_ID"));
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
+        mAdView.setAdUnitId(AdManager.ADMOB_BANNER_ID);
+        AdRequest adRequest = AdManager.getBannerAd();
         mAdView.loadAd(adRequest);
         linear_layout_ads.addView(mAdView);
 

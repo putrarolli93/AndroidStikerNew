@@ -59,7 +59,6 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -103,7 +102,6 @@ public class HomeActivity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView text_view_name_nave_header;
     private CircularImageView circle_image_view_profile_nav_header;
-    private InterstitialAd admobInterstitialAd;
 
     // Lists
     private final List<Fragment> mFragmentList = new ArrayList<>();
@@ -147,24 +145,16 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        admobInterstitialAd = AdManager.getInterstitialAd();
-        admobInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                Log.d("Interstial : ", "Success Load Interstial");
-            }
-        });
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         initView();
         showAdmobBanner();
@@ -172,18 +162,14 @@ public class HomeActivity extends AppCompatActivity
         initBuy();
         firebaseSubscribe();
         initGDPR();
-        PrefManager prf = new PrefManager(getApplicationContext());
-
     }
 
     public void showAdmobBanner() {
-        PrefManager prefManager = new PrefManager(getApplicationContext());
-        LinearLayout linear_layout_ads = (LinearLayout) findViewById(R.id.linear_layout_ads);
+        LinearLayout linear_layout_ads = findViewById(R.id.linear_layout_ads);
         final AdView mAdView = new AdView(this);
         mAdView.setAdSize(AdSize.BANNER);
-        mAdView.setAdUnitId(prefManager.getString("ADMIN_BANNER_ADMOB_ID"));
-        AdRequest adRequest = new AdRequest.Builder()
-                .build();
+        mAdView.setAdUnitId(AdManager.ADMOB_BANNER_ID);
+        AdRequest adRequest = AdManager.getBannerAd();
         mAdView.loadAd(adRequest);
         linear_layout_ads.addView(mAdView);
 
@@ -192,6 +178,7 @@ public class HomeActivity extends AppCompatActivity
             public void onAdLoaded() {
                 super.onAdLoaded();
                 mAdView.setVisibility(View.VISIBLE);
+                AdManager.getInterstitialAd();
             }
         });
     }
@@ -789,7 +776,7 @@ public class HomeActivity extends AppCompatActivity
 //// test
 /////
 
-        String[] publisherIds = {prefManager.getString("ADMIN_PUBLISHER_ID")};
+        String[] publisherIds = {AdManager.PUBLISHER_ID};
         consentInformation.requestConsentInfoUpdate(publisherIds, new
                 ConsentInfoUpdateListener() {
                     @Override
